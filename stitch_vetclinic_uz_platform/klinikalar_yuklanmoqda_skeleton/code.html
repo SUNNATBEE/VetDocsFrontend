@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, #eaefed 25%, #dee4e1 50%, #eaefed 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#924628",
+                        "outline": "#6d7a77",
+                        "secondary": "#a93530",
+                        "surface-container-high": "#e4e9e7",
+                        "on-secondary-fixed": "#410003",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "on-tertiary-fixed-variant": "#773215",
+                        "secondary-fixed": "#ffdad6",
+                        "primary": "#00685f",
+                        "on-primary-fixed": "#00201d",
+                        "on-surface-variant": "#3d4947",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#881d1c",
+                        "surface-container": "#eaefed",
+                        "surface-container-low": "#f0f5f2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#fd7369",
+                        "on-tertiary-fixed": "#370e00",
+                        "inverse-on-surface": "#edf2f0",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#6f080c",
+                        "surface-dim": "#d6dbd9",
+                        "on-surface": "#171d1c",
+                        "surface-variant": "#dee4e1",
+                        "primary-fixed": "#89f5e7",
+                        "surface-bright": "#f5faf8",
+                        "inverse-surface": "#2c3130",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#dee4e1",
+                        "secondary-fixed-dim": "#ffb4ac",
+                        "on-background": "#171d1c",
+                        "on-primary-container": "#f4fffc",
+                        "on-tertiary-container": "#fffbff",
+                        "tertiary-fixed": "#ffdbce",
+                        "surface-tint": "#006a61",
+                        "primary-container": "#008378",
+                        "tertiary-container": "#b05e3d",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#6bd8cb",
+                        "background": "#f5faf8",
+                        "outline-variant": "#bcc9c6",
+                        "inverse-primary": "#6bd8cb",
+                        "surface": "#f5faf8",
+                        "on-primary-fixed-variant": "#005049"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "section-gap": "80px",
+                        "margin-mobile": "16px",
+                        "container-max-width": "1280px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "h2": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-50 shadow-sm">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto">
+<div class="font-h3 text-h3 font-bold text-primary dark:text-primary-fixed">
+                VetClinic UZ
+            </div>
+<nav class="hidden md:flex items-center space-x-8 font-body-md text-body-md">
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary transition-colors" href="#">Klinikalar</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Xizmatlar</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Shaharlar</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Yordam</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden md:block px-6 py-2.5 rounded-lg border border-primary text-primary font-semibold hover:bg-primary/5 transition-all active:opacity-80">Kirish</button>
+<button class="px-6 py-2.5 rounded-lg bg-primary text-on-primary font-semibold hover:opacity-90 transition-all scale-98 active:opacity-80 shadow-md">Band qilish</button>
+</div>
+</div>
+</header>
+<main class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<!-- Search & Filter Header Skeleton -->
+<div class="mb-section-gap">
+<div class="shimmer h-12 w-full max-w-2xl rounded-xl mb-8"></div>
+<div class="flex justify-between items-end">
+<div class="space-y-3">
+<div class="shimmer h-8 w-64 rounded-lg"></div>
+<div class="shimmer h-4 w-48 rounded-md"></div>
+</div>
+<div class="shimmer h-10 w-32 rounded-lg hidden md:block"></div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Sidebar Filter Skeleton -->
+<aside class="w-full md:w-64 space-y-10">
+<div class="space-y-4">
+<div class="shimmer h-6 w-3/4 rounded-md"></div>
+<div class="space-y-2">
+<div class="shimmer h-5 w-full rounded-md"></div>
+<div class="shimmer h-5 w-5/6 rounded-md"></div>
+<div class="shimmer h-5 w-4/5 rounded-md"></div>
+<div class="shimmer h-5 w-full rounded-md"></div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="shimmer h-6 w-1/2 rounded-md"></div>
+<div class="grid grid-cols-2 gap-2">
+<div class="shimmer h-8 rounded-full"></div>
+<div class="shimmer h-8 rounded-full"></div>
+<div class="shimmer h-8 rounded-full"></div>
+<div class="shimmer h-8 rounded-full"></div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="shimmer h-6 w-2/3 rounded-md"></div>
+<div class="shimmer h-24 w-full rounded-xl"></div>
+</div>
+</aside>
+<!-- Clinic Cards Grid Skeleton -->
+<div class="flex-1">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card Template x 6 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm flex flex-col h-[420px]">
+<div class="shimmer h-48 w-full"></div>
+<div class="p-6 flex-1 flex flex-col space-y-4">
+<div class="flex justify-between items-start">
+<div class="shimmer h-6 w-32 rounded-md"></div>
+<div class="shimmer h-5 w-12 rounded-full"></div>
+</div>
+<div class="shimmer h-4 w-full rounded-md"></div>
+<div class="shimmer h-4 w-5/6 rounded-md"></div>
+<div class="mt-auto pt-4 flex gap-2">
+<div class="shimmer h-8 flex-1 rounded-lg"></div>
+<div class="shimmer h-8 w-12 rounded-lg"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm flex flex-col h-[420px]">
+<div class="shimmer h-48 w-full"></div>
+<div class="p-6 flex-1 flex flex-col space-y-4">
+<div class="flex justify-between items-start">
+<div class="shimmer h-6 w-40 rounded-md"></div>
+<div class="shimmer h-5 w-12 rounded-full"></div>
+</div>
+<div class="shimmer h-4 w-full rounded-md"></div>
+<div class="shimmer h-4 w-2/3 rounded-md"></div>
+<div class="mt-auto pt-4 flex gap-2">
+<div class="shimmer h-8 flex-1 rounded-lg"></div>
+<div class="shimmer h-8 w-12 rounded-lg"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm flex flex-col h-[420px]">
+<div class="shimmer h-48 w-full"></div>
+<div class="p-6 flex-1 flex flex-col space-y-4">
+<div class="flex justify-between items-start">
+<div class="shimmer h-6 w-28 rounded-md"></div>
+<div class="shimmer h-5 w-12 rounded-full"></div>
+</div>
+<div class="shimmer h-4 w-full rounded-md"></div>
+<div class="shimmer h-4 w-3/4 rounded-md"></div>
+<div class="mt-auto pt-4 flex gap-2">
+<div class="shimmer h-8 flex-1 rounded-lg"></div>
+<div class="shimmer h-8 w-12 rounded-lg"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm flex flex-col h-[420px]">
+<div class="shimmer h-48 w-full"></div>
+<div class="p-6 flex-1 flex flex-col space-y-4">
+<div class="flex justify-between items-start">
+<div class="shimmer h-6 w-36 rounded-md"></div>
+<div class="shimmer h-5 w-12 rounded-full"></div>
+</div>
+<div class="shimmer h-4 w-full rounded-md"></div>
+<div class="shimmer h-4 w-5/6 rounded-md"></div>
+<div class="mt-auto pt-4 flex gap-2">
+<div class="shimmer h-8 flex-1 rounded-lg"></div>
+<div class="shimmer h-8 w-12 rounded-lg"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm flex flex-col h-[420px]">
+<div class="shimmer h-48 w-full"></div>
+<div class="p-6 flex-1 flex flex-col space-y-4">
+<div class="flex justify-between items-start">
+<div class="shimmer h-6 w-32 rounded-md"></div>
+<div class="shimmer h-5 w-12 rounded-full"></div>
+</div>
+<div class="shimmer h-4 w-full rounded-md"></div>
+<div class="shimmer h-4 w-1/2 rounded-md"></div>
+<div class="mt-auto pt-4 flex gap-2">
+<div class="shimmer h-8 flex-1 rounded-lg"></div>
+<div class="shimmer h-8 w-12 rounded-lg"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm flex flex-col h-[420px]">
+<div class="shimmer h-48 w-full"></div>
+<div class="p-6 flex-1 flex flex-col space-y-4">
+<div class="flex justify-between items-start">
+<div class="shimmer h-6 w-44 rounded-md"></div>
+<div class="shimmer h-5 w-12 rounded-full"></div>
+</div>
+<div class="shimmer h-4 w-full rounded-md"></div>
+<div class="shimmer h-4 w-5/6 rounded-md"></div>
+<div class="mt-auto pt-4 flex gap-2">
+<div class="shimmer h-8 flex-1 rounded-lg"></div>
+<div class="shimmer h-8 w-12 rounded-lg"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination Skeleton -->
+<div class="mt-12 flex justify-center items-center space-x-2">
+<div class="shimmer h-10 w-10 rounded-lg"></div>
+<div class="shimmer h-10 w-10 rounded-lg"></div>
+<div class="shimmer h-10 w-10 rounded-lg"></div>
+<div class="shimmer h-10 w-10 rounded-lg"></div>
+<div class="shimmer h-10 w-10 rounded-lg"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest border-t border-outline-variant full-width">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-section-gap max-w-container-max-width mx-auto">
+<div class="space-y-6">
+<div class="font-h3 text-h3 text-primary font-bold">VetClinic UZ</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm max-w-xs">
+                    O'zbekistondagi uy hayvonlari egalari uchun zamonaviy va ishonchli veterinariya xizmatlari platformasi.
+                </p>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-primary">Shaharlar</h4>
+<ul class="space-y-2 font-body-sm text-body-sm">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Toshkent</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Samarqand</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Buxoro</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-primary">Kompaniya</h4>
+<ul class="space-y-2 font-body-sm text-body-sm">
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Biz haqimizda</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Maxfiylik siyosati</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Foydalanish shartlari</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-primary">Bog'lanish</h4>
+<ul class="space-y-2 font-body-sm text-body-sm">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="mail">mail</span>
+<span class="text-on-surface-variant">info@vetclinic.uz</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="call">call</span>
+<span class="text-on-surface-variant">+998 71 200 00 00</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-6 border-t border-outline-variant/30 text-center">
+<p class="text-on-surface-variant font-body-sm text-body-sm">
+                © 2024 VetClinic UZ. Barcha huquqlar himoyalangan.
+            </p>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "on-tertiary-fixed-variant": "#773215",
+                        "surface-container-high": "#e4e9e7",
+                        "on-secondary-fixed": "#410003",
+                        "secondary": "#a93530",
+                        "tertiary": "#924628",
+                        "outline": "#6d7a77",
+                        "primary": "#00685f",
+                        "on-primary-fixed": "#00201d",
+                        "secondary-fixed": "#ffdad6",
+                        "secondary-container": "#fd7369",
+                        "on-tertiary-fixed": "#370e00",
+                        "inverse-on-surface": "#edf2f0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#eaefed",
+                        "surface-container-low": "#f0f5f2",
+                        "on-surface-variant": "#3d4947",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#881d1c",
+                        "on-surface": "#171d1c",
+                        "surface-dim": "#d6dbd9",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#6f080c",
+                        "surface-bright": "#f5faf8",
+                        "inverse-surface": "#2c3130",
+                        "surface-variant": "#dee4e1",
+                        "primary-fixed": "#89f5e7",
+                        "on-primary-container": "#f4fffc",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-fixed-dim": "#ffb4ac",
+                        "on-background": "#171d1c",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#dee4e1",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#b05e3d",
+                        "primary-container": "#008378",
+                        "tertiary-fixed": "#ffdbce",
+                        "surface-tint": "#006a61",
+                        "surface": "#f5faf8",
+                        "on-primary-fixed-variant": "#005049",
+                        "outline-variant": "#bcc9c6",
+                        "inverse-primary": "#6bd8cb",
+                        "primary-fixed-dim": "#6bd8cb",
+                        "background": "#f5faf8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "section-gap": "80px",
+                        "margin-mobile": "16px",
+                        "container-max-width": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "h2": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .strength-meter-segment {
+            height: 4px;
+            border-radius: 2px;
+            width: 100%;
+        }
+        .loading-spinner {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 2px solid #fff;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface min-h-screen flex items-stretch">
+<!-- Left Side: Decorative Branding -->
+<section class="hidden lg:flex w-1/2 relative overflow-hidden bg-primary items-center justify-center p-margin-desktop">
+<!-- Abstract Background Shapes -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary to-primary-container opacity-90"></div>
+<div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-tertiary-container rounded-full mix-blend-soft-light filter blur-3xl opacity-30"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-80 h-80 bg-primary-fixed rounded-full mix-blend-overlay filter blur-2xl opacity-20"></div>
+<div class="relative z-10 max-w-lg text-center">
+<div class="mb-8 inline-flex items-center justify-center p-4 bg-surface-container-lowest rounded-xl shadow-lg">
+<span class="material-symbols-outlined text-primary text-[48px]" data-icon="pets">pets</span>
+</div>
+<h2 class="font-h1 text-h1 text-on-primary mb-6">VetClinic UZ</h2>
+<p class="font-body-lg text-body-lg text-on-primary/90 mb-10 leading-relaxed">
+                Sizning sodiq do'stlaringiz uchun professional g'amxo'rlik va zamonaviy tibbiy yordam. O'zbekistonning eng yaxshi klinikalari bilan bir joyda bog'laning.
+            </p>
+<div class="grid grid-cols-2 gap-gutter text-left">
+<div class="p-4 bg-on-primary/10 rounded-lg backdrop-blur-sm border border-on-primary/20">
+<span class="material-symbols-outlined text-primary-fixed mb-2" data-icon="verified_user">verified_user</span>
+<h4 class="font-h3 text-h3 text-on-primary text-body-sm mb-1">Ishonch</h4>
+<p class="text-on-primary/70 text-body-sm">Sertifikatlangan mutaxassislar</p>
+</div>
+<div class="p-4 bg-on-primary/10 rounded-lg backdrop-blur-sm border border-on-primary/20">
+<span class="material-symbols-outlined text-primary-fixed mb-2" data-icon="schedule">schedule</span>
+<h4 class="font-h3 text-h3 text-on-primary text-body-sm mb-1">24/7</h4>
+<p class="text-on-primary/70 text-body-sm">Tezkor tibbiy xizmat</p>
+</div>
+</div>
+</div>
+<!-- Decorative Image Overlay -->
+<div class="absolute bottom-10 left-10 right-10">
+<div class="h-64 rounded-2xl overflow-hidden shadow-2xl">
+<img alt="Professional veterinary care" class="w-full h-full object-cover" data-alt="A warm and professional cinematic shot of a veterinarian smiling while holding a small golden retriever puppy in a bright, modern clinic setting. The lighting is soft and natural, with high-key white and teal tones that evoke a sense of safety and expert care. The background is slightly blurred showing clean medical equipment and a minimalist interior design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABYMosG-sv7yqarMXApkHBsJaISyyC6cQ0RRMYrsxtrna1_XPic1sOREOb_m7RCuCkeqY-l_LWXWrlF5XBhhoiVvF2MGGGxagVK41YLDVN3Q5QzBdEL0fQ2CVQa5jD-c0p_wy7YIqrkcre4DARk3P8G0Q4Y5JVL1VBrn-rpiWe_Ur_58DP5qsBlNbjZqXPPNzzbPBKsDI3jNU7pm-zzKscoLK3v_xz3qmCCUbMvpUwXdRaWTbvsMqIAELOg5d6pmiGcgwys5UfI6s"/>
+</div>
+</div>
+</section>
+<!-- Right Side: Registration Form -->
+<main class="w-full lg:w-1/2 flex items-center justify-center p-margin-mobile md:p-margin-desktop bg-surface-bright">
+<div class="w-full max-w-md bg-white p-8 rounded-xl border border-outline-variant shadow-sm">
+<div class="mb-8">
+<h1 class="font-h1 text-h1 text-on-surface mb-2">Ro'yxatdan o'ting</h1>
+<p class="text-on-surface-variant font-body-md">Yangi hisob yarating va xizmatlarimizdan foydalaning</p>
+</div>
+<form class="space-y-5">
+<!-- Full Name -->
+<div>
+<label class="block font-bold text-on-surface text-body-sm mb-2" for="full_name">To'liq ismingiz</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-surface-container-lowest" id="full_name" name="full_name" placeholder="Ism familiya" type="text"/>
+</div>
+<!-- Phone -->
+<div>
+<label class="block font-bold text-on-surface text-body-sm mb-2" for="phone">Telefon raqamingiz</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">+998</span>
+<input class="w-full pl-16 pr-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-surface-container-lowest" id="phone" name="phone" placeholder="(90) 123-45-67" type="tel"/>
+</div>
+</div>
+<!-- Email (Validation Error State) -->
+<div>
+<label class="block font-bold text-on-surface text-body-sm mb-2" for="email">Email manzilingiz</label>
+<input class="w-full px-4 py-3 rounded-lg border-error focus:ring-2 focus:ring-error/20 transition-all outline-none bg-surface-container-lowest text-error" id="email" name="email" type="email" value="invalid-email-format"/>
+<p class="mt-1.5 text-error text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="error">error</span>
+                        Email noto'g'ri formatda
+                    </p>
+</div>
+<!-- Password with Strength Meter -->
+<div>
+<label class="block font-bold text-on-surface text-body-sm mb-2" for="password">Parol</label>
+<div class="relative mb-2">
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-surface-container-lowest" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+<!-- Strength Meter: 4 segments (Moderate strength example) -->
+<div class="flex gap-1.5 mt-2">
+<div class="strength-meter-segment bg-primary"></div>
+<div class="strength-meter-segment bg-primary"></div>
+<div class="strength-meter-segment bg-surface-variant"></div>
+<div class="strength-meter-segment bg-surface-variant"></div>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-1.5">Parol kuchi: O'rtacha</p>
+</div>
+<!-- Confirm Password -->
+<div>
+<label class="block font-bold text-on-surface text-body-sm mb-2" for="confirm_password">Parolni tasdiqlang</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none bg-surface-container-lowest" id="confirm_password" name="confirm_password" placeholder="••••••••" type="password"/>
+</div>
+<!-- Terms Checkbox -->
+<div class="flex items-start gap-3 py-2">
+<input class="mt-1 w-4 h-4 text-primary rounded border-outline-variant focus:ring-primary" id="terms" name="terms" type="checkbox"/>
+<label class="text-body-sm text-on-surface-variant" for="terms">
+                        Men <a class="text-primary font-semibold hover:underline" href="#">Foydalanish shartlari</a>ga roziman
+                    </label>
+</div>
+<!-- Submit Button (Loading State) -->
+<button class="w-full bg-secondary-container text-on-secondary-container font-bold py-3.5 rounded-lg flex items-center justify-center gap-3 opacity-90 cursor-not-allowed hover:bg-secondary transition-all active:scale-[0.98]" disabled="" type="submit">
+<div class="loading-spinner border-on-secondary-container/30 border-t-on-secondary-container"></div>
+                    Kirish...
+                </button>
+</form>
+<div class="mt-8 pt-6 border-t border-outline-variant text-center">
+<p class="text-body-sm text-on-surface-variant">
+                    Sizda hisob bormi? 
+                    <a class="text-primary font-bold hover:underline ml-1" href="#">Tizimga kiring</a>
+</p>
+</div>
+</div>
+</main>
+</body></html>

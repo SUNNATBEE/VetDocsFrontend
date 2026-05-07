@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffdbce",
+                    "on-tertiary-fixed-variant": "#773215",
+                    "on-primary-fixed-variant": "#005049",
+                    "outline": "#6d7a77",
+                    "on-primary-container": "#f4fffc",
+                    "surface-container": "#eaefed",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#6f080c",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "tertiary-container": "#b05e3d",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#dee4e1",
+                    "on-surface-variant": "#3d4947",
+                    "surface-dim": "#d6dbd9",
+                    "secondary-fixed-dim": "#ffb4ac",
+                    "outline-variant": "#bcc9c6",
+                    "surface-bright": "#f5faf8",
+                    "surface-variant": "#dee4e1",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#fd7369",
+                    "primary-fixed-dim": "#6bd8cb",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#00201d",
+                    "surface-container-low": "#f0f5f2",
+                    "inverse-on-surface": "#edf2f0",
+                    "error": "#ba1a1a",
+                    "on-surface": "#171d1c",
+                    "primary-fixed": "#89f5e7",
+                    "background": "#f5faf8",
+                    "on-tertiary": "#ffffff",
+                    "primary": "#00685f",
+                    "secondary-fixed": "#ffdad6",
+                    "secondary": "#a93530",
+                    "primary-container": "#008378",
+                    "surface": "#f5faf8",
+                    "inverse-surface": "#2c3130",
+                    "on-background": "#171d1c",
+                    "surface-container-high": "#e4e9e7",
+                    "on-secondary-fixed": "#410003",
+                    "surface-tint": "#006a61",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#fffbff",
+                    "inverse-primary": "#6bd8cb",
+                    "tertiary": "#924628",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#370e00",
+                    "on-secondary-fixed-variant": "#881d1c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "80px",
+                    "unit": "4px",
+                    "container-max-width": "1280px",
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "h3": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h1": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "h2": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f5faf8;
+            color: #171d1c;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- Sidebar Component (Based on JSON) -->
+<aside class="hidden md:flex flex-col h-screen w-64 bg-primary sticky top-0 left-0 p-4 space-y-2 shadow-md">
+<div class="px-2 py-6 mb-4">
+<h1 class="font-h2 text-h2 text-on-primary">Admin Panel</h1>
+<p class="font-body-sm text-body-sm text-on-primary/70">Boshqaruv tizimi</p>
+</div>
+<nav class="flex-grow space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/80 hover:bg-on-primary/10 rounded-lg transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<!-- Active State: Klinikalar -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold font-body-md text-body-md shadow-sm" href="#">
+<span class="material-symbols-outlined">medical_services</span>
+                Klinikalar
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/80 hover:bg-on-primary/10 rounded-lg transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">group</span>
+                Foydalanuvchilar
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/80 hover:bg-on-primary/10 rounded-lg transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">rate_review</span>
+                Sharhlar
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/80 hover:bg-on-primary/10 rounded-lg transition-all font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Sozlamalar
+            </a>
+</nav>
+<div class="pt-4 border-t border-on-primary/10 flex items-center gap-3 px-2">
+<img alt="Admin surati" class="w-10 h-10 rounded-full object-cover ring-2 ring-on-primary/20" data-alt="A professional headshot of a middle-aged female administrator in a bright, modern corporate setting. She is smiling warmly, wearing business casual attire. The background is a clean, minimalist medical office with soft teal accents and bright, natural daylight streaming in from large windows, reflecting a calm and trustworthy healthcare environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNE0CVUMgPR94nBU67i5uHeGZD0MRuRyB7RY4Rx5lB4BCl0wfjr0XT7Z6fiqEykLcXhEJfKoCpvrDNg3E0KTKrBQzHRq9LLGlvDTFAgXIN9Y1B5Jxjg0MuvDNaIZuviCUk0PnYCXRqqpK06faYQiueSGU0OEcDfuRxqYLKarRwwVnS-cg_nQyFmmaOLMkaW_af-uEvsZUfNOxXnxShKsanESYshkPLNsp6sEQGsoKgkhrtsJozne5WEBxyS7kQNuKtC1wZXyoHhSY"/>
+<div class="overflow-hidden">
+<p class="font-body-md text-body-md text-on-primary font-bold truncate text-sm">Zuhra Ahmedova</p>
+<p class="font-body-sm text-body-sm text-on-primary/60 truncate text-xs">Bosh Administrator</p>
+</div>
+</div>
+</aside>
+<main class="flex-grow flex flex-col relative min-w-0">
+<!-- Top Bar Component -->
+<header class="bg-surface/80 backdrop-blur-md sticky top-0 z-40 border-b border-outline-variant shadow-sm">
+<div class="flex justify-between items-center w-full px-6 py-4 mx-auto max-w-container-max-width">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-h3 text-h3 font-bold text-primary">Klinikalar boshqaruvi</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Klinika nomi bo'yicha qidirish..." type="text"/>
+</div>
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg font-bold text-body-sm flex items-center gap-2 hover:opacity-90 active:scale-98 transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Yangi klinika
+                    </button>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-6 md:p-8 space-y-6 max-w-container-max-width mx-auto w-full">
+<!-- Toolbar & Filter Chips -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 no-scrollbar">
+<span class="font-body-sm text-body-sm text-on-surface-variant mr-2">Filtr:</span>
+<button class="px-4 py-1.5 rounded-full bg-primary text-on-primary text-body-sm font-semibold whitespace-nowrap">Hammasi (42)</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest text-body-sm whitespace-nowrap transition-colors">Faol (38)</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest text-body-sm whitespace-nowrap transition-colors">Kutilmoqda (2)</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest text-body-sm whitespace-nowrap transition-colors">Yopilgan (2)</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+<button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">download</span>
+</button>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-surface rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Klinika nomi</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Shahar</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Reyting</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Xizmatlar</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Holat</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider text-right">Amallar</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">HV</div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-surface">Happy Vets Toshkent</p>
+<p class="text-xs text-on-surface-variant">ID: #VET-001</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Toshkent</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-sm text-body-sm font-bold">4.9</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Xirurgiya, Terapiya</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">Faol</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">ZC</div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-surface">ZooCare Samarqand</p>
+<p class="text-xs text-on-surface-variant">ID: #VET-002</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Samarqand</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-body-sm text-body-sm font-bold">4.7</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Vaksinatsiya</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">Faol</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button>
+</td>
+</tr>
+<!-- Row 3 - Pending -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant font-bold text-sm">MB</div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-surface">Modern Bark</p>
+<p class="text-xs text-on-surface-variant">ID: #VET-043</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Buxoro</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1 text-on-surface-variant/40">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="font-body-sm text-body-sm font-bold">0.0</span>
+</div>
+</td>
+<td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Gidromassaj</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant">Kutilmoqda</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button>
+<button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button>
+</td>
+</tr>
+<!-- Fill remaining rows for 10 total -->
+<tr class="hover:bg-surface-container-low transition-colors group"><td class="px-6 py-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">AN</div><div><p class="font-body-md text-body-md font-bold text-on-surface">AniMed Toshkent</p><p class="text-xs text-on-surface-variant">ID: #VET-004</p></div></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Toshkent</td><td class="px-6 py-4"><div class="flex items-center gap-1 text-secondary"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-body-sm text-body-sm font-bold">4.8</span></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Dermatologiya</td><td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">Faol</span></td><td class="px-6 py-4 text-right pr-6"><button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button><button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button></td></tr>
+<tr class="hover:bg-surface-container-low transition-colors group"><td class="px-6 py-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">VK</div><div><p class="font-body-md text-body-md font-bold text-on-surface">VetKlinika Namangan</p><p class="text-xs text-on-surface-variant">ID: #VET-005</p></div></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Namangan</td><td class="px-6 py-4"><div class="flex items-center gap-1 text-secondary"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-body-sm text-body-sm font-bold">4.5</span></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Ginekologiya</td><td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">Faol</span></td><td class="px-6 py-4 text-right pr-6"><button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button><button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button></td></tr>
+<tr class="hover:bg-surface-container-low transition-colors group"><td class="px-6 py-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">PH</div><div><p class="font-body-md text-body-md font-bold text-on-surface">PetHealth Nukus</p><p class="text-xs text-on-surface-variant">ID: #VET-006</p></div></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Nukus</td><td class="px-6 py-4"><div class="flex items-center gap-1 text-secondary"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-body-sm text-body-sm font-bold">4.2</span></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Stomatologiya</td><td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">Faol</span></td><td class="px-6 py-4 text-right pr-6"><button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button><button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button></td></tr>
+<tr class="hover:bg-surface-container-low transition-colors group"><td class="px-6 py-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">AV</div><div><p class="font-body-md text-body-md font-bold text-on-surface">AuraVet Andijon</p><p class="text-xs text-on-surface-variant">ID: #VET-007</p></div></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Andijon</td><td class="px-6 py-4"><div class="flex items-center gap-1 text-secondary"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-body-sm text-body-sm font-bold">4.6</span></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Rentgen, UZI</td><td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">Faol</span></td><td class="px-6 py-4 text-right pr-6"><button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button><button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button></td></tr>
+<tr class="hover:bg-surface-container-low transition-colors group"><td class="px-6 py-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold">DZ</div><div><p class="font-body-md text-body-md font-bold text-on-surface">Doctor Zood Karshi</p><p class="text-xs text-on-surface-variant">ID: #VET-008</p></div></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Qarshi</td><td class="px-6 py-4"><div class="flex items-center gap-1 text-secondary"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-body-sm text-body-sm font-bold">4.4</span></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Laboratoriya</td><td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">Faol</span></td><td class="px-6 py-4 text-right pr-6"><button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button><button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button></td></tr>
+<tr class="hover:bg-surface-container-low transition-colors group"><td class="px-6 py-4"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant font-bold text-sm">FV</div><div><p class="font-body-md text-body-md font-bold text-on-surface">FamilyVet Jizzax</p><p class="text-xs text-on-surface-variant">ID: #VET-044</p></div></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Jizzax</td><td class="px-6 py-4"><div class="flex items-center gap-1 text-on-surface-variant/40"><span class="material-symbols-outlined text-[18px]">star</span><span class="font-body-sm text-body-sm font-bold">0.0</span></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Kardiologiya</td><td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant">Kutilmoqda</span></td><td class="px-6 py-4 text-right pr-6"><button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button><button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button></td></tr>
+<tr class="hover:bg-surface-container-low transition-colors group"><td class="px-6 py-4 border-b-0"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-lg bg-error-container/20 flex items-center justify-center text-error font-bold">SV</div><div><p class="font-body-md text-body-md font-bold text-on-surface">ServiceVet Termiz</p><p class="text-xs text-on-surface-variant">ID: #VET-009</p></div></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Termiz</td><td class="px-6 py-4"><div class="flex items-center gap-1 text-secondary/40"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-body-sm text-body-sm font-bold">3.8</span></div></td><td class="px-6 py-4 font-body-sm text-body-sm text-on-surface">Psixologiya</td><td class="px-6 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-error-container text-on-error-container">Yopilgan</span></td><td class="px-6 py-4 text-right pr-6 border-b-0"><button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined">edit</span></button><button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined">delete</span></button></td></tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-outline-variant flex items-center justify-between bg-surface-container-low">
+<p class="font-body-sm text-body-sm text-on-surface-variant">42 tadan 1-10 ko'rsatilmoqda</p>
+<div class="flex gap-1">
+<button class="p-1 border border-outline-variant rounded hover:bg-surface-container disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary font-bold text-sm">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container text-on-surface-variant text-sm">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container text-on-surface-variant text-sm">3</button>
+<button class="p-1 border border-outline-variant rounded hover:bg-surface-container">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- DELETE CONFIRMATION DIALOG (OVERLAY) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm"></div>
+<!-- Modal Content -->
+<div class="relative bg-surface rounded-2xl shadow-2xl w-full max-w-md p-6 border border-outline-variant">
+<div class="flex items-center justify-center w-12 h-12 rounded-full bg-secondary-container/20 text-secondary mb-4 mx-auto">
+<span class="material-symbols-outlined text-3xl">warning</span>
+</div>
+<h3 class="font-h3 text-h3 text-center text-on-surface mb-2">Klinikani o'chirishni tasdiqlaysizmi?</h3>
+<p class="font-body-md text-body-md text-center text-on-surface-variant mb-6">
+                Ushbu amalni ortga qaytarib bo'lmaydi. Klinikaga tegishli barcha ma'lumotlar va shifokorlar ro'yxati o'chib ketadi.
+            </p>
+<div class="flex flex-col gap-3">
+<button class="w-full py-3 bg-secondary text-on-secondary rounded-xl font-bold font-body-md text-body-md hover:bg-secondary/90 transition-all active:scale-98">
+                    Ha, o'chirish
+                </button>
+<button class="w-full py-3 bg-surface-container text-on-surface-variant rounded-xl font-bold font-body-md text-body-md hover:bg-surface-container-highest transition-all">
+                    Bekor qilish
+                </button>
+</div>
+</div>
+</div>
+</body></html>

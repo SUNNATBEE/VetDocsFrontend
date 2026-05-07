@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            background-color: #0F172A;
+            color: #F1F5F9;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#f4fffc",
+                      "on-secondary-fixed": "#410003",
+                      "on-primary-fixed": "#00201d",
+                      "tertiary-fixed": "#ffdbce",
+                      "surface-variant": "#dee4e1",
+                      "on-background": "#171d1c",
+                      "inverse-primary": "#6bd8cb",
+                      "error-container": "#ffdad6",
+                      "outline": "#6d7a77",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed": "#ffdad6",
+                      "on-surface-variant": "#3d4947",
+                      "on-error": "#ffffff",
+                      "surface-container": "#eaefed",
+                      "primary-fixed-dim": "#6bd8cb",
+                      "primary": "#00685f",
+                      "background": "#f5faf8",
+                      "error": "#ba1a1a",
+                      "surface": "#f5faf8",
+                      "on-tertiary-fixed": "#370e00",
+                      "on-primary-fixed-variant": "#005049",
+                      "secondary": "#a93530",
+                      "secondary-fixed-dim": "#ffb4ac",
+                      "inverse-surface": "#2c3130",
+                      "inverse-on-surface": "#edf2f0",
+                      "surface-tint": "#006a61",
+                      "on-surface": "#171d1c",
+                      "on-primary": "#ffffff",
+                      "primary-fixed": "#89f5e7",
+                      "on-error-container": "#93000a",
+                      "surface-container-low": "#f0f5f2",
+                      "on-secondary-fixed-variant": "#881d1c",
+                      "tertiary": "#924628",
+                      "tertiary-fixed-dim": "#ffb59a",
+                      "primary-container": "#008378",
+                      "on-secondary-container": "#6f080c",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#dee4e1",
+                      "surface-bright": "#f5faf8",
+                      "on-tertiary-container": "#fffbff",
+                      "tertiary-container": "#b05e3d",
+                      "surface-dim": "#d6dbd9",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#fd7369",
+                      "surface-container-high": "#e4e9e7",
+                      "on-tertiary-fixed-variant": "#773215",
+                      "outline-variant": "#bcc9c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max-width": "1280px",
+                      "gutter": "24px",
+                      "unit": "4px",
+                      "section-gap": "80px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Inter"],
+                      "h2": ["Plus Jakarta Sans"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "h3": ["Plus Jakarta Sans"],
+                      "h1": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "h2": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-[#0F172A] text-slate-100 font-body-md overflow-x-hidden">
+<!-- Sidebar Wrapper -->
+<aside class="fixed left-0 top-0 h-screen w-[240px] bg-[#1E293B] flex flex-col z-50 border-r border-slate-800">
+<!-- Logo Section -->
+<div class="p-6 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-h3 text-h3 text-primary-fixed leading-none">VetClinic UZ</span>
+<span class="mt-1 inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-primary-container text-on-primary-container uppercase tracking-wider w-fit">Admin</span>
+</div>
+</div>
+<!-- Search with Shortcut -->
+<div class="px-4 mb-6">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full bg-[#0F172A] border-none rounded-lg py-2 pl-10 pr-12 text-sm text-slate-100 focus:ring-1 focus:ring-primary-container" placeholder="Qidiruv..." type="text"/>
+<kbd class="absolute right-3 top-1/2 -translate-y-1/2 bg-slate-800 text-[10px] px-1.5 py-0.5 rounded text-slate-400">⌘K</kbd>
+</div>
+</div>
+<!-- Navigation Groups -->
+<nav class="flex-1 px-3 space-y-8 overflow-y-auto">
+<!-- Group: Asosiy -->
+<div>
+<p class="px-3 mb-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Asosiy</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 bg-primary-container/20 text-primary-fixed rounded-lg font-semibold group transition-all" href="#">
+<span class="material-symbols-outlined active-icon">dashboard</span>
+<span class="font-body-sm">Dashboard</span>
+<div class="ml-auto w-1 h-4 bg-primary-fixed rounded-full"></div>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">medical_services</span>
+<span class="font-body-sm">Klinikalar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-sm">Foydalanuvchilar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-lg">rate_review</span>
+<span class="font-body-sm">Sharhlar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 cursor-not-allowed italic" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-body-sm">Uchrashuvlar</span>
+</a>
+</div>
+</div>
+<!-- Group: Sozlamalar -->
+<div>
+<p class="px-3 mb-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Sozlamalar</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-sm">Sozlamalar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-body-sm">Audit jurnali</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Admin Profile Mini Card -->
+<div class="p-4 bg-slate-800/50 border-t border-slate-800">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="A professional headshot of a young tech lead in his early 30s, featuring short dark hair and a confident, friendly expression. He is wearing a minimalist dark navy sweater against a blurred modern office background with soft lighting. The image maintains a high-quality, professional photography aesthetic that aligns with the premium clinical-tech branding of the application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmBW3tpaf1F2q9qnhAQ82dhPJvk6NUSVYmTJFaQoOeGliag3qqx_Y7894ZVWRUyqFTrzNYQJZRMoF0A0yhoPV8PG9ihQfQnj2a0umsnu6WF3wUtioI1SILipe-qOtHZkkwNKU5Wib-pS5M6wJuz4obBlrkgANv-DHmKA2XccsxDHUB_obv0CaojTxJG1PkYv6S48doLXlH4qgt3j2gm0mbp0XFQiu21KyIc2IIANLR_9POtgu2xaukGeqTHJiukSLyUmNFDQ_vFTA"/>
+<div class="flex flex-col min-w-0">
+<span class="text-sm font-bold text-slate-100 truncate">Sunnatbek</span>
+<span class="text-[11px] text-slate-400 font-medium">Tech Lead</span>
+</div>
+<button class="ml-auto text-slate-500 hover:text-slate-100">
+<span class="material-symbols-outlined text-lg">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex flex-col min-h-screen">
+<!-- Top Bar -->
+<header class="sticky top-0 h-16 bg-[#0F172A]/80 backdrop-blur-md border-b border-slate-800 flex items-center justify-between px-8 z-40">
+<div class="flex items-center gap-2 text-sm">
+<span class="text-slate-500">Admin</span>
+<span class="text-slate-600">/</span>
+<span class="text-slate-200 font-semibold">Dashboard</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-2 px-4 py-1.5 border border-slate-700 rounded-lg text-xs font-bold text-slate-300 hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+                    Saytni ko'rish
+                </button>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:text-slate-100">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="relative text-slate-400 hover:text-slate-100">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full ring-2 ring-[#0F172A]"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Content Container -->
+<div class="p-8 space-y-8 max-w-[1200px]">
+<!-- Title Row -->
+<div class="flex items-end justify-between">
+<div>
+<h1 class="font-h1 text-h1 text-slate-100">Boshqaruv paneli</h1>
+<p class="text-slate-400 mt-1 font-body-md">Xush kelibsiz, Sunnatbek 👋 Tizim holati barqaror.</p>
+</div>
+<div class="flex items-center bg-[#1E293B] border border-slate-800 rounded-lg p-1">
+<button class="px-4 py-1.5 text-xs font-bold bg-slate-800 text-slate-100 rounded-md">Bugun</button>
+<button class="px-4 py-1.5 text-xs font-bold text-slate-400 hover:text-slate-200 transition-colors">Hafta</button>
+<button class="px-4 py-1.5 text-xs font-bold text-slate-400 hover:text-slate-200 transition-colors">Oy</button>
+<div class="w-px h-4 bg-slate-700 mx-2"></div>
+<button class="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-slate-300 hover:text-slate-100">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+<span>01-Yan — 24-Yan</span>
+</button>
+</div>
+</div>
+<!-- KPI Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- KPI 1 -->
+<div class="bg-[#1E293B] p-5 rounded-xl border border-slate-800 relative overflow-hidden group hover:border-primary-fixed/30 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Jami klinikalar</p>
+<h4 class="text-2xl font-bold text-slate-100 mt-1">247</h4>
+</div>
+<span class="flex items-center text-[10px] font-bold text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px] mr-0.5">trending_up</span>+12%
+                        </span>
+</div>
+<!-- Mini Sparkline Placeholder -->
+<div class="h-10 w-full flex items-end gap-1">
+<div class="flex-1 bg-primary-container/20 rounded-t h-[40%] group-hover:h-[60%] transition-all duration-500"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[30%] group-hover:h-[50%] transition-all duration-500 delay-75"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[50%] group-hover:h-[70%] transition-all duration-500 delay-100"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[45%] group-hover:h-[65%] transition-all duration-500 delay-150"></div>
+<div class="flex-1 bg-primary-fixed rounded-t h-[60%] group-hover:h-[90%] transition-all duration-500 delay-200"></div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-[#1E293B] p-5 rounded-xl border border-slate-800 relative overflow-hidden group hover:border-primary-fixed/30 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Foydalanuvchilar</p>
+<h4 class="text-2xl font-bold text-slate-100 mt-1">5,234</h4>
+</div>
+<span class="flex items-center text-[10px] font-bold text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px] mr-0.5">trending_up</span>+8%
+                        </span>
+</div>
+<div class="h-10 w-full flex items-end gap-1">
+<div class="flex-1 bg-primary-container/20 rounded-t h-[20%]"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[40%]"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[35%]"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[55%]"></div>
+<div class="flex-1 bg-primary-fixed rounded-t h-[75%]"></div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-[#1E293B] p-5 rounded-xl border border-slate-800 relative overflow-hidden group hover:border-primary-fixed/30 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Yangi sharhlar</p>
+<h4 class="text-2xl font-bold text-slate-100 mt-1">184</h4>
+</div>
+<span class="flex items-center text-[10px] font-bold text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px] mr-0.5">trending_up</span>+24%
+                        </span>
+</div>
+<div class="h-10 w-full flex items-end gap-1">
+<div class="flex-1 bg-primary-container/20 rounded-t h-[30%]"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[25%]"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[60%]"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[50%]"></div>
+<div class="flex-1 bg-primary-fixed rounded-t h-[85%]"></div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-[#1E293B] p-5 rounded-xl border border-slate-800 relative overflow-hidden group hover:border-primary-fixed/30 transition-all">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">O'rtacha reyting</p>
+<h4 class="text-2xl font-bold text-slate-100 mt-1">4.6</h4>
+</div>
+<span class="flex items-center text-[10px] font-bold text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px] mr-0.5">trending_up</span>+0.2
+                        </span>
+</div>
+<div class="h-10 w-full flex items-end gap-1">
+<div class="flex-1 bg-primary-container/20 rounded-t h-[60%]"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[65%]"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[70%]"></div>
+<div class="flex-1 bg-primary-container/20 rounded-t h-[68%]"></div>
+<div class="flex-1 bg-primary-fixed rounded-t h-[80%]"></div>
+</div>
+</div>
+</div>
+<!-- Main Charts Row -->
+<div class="grid grid-cols-10 gap-8">
+<!-- Growth Chart (60%) -->
+<div class="col-span-10 lg:col-span-6 bg-[#1E293B] border border-slate-800 rounded-2xl p-6">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="font-h3 text-h3 text-slate-100">Foydalanuvchilar o'sishi</h3>
+<p class="text-xs text-slate-500 font-medium">So'nggi 30 kunlik dinamika</p>
+</div>
+<button class="text-slate-400 hover:text-slate-100">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="relative h-[240px] w-full bg-gradient-to-t from-primary-container/5 to-transparent rounded-lg border-b border-l border-slate-800/50 p-4">
+<!-- Simulated Area Chart SVG -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 40">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#6bd8cb" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#6bd8cb" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0 40 L0 30 Q 15 25, 25 32 T 50 20 T 75 25 T 100 10 L 100 40 Z" fill="url(#chartGradient)"></path>
+<path d="M0 30 Q 15 25, 25 32 T 50 20 T 75 25 T 100 10" fill="none" stroke="#6bd8cb" stroke-width="0.5"></path>
+</svg>
+<div class="absolute bottom-[-24px] left-0 w-full flex justify-between text-[10px] text-slate-600 font-bold px-2">
+<span>01 Yan</span>
+<span>10 Yan</span>
+<span>20 Yan</span>
+<span>30 Yan</span>
+</div>
+</div>
+</div>
+<!-- Bar Chart (40%) -->
+<div class="col-span-10 lg:col-span-4 bg-[#1E293B] border border-slate-800 rounded-2xl p-6">
+<h3 class="font-h3 text-h3 text-slate-100 mb-6">Shahar bo'yicha klinikalar</h3>
+<div class="space-y-5">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-400">Toshkent</span>
+<span class="text-slate-200">87</span>
+</div>
+<div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed w-[87%]" style="box-shadow: 0 0 12px rgba(107, 216, 203, 0.3)"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-400">Samarqand</span>
+<span class="text-slate-200">34</span>
+</div>
+<div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed w-[34%] opacity-80"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-400">Buxoro</span>
+<span class="text-slate-200">28</span>
+</div>
+<div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed w-[28%] opacity-70"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-400">Andijon</span>
+<span class="text-slate-200">22</span>
+</div>
+<div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed w-[22%] opacity-60"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span class="text-slate-400">Farg'ona</span>
+<span class="text-slate-200">18</span>
+</div>
+<div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary-fixed w-[18%] opacity-50"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Row: Activity Feed & Quick Actions -->
+<div class="grid grid-cols-10 gap-8">
+<!-- Activity Feed (60%) -->
+<div class="col-span-10 lg:col-span-6 bg-[#1E293B] border border-slate-800 rounded-2xl p-6">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-h3 text-h3 text-slate-100">So'nggi faollik</h3>
+<a class="text-xs font-bold text-primary-fixed hover:underline underline-offset-4" href="#">Hammasini ko'rish</a>
+</div>
+<div class="space-y-6 relative before:absolute before:left-[19px] before:top-2 before:bottom-2 before:w-px before:bg-slate-800">
+<div class="relative pl-10 flex items-start gap-4">
+<div class="absolute left-0 top-1 w-10 h-10 flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-primary-fixed ring-4 ring-[#1E293B] z-10"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm text-slate-100 font-semibold"><span class="text-primary-fixed">Aziz Karimov</span> yangi sharh qoldirdi</p>
+<p class="text-xs text-slate-500 mt-1 italic">"Zo'r servis, rahmat!"</p>
+<span class="text-[10px] text-slate-600 font-bold mt-2 block uppercase tracking-wider">2 daqiqa oldin</span>
+</div>
+</div>
+<div class="relative pl-10 flex items-start gap-4">
+<div class="absolute left-0 top-1 w-10 h-10 flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-secondary-fixed ring-4 ring-[#1E293B] z-10"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm text-slate-100 font-semibold">Yangi klinika <span class="text-secondary-fixed">"Happy Paws"</span> ro'yxatdan o'tdi</p>
+<span class="text-[10px] text-slate-600 font-bold mt-2 block uppercase tracking-wider">45 daqiqa oldin</span>
+</div>
+</div>
+<div class="relative pl-10 flex items-start gap-4">
+<div class="absolute left-0 top-1 w-10 h-10 flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-slate-600 ring-4 ring-[#1E293B] z-10"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm text-slate-100 font-semibold"><span class="text-slate-300">Malika Abdukarimova</span> profilini tahrirladi</p>
+<span class="text-[10px] text-slate-600 font-bold mt-2 block uppercase tracking-wider">3 soat oldin</span>
+</div>
+</div>
+<div class="relative pl-10 flex items-start gap-4">
+<div class="absolute left-0 top-1 w-10 h-10 flex items-center justify-center">
+<div class="w-3 h-3 rounded-full bg-emerald-400 ring-4 ring-[#1E293B] z-10"></div>
+</div>
+<div class="flex-1">
+<p class="text-sm text-slate-100 font-semibold">Toshkentdagi <span class="text-emerald-400">VetCare</span> klinikasining 5 ta uchrashuvi tasdiqlandi</p>
+<span class="text-[10px] text-slate-600 font-bold mt-2 block uppercase tracking-wider">Bugun, 09:12</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions & Pending (40%) -->
+<div class="col-span-10 lg:col-span-4 space-y-8">
+<!-- Actions -->
+<div class="bg-[#1E293B] border border-slate-800 rounded-2xl p-6">
+<h3 class="font-h3 text-h3 text-slate-100 mb-4">Tezkor amallar</h3>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center p-4 bg-secondary/10 border border-secondary/20 rounded-xl hover:bg-secondary/20 transition-all group">
+<span class="material-symbols-outlined text-secondary mb-2 group-hover:scale-110 transition-transform">add_circle</span>
+<span class="text-[11px] font-bold text-slate-200">Yangi klinika</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-slate-800 border border-slate-700 rounded-xl hover:bg-slate-700 transition-all group">
+<span class="material-symbols-outlined text-slate-400 mb-2">download</span>
+<span class="text-[11px] font-bold text-slate-200">CSV Eksport</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-slate-800 border border-slate-700 rounded-xl hover:bg-slate-700 transition-all group">
+<span class="material-symbols-outlined text-slate-400 mb-2">assessment</span>
+<span class="text-[11px] font-bold text-slate-200">Hisobotlar</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 bg-slate-800 border border-slate-700 rounded-xl hover:bg-slate-700 transition-all group">
+<span class="material-symbols-outlined text-slate-400 mb-2">campaign</span>
+<span class="text-[11px] font-bold text-slate-200">Bildirishnoma</span>
+</button>
+</div>
+</div>
+<!-- Pending Items -->
+<div class="bg-[#1E293B] border border-slate-800 rounded-2xl p-6">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-h3 text-h3 text-slate-100">Tasdiqlash kutilmoqda</h3>
+<span class="w-6 h-6 flex items-center justify-center bg-secondary text-white text-[10px] font-bold rounded-full">3</span>
+</div>
+<div class="space-y-3">
+<div class="p-3 bg-slate-800/50 rounded-lg border border-slate-700 flex items-center justify-between">
+<div class="min-w-0">
+<p class="text-xs font-bold text-slate-200 truncate">PetZone Klinika</p>
+<p class="text-[10px] text-slate-500">Klinika arizasi</p>
+</div>
+<div class="flex gap-2">
+<button class="w-7 h-7 flex items-center justify-center bg-emerald-500/20 text-emerald-400 rounded-md hover:bg-emerald-500 hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center bg-error/20 text-error rounded-md hover:bg-error hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+<div class="p-3 bg-slate-800/50 rounded-lg border border-slate-700 flex items-center justify-between">
+<div class="min-w-0">
+<p class="text-xs font-bold text-slate-200 truncate">Anvar Soliyev</p>
+<p class="text-[10px] text-slate-500">Doktor verifikatsiyasi</p>
+</div>
+<div class="flex gap-2">
+<button class="w-7 h-7 flex items-center justify-center bg-emerald-500/20 text-emerald-400 rounded-md hover:bg-emerald-500 hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">check</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center bg-error/20 text-error rounded-md hover:bg-error hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto py-8 px-8 border-t border-slate-800 flex justify-between items-center text-slate-500 text-sm">
+<p>© 2024 VetClinic UZ. Barcha huquqlar himoyalangan.</p>
+<div class="flex gap-6">
+<a class="hover:text-slate-300 transition-colors" href="#">Tizim holati</a>
+<a class="hover:text-slate-300 transition-colors" href="#">Maxfiylik siyosati</a>
+<a class="hover:text-slate-300 transition-colors" href="#">Yordam</a>
+</div>
+</footer>
+</main>
+</body></html>

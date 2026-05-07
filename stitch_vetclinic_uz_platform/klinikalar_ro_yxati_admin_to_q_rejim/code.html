@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VetClinic UZ - Admin Klinikalar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0F172A; /* Deep Slate requested */
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdbce",
+                        "on-tertiary-fixed-variant": "#773215",
+                        "on-primary-fixed-variant": "#005049",
+                        "outline": "#6d7a77",
+                        "on-primary-container": "#f4fffc",
+                        "surface-container": "#1E293B", /* Surface requested */
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#6f080c",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "tertiary-container": "#b05e3d",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#334155",
+                        "on-surface-variant": "#94a3b8", /* Muted Slate */
+                        "surface-dim": "#0F172A",
+                        "secondary-fixed-dim": "#ffb4ac",
+                        "outline-variant": "#475569",
+                        "surface-bright": "#1e293b",
+                        "surface-variant": "#334155",
+                        "surface-container-lowest": "#020617",
+                        "secondary-container": "#fd7369",
+                        "primary-fixed-dim": "#6bd8cb",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#00201d",
+                        "surface-container-low": "#1e293b",
+                        "inverse-on-surface": "#f1f5f9",
+                        "error": "#ef4444",
+                        "on-surface": "#f1f5f9",
+                        "primary-fixed": "#89f5e7",
+                        "background": "#0F172A",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#0D9488", /* Primary Teal */
+                        "secondary-fixed": "#ffdad6",
+                        "secondary": "#F97066", /* Accent Coral */
+                        "primary-container": "#134e4a",
+                        "surface": "#1E293B",
+                        "inverse-surface": "#f1f5f9",
+                        "on-background": "#f8fafc",
+                        "surface-container-high": "#334155",
+                        "on-secondary-fixed": "#410003",
+                        "surface-tint": "#0d9488",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "inverse-primary": "#6bd8cb",
+                        "tertiary": "#924628",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#370e00",
+                        "on-secondary-fixed-variant": "#881d1c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "80px",
+                        "unit": "4px",
+                        "container-max-width": "1280px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h1": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "h2": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col h-screen sticky top-0 w-64 bg-primary dark:bg-primary-container p-4 space-y-2 shadow-md">
+<div class="mb-8 px-2">
+<h2 class="font-h2 text-h2 text-on-primary">Admin Panel</h2>
+<p class="text-sm text-on-primary/70">Boshqaruv tizimi</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-primary/80 hover:bg-on-primary/10 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all" href="#">
+<span class="material-symbols-outlined">medical_services</span>
+<span class="font-body-md">Klinikalar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-primary/80 hover:bg-on-primary/10 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md">Foydalanuvchilar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-primary/80 hover:bg-on-primary/10 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">rate_review</span>
+<span class="font-body-md">Sharhlar</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-primary/80 hover:bg-on-primary/10 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Sozlamalar</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-on-primary/10 flex items-center gap-3 px-2">
+<img alt="Admin surati" class="w-10 h-10 rounded-full object-cover border-2 border-primary-fixed" data-alt="A professional headshot of a middle-aged male administrator with a confident smile, wearing a dark navy suit. The lighting is sophisticated and moody, matching a high-end dark mode interface. The background is a blurred modern office environment with subtle teal and slate blue accents to align with the clinic's corporate identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVGKzFwJq_SFHwHaD8Wx5X16HkpzxHwW3PGS1xy_AxRtVgM8q-TFkJsoKZ_K6xee4xxs6iNH3zBxTPE8gn8qfHbVkHx1tv_U9EwcFGqeesAdOPMP75y9m2FqfOnQdS-368vgNeuhWrZ3tjkHbUgybb2HPQUMVbE72mUhkcDhjqtIGLC9GrA0mNI9-WZgMwrBaoHG-UJKwjWLQTNKnErNTQOqJQvCCHvOWwNh425azNWsrcKVFOIK5vAMAbpc6fiH6uW4gWr7n9Q8Q"/>
+<div>
+<p class="text-sm font-bold text-on-primary">Admin Ism</p>
+<p class="text-xs text-on-primary/60 text-truncate">Bosh administrator</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 bg-background overflow-y-auto">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-40 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant dark:border-outline shadow-sm">
+<div class="flex items-center gap-4">
+<span class="md:hidden material-symbols-outlined text-primary cursor-pointer">menu</span>
+<h1 class="font-h3 text-h3 font-bold text-primary dark:text-primary-fixed">VetClinic UZ</h1>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="bg-surface-container-highest/50 border-none rounded-lg pl-10 pr-4 py-2 text-body-sm w-64 focus:ring-2 focus:ring-primary" placeholder="Global qidiruv..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-body-md hover:bg-primary-container transition-all scale-98 active:opacity-80">
+                            Band qilish
+                        </button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<div class="p-margin-mobile md:p-margin-desktop space-y-6 max-w-container-max-width w-full mx-auto">
+<!-- Header Row -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface">Klinikalar</h1>
+<p class="text-on-surface-variant mt-1">247 ta klinika boshqaruvda</p>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant text-on-surface hover:bg-surface-container rounded-lg font-semibold transition-all">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+                            CSV eksport
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 border border-outline-variant text-on-surface hover:bg-surface-container rounded-lg font-semibold transition-all">
+<span class="material-symbols-outlined text-[20px]">file_upload</span>
+                            CSV import
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-secondary text-white hover:opacity-90 rounded-lg font-semibold shadow-lg shadow-secondary/20 transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                            Yangi klinika qo'shish
+                        </button>
+</div>
+</div>
+<!-- Toolbar Card -->
+<div class="bg-surface-container rounded-xl p-4 shadow-sm space-y-4 border border-outline-variant/30">
+<div class="flex flex-col lg:flex-row gap-4 items-center">
+<div class="relative flex-1 w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-background border border-outline-variant rounded-xl pl-12 pr-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary text-body-md text-on-surface" placeholder="Klinika nomi, shahar yoki ID bo'yicha qidirish..." type="text"/>
+</div>
+<div class="flex gap-3 w-full lg:w-auto">
+<button class="flex items-center gap-2 px-4 py-3 bg-surface-container-highest border border-outline-variant rounded-xl text-on-surface font-semibold hover:bg-surface-variant transition-colors flex-1 lg:flex-none">
+<span class="material-symbols-outlined">filter_alt</span>
+                                Filtrlar
+                                <span class="bg-primary text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full">3</span>
+</button>
+<div class="relative flex-1 lg:flex-none">
+<select class="appearance-none w-full lg:w-48 bg-surface-container-highest border border-outline-variant rounded-xl px-4 py-3 pr-10 text-on-surface font-semibold focus:ring-2 focus:ring-primary">
+<option>Saralash: Yangi</option>
+<option>Reyting bo'yicha</option>
+<option>Nomi bo'yicha</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Active Chips -->
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-sm rounded-full flex items-center gap-2">
+                            Shahar: Toshkent
+                            <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
+</span>
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-sm rounded-full flex items-center gap-2">
+                            Holat: Faol
+                            <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
+</span>
+<span class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-sm rounded-full flex items-center gap-2">
+                            Reyting: 4+
+                            <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
+</span>
+<button class="text-sm text-secondary font-semibold hover:underline ml-2 transition-all">Tozalash</button>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="bg-surface-container rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden relative">
+<!-- Bulk Action Bar Overlay (Hidden by default, shown if checkboxes selected) -->
+<div class="hidden absolute top-0 left-0 right-0 bg-primary-container text-on-primary-container px-6 py-3 z-10 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="font-bold">3 ta klinika tanlandi</span>
+<div class="h-4 w-px bg-on-primary-container/20"></div>
+<button class="text-sm font-semibold hover:underline">Holatni o'zgartirish</button>
+<button class="text-sm font-semibold hover:underline">O'chirish</button>
+</div>
+<button class="material-symbols-outlined">close</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-highest/50 border-b border-outline-variant text-on-surface-variant font-label-caps text-label-caps">
+<th class="px-6 py-4 w-10">
+<input class="rounded border-outline text-primary focus:ring-primary bg-background" type="checkbox"/>
+</th>
+<th class="px-6 py-4">RASM</th>
+<th class="px-6 py-4">KLINIKA NOMI</th>
+<th class="px-6 py-4">SHAHAR</th>
+<th class="px-6 py-4 text-center">REYTING</th>
+<th class="px-6 py-4">HOLAT</th>
+<th class="px-6 py-4">OXIRGI YANGILANISH</th>
+<th class="px-6 py-4 text-right">AMALLAR</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-variant/30 transition-colors group">
+<td class="px-6 py-4">
+<input checked="" class="rounded border-outline text-primary focus:ring-primary bg-background" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<img alt="Vetlife Toshkent" class="w-12 h-12 rounded-lg object-cover bg-surface-container-highest" data-alt="A sharp, clean architectural photograph of a modern veterinary clinic exterior. The building features large glass windows, minimalist white walls, and a distinctive teal-colored medical cross logo. The shot is taken during the blue hour with warm interior lights glowing, creating a professional and welcoming healthcare aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqxy5JHRszP5sIhCV3NjwP719pzBJ9x2ELq3OIlzwExDkxuTxfnnYhL5IDOxbjVixvopv01oIAsIaMbUUznXZITmjhnVpRvIMYlly0bCv6Rnxbr3VmiByopqHSYqUNtW5amVLWSdqZq3xzVDAQPsmi9NmA6eW2CFzeqQ4DyfAtmWZtybHoHW4qGLnGMC6uTIdjb_x2G0c0p5HqsThCW4wPkwnsDrTpI-fDM5PwTE27Gee7GKFocxnhB1S_-Xwa9yupehDRYhB2Kp0"/>
+</td>
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">Vetlife Toshkent</div>
+<div class="text-xs text-on-surface-variant">#CLN-1023</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Toshkent, Yunusobod</td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-1 bg-secondary/10 text-secondary px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.9</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-xs font-bold rounded-full">Faol</span>
+</td>
+<td class="px-6 py-4 text-on-surface-variant text-sm">24 Okt, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="px-6 py-4">
+<input class="rounded border-outline text-primary focus:ring-primary bg-background" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<img alt="ZooWell" class="w-12 h-12 rounded-lg object-cover bg-surface-container-highest" data-alt="A sleek interior shot of a contemporary veterinary reception area. The design is dominated by polished slate floors, a light wood reception desk, and atmospheric recessed lighting. A subtle digital screen displays the clinic's name 'ZooWell'. The overall mood is sophisticated, clinical, and high-end dark mode compatible." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjDlj4dr6_8q3w_3fH7n05DtRjwwpVWcNt_rBr-_T1jUrgdEQLxbepdAAjAiwZz5ZC9ojaBkeydxIY3IBg5H_ZvGRx-GIxOJuGg6glGZvTA9Fb3IU3uheMHkAHewBsTwREnMW41lRvO6B22Roj4D1iQ5x-52j9Yxq3qGImtPFfgmHfXtBR8zaSdExDUFMpn8IAANxARd7xGfoMXV3SgA1yrObj5a7nJoYVc-GTsNgqCIpRs3eVE9URT9XhzXkKtWhdYlHlfwd7728"/>
+</td>
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">ZooWell Samarqand</div>
+<div class="text-xs text-on-surface-variant">#CLN-1055</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Samarqand, Markaz</td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-1 bg-secondary/10 text-secondary px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.7</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-amber-500/10 text-amber-500 text-xs font-bold rounded-full">Kutilmoqda</span>
+</td>
+<td class="px-6 py-4 text-on-surface-variant text-sm">22 Okt, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="px-6 py-4">
+<input class="rounded border-outline text-primary focus:ring-primary bg-background" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<img alt="PetCare Elite" class="w-12 h-12 rounded-lg object-cover bg-surface-container-highest" data-alt="A clean and sterile veterinary surgery room featuring high-tech medical equipment and a stainless steel examination table. The lighting is bright and cool-toned, contrasting with dark slate blue walls. The composition is wide and cinematic, emphasizing professional clinical excellence in a modern setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB2LjusQN1Q7inJnL0aybv-BtXoxS4l1Ech3UYmXScAYkD3PX37Utc5j-u-W86zxLnI8Z-ObE11pfTgChLH2Mr3tH7VvZJMrqiqk5p1mcej4j8nK4mfCOmeFv4e3oIFokuBA6yAcRjMAJAvfDVUXkxVJr65e6ZVrsfY5xUNlH29BnaSCEF8oAdqE3cFKubzC2Q1x-LXh3DwVgaJyaoMcMRZc9f6qaTUSRJ0PsTnzcTQs3wH9EabVKJ0orq6INpSC-oRb2beSVCluA"/>
+</td>
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">PetCare Elite</div>
+<div class="text-xs text-on-surface-variant">#CLN-0988</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Toshkent, Mirzo Ulug'bek</td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-1 bg-secondary/10 text-secondary px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.2</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-error/10 text-error text-xs font-bold rounded-full">Bloklangan</span>
+</td>
+<td class="px-6 py-4 text-on-surface-variant text-sm">20 Okt, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="px-6 py-4">
+<input class="rounded border-outline text-primary focus:ring-primary bg-background" type="checkbox"/>
+</td>
+<td class="px-6 py-4">
+<img alt="MedVet Lab" class="w-12 h-12 rounded-lg object-cover bg-surface-container-highest" data-alt="A close-up of a modern veterinary diagnostic tool, such as a high-resolution ultrasound machine, in a dimly lit medical office. The screen displays sharp analytical data in vibrant teal and coral colors, echoing the brand's visual identity. The background is a clean, dark-toned clinical space that feels advanced and trustworthy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaiBEsXyqJKUstT6KrqoVRroKymweDeCkCweIGwelXJt48YPygYCvs_I44th910rbdvh_g90Kz3XwxYOIUSpV_Cysj93YQ_5Bj1RM4NAoidVG8GhpGGAYpuyfXwReo95A6pZWgGf-XLcVdoMn3NiN5z1h9N993Db7ScZVRKd2s9fqva8fuDm7CHE77uJ1bNXmGEVHRJmD4ihgkf9h3qZSBmkYSBOJ0uPDMZoF-GIt6KPI6xgWBXvPDqmMKnmwQDRq7tM8KslXXHOQ"/>
+</td>
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">MedVet Lab (Draft)</div>
+<div class="text-xs text-on-surface-variant">#CLN-1102</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Buxoro, Markaz</td>
+<td class="px-6 py-4 text-center text-on-surface-variant">—</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant text-xs font-bold rounded-full">Qoralama</span>
+</td>
+<td class="px-6 py-4 text-on-surface-variant text-sm">18 Okt, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 to 10 would follow similarly... using variety for simulation -->
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="px-6 py-4">
+<input class="rounded border-outline text-primary focus:ring-primary bg-background" type="checkbox"/>
+</td>
+<td class="px-6 py-4"><div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center"><span class="material-symbols-outlined text-outline">image</span></div></td>
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">Shifo Vet Markazi</div>
+<div class="text-xs text-on-surface-variant">#CLN-0945</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Namangan</td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-1 bg-secondary/10 text-secondary px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.5</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-xs font-bold rounded-full">Faol</span></td>
+<td class="px-6 py-4 text-on-surface-variant text-sm">15 Okt, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="px-6 py-4">
+<input class="rounded border-outline text-primary focus:ring-primary bg-background" type="checkbox"/>
+</td>
+<td class="px-6 py-4"><div class="w-12 h-12 bg-surface-container-highest rounded-lg flex items-center justify-center"><span class="material-symbols-outlined text-outline">image</span></div></td>
+<td class="px-6 py-4">
+<div class="font-bold text-on-surface">Animal Hospital UZ</div>
+<div class="text-xs text-on-surface-variant">#CLN-1120</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant">Toshkent, Chilonzor</td>
+<td class="px-6 py-4">
+<div class="flex items-center justify-center gap-1 bg-secondary/10 text-secondary px-2 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">4.8</span>
+</div>
+</td>
+<td class="px-6 py-4"><span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-xs font-bold rounded-full">Faol</span></td>
+<td class="px-6 py-4 text-on-surface-variant text-sm">12 Okt, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-outline-variant/30 bg-surface-container-highest/20">
+<p class="text-on-surface-variant text-sm">
+<span class="text-on-surface font-semibold">1</span> dan <span class="text-on-surface font-semibold">10</span> gacha, jami <span class="text-on-surface font-semibold">247</span>
+</p>
+<div class="flex items-center gap-2">
+<button class="p-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-lg font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-highest text-on-surface rounded-lg transition-colors">2</button>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-highest text-on-surface rounded-lg transition-colors">3</button>
+<span class="text-on-surface-variant">...</span>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-highest text-on-surface rounded-lg transition-colors">25</button>
+<button class="p-2 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto border-t border-outline-variant bg-surface-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-8 max-w-container-max-width mx-auto">
+<div class="md:col-span-1">
+<h3 class="font-h3 text-h3 text-primary mb-4">VetClinic UZ</h3>
+<p class="text-on-surface-variant text-body-sm">O'zbekistondagi eng yaxshi veterinariya klinikalarini birlashtiruvchi platforma.</p>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-4">Klinikalar</h4>
+<ul class="space-y-2 text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Toshkent</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Samarqand</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-4">Ma'lumot</h4>
+<ul class="space-y-2 text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Biz haqimizda</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Maxfiylik siyosati</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-on-surface mb-4">Aloqa</h4>
+<ul class="space-y-2 text-body-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Bog'lanish</a></li>
+<li class="flex items-center gap-2 mt-4">
+<span class="material-symbols-outlined text-primary">phone</span>
+<span>+998 71 123 45 67</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-4 px-margin-mobile text-center text-body-sm text-on-surface-variant/60">
+                    © 2024 VetClinic UZ. Barcha huquqlar himoyalangan.
+                </div>
+</footer>
+</main>
+</div>
+</body></html>

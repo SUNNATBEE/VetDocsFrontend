@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#924628",
+                    "outline": "#6d7a77",
+                    "secondary": "#a93530",
+                    "surface-container-high": "#e4e9e7",
+                    "on-secondary-fixed": "#410003",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "on-tertiary-fixed-variant": "#773215",
+                    "secondary-fixed": "#ffdad6",
+                    "primary": "#00685f",
+                    "on-primary-fixed": "#00201d",
+                    "on-surface-variant": "#3d4947",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#881d1c",
+                    "surface-container": "#eaefed",
+                    "surface-container-low": "#f0f5f2",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#fd7369",
+                    "on-tertiary-fixed": "#370e00",
+                    "inverse-on-surface": "#edf2f0",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#6f080c",
+                    "surface-dim": "#d6dbd9",
+                    "on-surface": "#171d1c",
+                    "surface-variant": "#dee4e1",
+                    "primary-fixed": "#89f5e7",
+                    "surface-bright": "#f5faf8",
+                    "inverse-surface": "#2c3130",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#dee4e1",
+                    "secondary-fixed-dim": "#ffb4ac",
+                    "on-background": "#171d1c",
+                    "on-primary-container": "#f4fffc",
+                    "on-tertiary-container": "#fffbff",
+                    "tertiary-fixed": "#ffdbce",
+                    "surface-tint": "#006a61",
+                    "primary-container": "#008378",
+                    "tertiary-container": "#b05e3d",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#6bd8cb",
+                    "background": "#f5faf8",
+                    "outline-variant": "#bcc9c6",
+                    "inverse-primary": "#6bd8cb",
+                    "surface": "#f5faf8",
+                    "on-primary-fixed-variant": "#005049"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "unit": "4px",
+                    "section-gap": "80px",
+                    "margin-mobile": "16px",
+                    "container-max-width": "1280px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "h1": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "h2": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"],
+                    "h3": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h2": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f5faf8;
+            max-width: 375px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- Top Navigation Bar (Collapsed/Mobile version) -->
+<header class="bg-surface/80 backdrop-blur-md sticky top-0 z-50 border-b border-outline-variant px-margin-mobile py-4 flex justify-between items-center w-full max-w-container-max-width mx-auto">
+<h1 class="font-h3 text-h3 font-bold text-primary">VetClinic UZ</h1>
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-high text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-high text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Sticky Sub-Header (Filters & Sort) -->
+<div class="sticky top-[73px] z-40 bg-surface px-margin-mobile py-3 flex items-center justify-between border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-2 overflow-x-auto hide-scrollbar">
+<button class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-full font-label-caps whitespace-nowrap active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                Filtrlar (3)
+            </button>
+<div class="flex items-center gap-1 bg-surface-container-high px-4 py-2 rounded-full font-label-caps text-on-surface-variant whitespace-nowrap">
+<span>Narx</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-3 ml-2">
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<button class="text-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined">map</span>
+</button>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin-mobile pt-4 pb-24 space-y-4">
+<!-- Category Pill Selection (Mini) -->
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2">
+<span class="bg-primary-container text-on-primary-container px-3 py-1.5 rounded-lg font-label-caps whitespace-nowrap">Barchasi</span>
+<span class="bg-surface-container text-on-surface-variant px-3 py-1.5 rounded-lg font-label-caps whitespace-nowrap">Terapevt</span>
+<span class="bg-surface-container text-on-surface-variant px-3 py-1.5 rounded-lg font-label-caps whitespace-nowrap">Xirurgiya</span>
+<span class="bg-surface-container text-on-surface-variant px-3 py-1.5 rounded-lg font-label-caps whitespace-nowrap">Vaksinatsiya</span>
+</div>
+<!-- Clinic Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, professional veterinary clinic reception area in Uzbekistan. The interior features soft teal accents, warm wooden furniture, and bright natural lighting. A friendly receptionist is visible in the background, creating a welcoming and trustworthy healthcare atmosphere for pet owners." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjbCWv4lV8k0ticT5nSRwQibS8x_eNWhoYzZHcC1i7clGOULB0rr7EVGjlDtpZeJsBy6VIYQHL16w0crZzmMNXDX1Umq3uiKiV-Hk8gl6ViweBQ_4urA1dVkEBtonEA5H-q2uq9DVUybdjODT7KVN8e9_UtGePrinxmhONKTiSTNXa7qhHr4Yh6tzGfKwGa_96WCPRwiPlW7yynEu7kAn4r7pUWmtI26z4_N_JoAHGBV2U4b46ICcSPIFSU4_iGacHFdLzGv4bc18"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps text-on-surface font-bold">4.9</span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-emerald-500/90 text-white px-3 py-1 rounded-full font-label-caps">Ochiq</span>
+</div>
+</div>
+<div class="p-4 space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="font-h3 text-h3 text-on-surface">Zooland Clinic</h2>
+<span class="text-primary font-label-caps font-bold">2.4 km</span>
+</div>
+<p class="text-on-surface-variant text-body-sm line-clamp-1">Toshkent, Mirobod tumani, Nukus ko'chasi, 24</p>
+<div class="flex flex-wrap gap-2 pt-1">
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-md text-[12px] font-medium border border-outline-variant">Rentgen</span>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-md text-[12px] font-medium border border-outline-variant">Laboratoriya</span>
+</div>
+<div class="pt-4 flex items-center justify-between border-t border-outline-variant mt-2">
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-[11px] uppercase tracking-wider">Konsultatsiya</span>
+<span class="text-primary font-bold">120,000 UZS</span>
+</div>
+<button class="bg-secondary text-on-tertiary px-5 py-2.5 rounded-lg font-label-caps font-bold active:scale-95 transition-all">
+                        Band qilish
+                    </button>
+</div>
+</div>
+</article>
+<!-- Clinic Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A modern veterinary examination room with high-tech medical equipment and a sterile yet warm environment. The design incorporates the brand's primary teal and soft white tones, illuminated by diffuse overhead lighting. The space feels calm, clean, and technologically advanced for premium animal care." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEweiJBzSoq9yMeGvt8yfGvACnLDxw2DyR-nLzJbemEkdk1z8oUFPZ9T3ZKHwT4aHARXA5D8ofPpfPEZTz418-XMFl0WuxbE5PytxfXCqfRYwXjJDbqtVHk49m85FhiuvCaY8B5SZPktRq-aylk7DSxTAB8pXt_OVYyoFfhsciQX5hMubVPakRYruFEG3yK5dWL9HF-Nn-ehwl4ozC-DXXGsInox5VrwGWnEBySCwEqL5r7ZMBeK1g1WFdYfn6tNxGuQzavf2Gs1w"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps text-on-surface font-bold">4.7</span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-emerald-500/90 text-white px-3 py-1 rounded-full font-label-caps">Ochiq</span>
+</div>
+</div>
+<div class="p-4 space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="font-h3 text-h3 text-on-surface">Happy Pets</h2>
+<span class="text-primary font-label-caps font-bold">5.1 km</span>
+</div>
+<p class="text-on-surface-variant text-body-sm line-clamp-1">Samarqand, Dahbed ko'chasi, 12-uy</p>
+<div class="flex flex-wrap gap-2 pt-1">
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-md text-[12px] font-medium border border-outline-variant">Xirurgiya</span>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-md text-[12px] font-medium border border-outline-variant">Uzi</span>
+</div>
+<div class="pt-4 flex items-center justify-between border-t border-outline-variant mt-2">
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-[11px] uppercase tracking-wider">Konsultatsiya</span>
+<span class="text-primary font-bold">100,000 UZS</span>
+</div>
+<button class="bg-secondary text-on-tertiary px-5 py-2.5 rounded-lg font-label-caps font-bold active:scale-95 transition-all">
+                        Band qilish
+                    </button>
+</div>
+</div>
+</article>
+<!-- Clinic Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A cozy waiting area of a local pet clinic featuring comfortable seating and framed photographs of happy pets. The lighting is warm and domestic, with soft shadows creating a relaxing environment for nervous animals. The color palette centers on earth tones mixed with the brand's deep teal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYEj4bolX4fg6iQbhP29ZuaORSyB7DnSP13TgC6VklLSvw_E9xX3hK6x7ni5kLVvLHc3bv6rVA_J89pSkXmP58n8d6jtpSq5N7TR1BuSv7988oCj4LwYNdOVFVnnFzh2urolApST3j31kQI0AStlg0VzziKBrsWgx9EQZxhL-l5PohUPKHfp9gSUIq5I9xcbVYLl_qnq-yR2JSUzmMkCWYNrbxyVM91k9bgQCVq3gdQrwApuH-MXpg_U1JYrW09T0gzX7wl-zqfk4"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-caps text-on-surface font-bold">4.5</span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="bg-rose-500/90 text-white px-3 py-1 rounded-full font-label-caps">Yopiq</span>
+</div>
+</div>
+<div class="p-4 space-y-2">
+<div class="flex justify-between items-start">
+<h2 class="font-h3 text-h3 text-on-surface">VET Premium</h2>
+<span class="text-primary font-label-caps font-bold">0.8 km</span>
+</div>
+<p class="text-on-surface-variant text-body-sm line-clamp-1">Toshkent, Yunusobod, 4-kvartal</p>
+<div class="flex flex-wrap gap-2 pt-1">
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-md text-[12px] font-medium border border-outline-variant">Grooming</span>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-md text-[12px] font-medium border border-outline-variant">Hotel</span>
+</div>
+<div class="pt-4 flex items-center justify-between border-t border-outline-variant mt-2">
+<div class="flex flex-col">
+<span class="text-on-surface-variant text-[11px] uppercase tracking-wider">Konsultatsiya</span>
+<span class="text-primary font-bold">150,000 UZS</span>
+</div>
+<button class="bg-secondary text-on-tertiary px-5 py-2.5 rounded-lg font-label-caps font-bold active:scale-95 transition-all">
+                        Band qilish
+                    </button>
+</div>
+</div>
+</article>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur-lg border-t border-outline-variant flex justify-around items-center h-20 px-4 z-50 max-w-[375px] mx-auto">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="font-label-caps text-[10px]">Bosh sahifa</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+<span class="font-label-caps text-[10px] font-bold">Klinikalar</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">map</span>
+<span class="font-label-caps text-[10px]">Xarita</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="font-label-caps text-[10px]">Profil</span>
+</a>
+</nav>
+<!-- FAB for Filter (Optional visual reinforcement) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-all z-40">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</body></html>

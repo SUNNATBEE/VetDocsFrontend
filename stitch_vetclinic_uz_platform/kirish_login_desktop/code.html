@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "on-tertiary-fixed-variant": "#773215",
+                        "surface-container-high": "#e4e9e7",
+                        "on-secondary-fixed": "#410003",
+                        "secondary": "#a93530",
+                        "tertiary": "#924628",
+                        "outline": "#6d7a77",
+                        "primary": "#00685f",
+                        "on-primary-fixed": "#00201d",
+                        "secondary-fixed": "#ffdad6",
+                        "secondary-container": "#fd7369",
+                        "on-tertiary-fixed": "#370e00",
+                        "inverse-on-surface": "#edf2f0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#eaefed",
+                        "surface-container-low": "#f0f5f2",
+                        "on-surface-variant": "#3d4947",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#881d1c",
+                        "on-surface": "#171d1c",
+                        "surface-dim": "#d6dbd9",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#6f080c",
+                        "surface-bright": "#f5faf8",
+                        "inverse-surface": "#2c3130",
+                        "surface-variant": "#dee4e1",
+                        "primary-fixed": "#89f5e7",
+                        "on-primary-container": "#f4fffc",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-fixed-dim": "#ffb4ac",
+                        "on-background": "#171d1c",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#dee4e1",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#b05e3d",
+                        "primary-container": "#008378",
+                        "tertiary-fixed": "#ffdbce",
+                        "surface-tint": "#006a61",
+                        "surface": "#f5faf8",
+                        "on-primary-fixed-variant": "#005049",
+                        "outline-variant": "#bcc9c6",
+                        "inverse-primary": "#6bd8cb",
+                        "primary-fixed-dim": "#6bd8cb",
+                        "background": "#f5faf8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "section-gap": "80px",
+                        "margin-mobile": "16px",
+                        "container-max-width": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "h3": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "h2": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "h2": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #00685f 0%, #b05e3d 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Success Toast (Always Visible for Demo) -->
+<div class="fixed top-margin-desktop right-margin-desktop z-[100] flex items-center gap-3 bg-surface-container-highest px-6 py-4 rounded-xl shadow-lg border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary fill-icon" data-icon="check_circle">check_circle</span>
+<div>
+<p class="font-h3 text-body-md text-on-surface font-bold">Muvaffaqiyatli!</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tizimga muvaffaqiyatli kirdingiz.</p>
+</div>
+</div>
+<!-- Container for both modes side by side -->
+<div class="flex flex-col xl:flex-row min-h-screen">
+<!-- LIGHT MODE SECTION -->
+<div class="flex-1 flex flex-col md:flex-row min-h-screen">
+<!-- Left Side: Visual -->
+<div class="hidden md:flex flex-1 gradient-bg flex-col justify-between p-12 text-white relative overflow-hidden">
+<div class="z-10">
+<h2 class="font-h3 text-h3 font-bold text-white mb-2">VetClinic UZ</h2>
+</div>
+<div class="z-10 flex flex-col items-center text-center">
+<img alt="Friendly Vet Illustration" class="w-80 h-80 object-contain mb-8" data-alt="A clean and friendly line-art illustration of a smiling Uzbek veterinarian wearing a clinical uniform, gently holding a calm domestic cat. The artistic style is modern and minimalist with thick clean strokes, set against a soft professional background. The color palette uses deep teal and warm coral accents to match the healthcare brand identity, evoking a sense of trust, care, and professional veterinary medicine." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi0Nhw-c3gQG1XxvYK972IwCew6Gr3J43J-sBi7AYFuHAkGXMZY-UWzALPzKRAxv2T1bc9tGTh-CHyAICXmDDDWdn7FidM9Pz1ytkfHcqPYDnHB-aw1ohCAHWwA78g8mFF13MDU7GDkACKUjX4Sz8qPxZcok3vnT_WAfractzZVSaShxGn_bogaygZwC5vtTI4T0m1oeyJm-igcxvHYtNYrfozwqJZJQvMA3JLnUWUHWGzLjoYUAh_LKb29VhkK8TQHrbnb9ay1R8"/>
+<div class="max-w-md">
+<p class="font-h2 text-h2 italic mb-4">"Eng yaxshi veterinariya platformasi"</p>
+<p class="font-body-md text-body-md opacity-90">— Aziza, Toshkent</p>
+<div class="flex justify-center gap-1 mt-4">
+<span class="material-symbols-outlined text-tertiary-fixed fill-icon" data-icon="star">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill-icon" data-icon="star">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill-icon" data-icon="star">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill-icon" data-icon="star">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill-icon" data-icon="star">star</span>
+</div>
+</div>
+</div>
+<div class="z-10 opacity-60 text-body-sm">
+                    © 2024 VetClinic UZ. Barcha huquqlar himoyalangan.
+                </div>
+<!-- Abstract Shapes -->
+<div class="absolute top-[-10%] right-[-10%] w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-96 h-96 bg-black/10 rounded-full blur-3xl"></div>
+</div>
+<!-- Right Side: Form -->
+<div class="flex-1 flex items-center justify-center bg-surface p-8">
+<div class="w-full max-w-md">
+<a class="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors mb-12 font-body-md" href="#">
+<span class="material-symbols-outlined text-body-md" data-icon="arrow_back">arrow_back</span>
+                        Bosh sahifaga qaytish
+                    </a>
+<h1 class="font-h1 text-h1 text-on-surface mb-8">Hisobingizga kiring</h1>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-outline-variant rounded-lg hover:bg-surface-container transition-all active:scale-95">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3mObX1dbk9F8NnMDsFfSq3M5ORpvFR2Te8Lid48kWg3wB_2vPiHomVBGTTuIqhwdZsZ2wyo0ig-mVR4og8KjUbon_fjtK7borI-iNRzz0Yc6tkMh6Og-96F_ZlSgg6bTUUf2ssw7UOiBSChBzOmtNY3EFL0rOaj5aSpDETqhcJrFrN3tyJNA91t8kUavIghhU9036bNufUsxsCv-pjuNjK1kbKCsounimzh5pe6i7LXs1ci-gaLqeorfSWf4bQT6WiVsr3bBl2H4"/>
+<span class="font-body-sm font-semibold">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-outline-variant rounded-lg hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-primary fill-icon" data-icon="send">send</span>
+<span class="font-body-sm font-semibold">Telegram</span>
+</button>
+</div>
+<div class="relative flex items-center mb-8">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-4 text-on-surface-variant text-body-sm">yoki email orqali</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Login Form -->
+<form class="space-y-6">
+<div>
+<label class="block font-body-md font-bold text-on-surface mb-2">Email manzilingiz</label>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant group-focus-within:text-primary" data-icon="mail">mail</span>
+<input class="w-full pl-12 pr-4 py-3 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md" placeholder="misol@pochta.uz" type="email"/>
+</div>
+</div>
+<div>
+<label class="block font-body-md font-bold text-on-surface mb-2">Parol</label>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant group-focus-within:text-primary" data-icon="lock">lock</span>
+<!-- Focused State Mockup for Password -->
+<input class="w-full pl-12 pr-12 py-3 bg-white border-2 border-primary rounded-lg ring-4 ring-primary/10 outline-none transition-all font-body-md" type="password" value="password123"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant hover:text-on-surface" data-icon="visibility" type="button">visibility</button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="font-body-sm text-on-surface-variant">Meni eslab qol</span>
+</label>
+<a class="font-body-sm font-semibold text-tertiary-container hover:underline" href="#">Parolni unutdingizmi?</a>
+</div>
+<button class="w-full bg-tertiary-container text-white py-4 rounded-lg font-h3 text-body-md hover:opacity-90 active:scale-[0.98] transition-all shadow-md" type="submit">
+                            Kirish
+                        </button>
+</form>
+<p class="mt-8 text-center font-body-md text-on-surface-variant">
+                        Hisobingiz yo'qmi? <a class="text-primary font-bold hover:underline" href="#">Ro'yxatdan o'ting</a>
+</p>
+</div>
+</div>
+</div>
+<!-- DARK MODE SECTION (Simulated with class "dark") -->
+<div class="dark flex-1 flex flex-col md:flex-row min-h-screen border-t xl:border-t-0 xl:border-l border-outline">
+<!-- Left Side: Visual -->
+<div class="hidden md:flex flex-1 gradient-bg flex-col justify-between p-12 text-white relative overflow-hidden">
+<div class="z-10">
+<h2 class="font-h3 text-h3 font-bold text-primary-fixed mb-2">VetClinic UZ</h2>
+</div>
+<div class="z-10 flex flex-col items-center text-center">
+<img alt="Friendly Vet Illustration Dark" class="w-80 h-80 object-contain mb-8 opacity-90" data-alt="A professional line-art illustration of a veterinarian in dark mode styling, featuring neon-teal accents on a deep professional background. The artwork shows a healthcare professional holding a small pet, illuminated by cinematic rim lighting that highlights the clean contours. The overall mood is sophisticated and clinical, perfectly blending Uzbekistan's community warmth with modern technology in a dark-themed user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI784-mUtBKaJdCmxGXd_uRj9FdyXp4KdSKZh-VOQdvpu5E1Y7RqLNRcmE2O9k_wpWpPZgj62DFe21YoQ6KREb9iYKz010wLJNDpaNp9YMPvvzZbszchFWhStnzlXiZW1LbyZLYa5YN-DDj_vug0waP5-TN9J2Pj8koNrhV3qiGuI0OkWa8ykE7uxCl1wohC9kp3ZTwFPcsgQGJClSP--HCeXObURHkJAe4MssHnGQt_KBEayZTPOCKppI3lwNkGwvlYHdDz_-S2c"/>
+<div class="max-w-md">
+<p class="font-h2 text-h2 italic mb-4">"Eng yaxshi veterinariya platformasi"</p>
+<p class="font-body-md text-body-md opacity-90">— Aziza, Toshkent</p>
+<div class="flex justify-center gap-1 mt-4">
+<span class="material-symbols-outlined text-tertiary-fixed fill-icon" data-icon="star">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill-icon" data-icon="star">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill-icon" data-icon="star">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill-icon" data-icon="star">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill-icon" data-icon="star">star</span>
+</div>
+</div>
+</div>
+<div class="z-10 opacity-60 text-body-sm">
+                    © 2024 VetClinic UZ. Barcha huquqlar himoyalangan.
+                </div>
+<div class="absolute inset-0 bg-black/30 pointer-events-none"></div>
+</div>
+<!-- Right Side: Form -->
+<div class="flex-1 flex items-center justify-center bg-surface-dim p-8">
+<div class="w-full max-w-md">
+<a class="inline-flex items-center gap-2 text-surface-variant hover:text-primary-fixed transition-colors mb-12 font-body-md" href="#">
+<span class="material-symbols-outlined text-body-md" data-icon="arrow_back">arrow_back</span>
+                        Bosh sahifaga qaytish
+                    </a>
+<h1 class="font-h1 text-h1 text-on-surface mb-8">Hisobingizga kiring</h1>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-outline rounded-lg bg-surface-container-high hover:bg-surface-container-highest transition-all active:scale-95 text-on-surface">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMi-352kDEdlx3Ijcy3HEhivWqhfzvkbX4Eq537S1JQ_lLZPTjKPLOCmNZlIGHIDq2jnY4Zb3n8CVspKXjx3XXk2rzxVjiRJgiew6xtnIXI6W-bfpot8lSKD_sAK1BzwbIUxzee9Zh_5gDrwVztlClRObW4ITWMiaY1GuNUTnLrPk1Q_BZS0_KYznDpk_I_NQgr3Na96HILGH-WzMNcYbbLwxvz1xJJNS_ytzYPqQgAaaJwGB6kaj11mFI6rWkWarno89STBr3kd8"/>
+<span class="font-body-sm font-semibold">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 border border-outline rounded-lg bg-surface-container-high hover:bg-surface-container-highest transition-all active:scale-95 text-on-surface">
+<span class="material-symbols-outlined text-primary-fixed fill-icon" data-icon="send">send</span>
+<span class="font-body-sm font-semibold">Telegram</span>
+</button>
+</div>
+<div class="relative flex items-center mb-8">
+<div class="flex-grow border-t border-outline"></div>
+<span class="flex-shrink mx-4 text-surface-variant text-body-sm">yoki email orqali</span>
+<div class="flex-grow border-t border-outline"></div>
+</div>
+<!-- Login Form -->
+<form class="space-y-6">
+<div>
+<label class="block font-body-md font-bold text-on-surface mb-2">Email manzilingiz</label>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-surface-variant group-focus-within:text-primary-fixed" data-icon="mail">mail</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border border-outline rounded-lg focus:ring-2 focus:ring-primary-fixed/20 focus:border-primary-fixed outline-none transition-all font-body-md text-on-surface placeholder:text-surface-variant" placeholder="misol@pochta.uz" type="email"/>
+</div>
+</div>
+<div>
+<label class="block font-body-md font-bold text-on-surface mb-2">Parol</label>
+<div class="relative group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-surface-variant group-focus-within:text-primary-fixed" data-icon="lock">lock</span>
+<input class="w-full pl-12 pr-12 py-3 bg-surface-container-lowest border border-outline rounded-lg focus:ring-2 focus:ring-primary-fixed/20 focus:border-primary-fixed outline-none transition-all font-body-md text-on-surface placeholder:text-surface-variant" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-surface-variant hover:text-on-surface" data-icon="visibility_off" type="button">visibility_off</button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="w-5 h-5 rounded border-outline bg-surface-container-lowest text-primary-fixed focus:ring-primary-fixed" type="checkbox"/>
+<span class="font-body-sm text-surface-variant">Meni eslab qol</span>
+</label>
+<a class="font-body-sm font-semibold text-tertiary-fixed-dim hover:underline" href="#">Parolni unutdingizmi?</a>
+</div>
+<button class="w-full bg-tertiary-container text-white py-4 rounded-lg font-h3 text-body-md hover:bg-tertiary transition-all active:scale-[0.98] shadow-lg" type="submit">
+                            Kirish
+                        </button>
+</form>
+<p class="mt-8 text-center font-body-md text-surface-variant">
+                        Hisobingiz yo'qmi? <a class="text-primary-fixed font-bold hover:underline" href="#">Ro'yxatdan o'ting</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</body></html>

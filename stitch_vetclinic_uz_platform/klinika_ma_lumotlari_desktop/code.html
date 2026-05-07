@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vetlife Klinikasi - VetClinic UZ</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdbce",
+                        "tertiary-container": "#b05e3d",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#6d7a77",
+                        "surface-dim": "#d6dbd9",
+                        "on-tertiary-fixed-variant": "#773215",
+                        "on-secondary-fixed": "#410003",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#370e00",
+                        "on-surface-variant": "#3d4947",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-fixed-dim": "#ffb4ac",
+                        "inverse-primary": "#6bd8cb",
+                        "tertiary": "#924628",
+                        "background": "#f5faf8",
+                        "primary-container": "#008378",
+                        "surface-variant": "#dee4e1",
+                        "secondary": "#a93530",
+                        "on-error-container": "#93000a",
+                        "surface": "#f5faf8",
+                        "secondary-fixed": "#ffdad6",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#005049",
+                        "outline-variant": "#bcc9c6",
+                        "inverse-on-surface": "#edf2f0",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "primary": "#00685f",
+                        "on-secondary-fixed-variant": "#881d1c",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00201d",
+                        "surface-container-highest": "#dee4e1",
+                        "surface-container-low": "#f0f5f2",
+                        "on-secondary-container": "#6f080c",
+                        "inverse-surface": "#2c3130",
+                        "surface-container-high": "#e4e9e7",
+                        "on-error": "#ffffff",
+                        "on-background": "#171d1c",
+                        "surface-tint": "#006a61",
+                        "secondary-container": "#fd7369",
+                        "on-surface": "#171d1c",
+                        "surface-container": "#eaefed",
+                        "on-primary-container": "#f4fffc",
+                        "primary-fixed-dim": "#6bd8cb",
+                        "primary-fixed": "#89f5e7",
+                        "surface-bright": "#f5faf8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "12px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "80px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "container-max-width": "1280px",
+                        "margin-desktop": "32px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h3": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "h2": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab { border-bottom: 3px solid #00685f; color: #00685f; font-weight: 600; }
+        .gallery-h { height: 480px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md">
+<!-- 1. Sticky TopNavBar -->
+<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant dark:border-outline shadow-sm docked full-width top-0 sticky z-50">
+<nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto">
+<div class="font-h3 text-h3 font-bold text-primary dark:text-primary-fixed">VetClinic UZ</div>
+<div class="hidden md:flex space-x-8">
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary font-body-md text-body-md transition-colors" href="#">Klinikalar</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Xizmatlar</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Shaharlar</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md" href="#">Yordam</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="px-6 py-2 border border-primary text-primary rounded-lg hover:bg-primary/5 transition-all scale-98 active:opacity-80">Kirish</button>
+<button class="px-6 py-2 bg-primary text-on-primary rounded-lg hover:bg-primary-container transition-all scale-98 active:opacity-80">Band qilish</button>
+</div>
+</nav>
+</header>
+<main class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- 2. Image Gallery Hero -->
+<section class="mt-8 gallery-h flex gap-2 overflow-hidden rounded-xl">
+<div class="w-[60%] relative group cursor-pointer overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A spacious and modern veterinary clinic interior with high-key lighting and minimalist furniture. The clinic features a clean, professional aesthetic with teal accents and warm wood textures. A friendly veterinarian is gently examining a golden retriever on a modern metal examination table. The atmosphere is calm, welcoming, and clinical yet warm, characteristic of a high-end medical environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA0YXb6_HQy0gMzYSASA7feCBC3Jl1pvQZchdeFY--JWljWPc2D-2lCY_5MTqIdeO3r6Fy7-bV6UeAt6L1Amt0JmduIG1a7NBf2q38jxj9WAs5v8eA5T9P19e00EBS4mdA5CL1K_Crc0ZMot135C4Fb4DDPrcuWmeTDTGDRNRwLtXBM10CF9BfgZStZIGGzDQ_tVXs2z33Va_xiXuJoa3zAELUYHXmq0FAfT4EV8tXB3RddMahSSL7gaFQ9ujE7fE1qt59gVFvZn8"/>
+</div>
+<div class="w-[40%] grid grid-cols-2 grid-rows-2 gap-2">
+<div class="relative group cursor-pointer overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A close-up shot of a cute domestic cat being cuddled by a vet tech in a bright, modern clinic. The lighting is soft and natural, emphasizing the comforting and caring environment. The background shows blurred clinical equipment in a clean, minimalist style with subtle teal and coral color cues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRKuT1GNv3ZZdfS-NWV0kDi6mIeF4YTNJjb3tiPRCniUe0YaYTAAwaU1-yxoxifrutd1OF4K1I3R1qkQFGZasUtPD1pqzeKwKr--QWlTSyJ9CNWV-xXwwjpzNvn0mBAIIYMp1bZdIRZKx8qNczU24BGlM0v7ThPCtGT-YCqWMyoWFiBDDcyXpoXkk_56h_T5JNVm_9707-qeLr228oTcy360aMEeBp1lKpWIKYrJTrwnFJkGCX7YslQ_tM8k4cEzAQVTiZYaW1Uk8"/>
+</div>
+<div class="relative group cursor-pointer overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Detail shot of a professional veterinary toolkit and diagnostic equipment arranged neatly on a clean white surface. The scene is bright and airy, reflecting a contemporary healthcare setting. The visual style is crisp and corporate, highlighting precision and hygiene with deep teal and soft slate tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcOSxQVM8TVcyTUOb2rSa43ThjoCMCoWPTspdo1HQamlgZbEt3q_IfFxSIRCw7wnk6Zrm3RS4iWJdvMBPRKC2-IRhBAxa2GBSM5aesXw-ou-529n0aSwailS_UcKQ90M6g4Ru9ElAJSylaqkiaQB96GoWJDVNaUOW--D_PRULRO9mc85tfiYaHfXYQxrEXCgdz2GsASHL6dz9AAkWOqqEgyU-mC2xmL84QAarB3TPxP7ahv0UJLpoJrapHMLFr4IJzPN3lr46DXqU"/>
+</div>
+<div class="relative group cursor-pointer overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A modern pet waiting room with ergonomic seating and warm lighting. Large glass windows let in plenty of natural light, illuminating the minimalist interior design. The color palette consists of soft whites and teals, creating a tranquil and stress-free environment for pet owners and their companions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHsZj6G3aWnTkOcBkzwHdMd-2SQ9FRTbEs2tR1tlWCEPk3CSLg5_Bc-5myqX2tAV7K3yh9IHxgcha_bkbrA19qzegxFMHHlSG-o6HBrYEfA8FDVquvsyOB7tmsma43usc8s6uAD1nzg5jRabTl4dYEHhBLoC2qVKsi5kMHwwm4q3GYb1Syc6EsD1cMZZlNaRYShjWc-_NrDlLrucDnCXmnyUZh0K0R6xSmMsHhq-DVVQ5ka-E8xLzBuP5xu4vv70BWDgX4qAiPY5g"/>
+</div>
+<div class="relative group cursor-pointer overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Exterior shot of a modern, two-story veterinary clinic with large windows and a clean, architectural design. The building is surrounded by neat landscaping under a bright, clear sky. The branding on the front is minimal and professional, utilizing the deep teal and white color scheme of the design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9_habmeyIGqbLR3GCXdVb6SiHgHTm2ujKMwevOY7E-vYeDZp41sF0I-hEADn4GE2nFzNZ-E4bgDKnu32JrXoYuR9oulhSd9Bsk6TontGlLPBNJ7Syr8LuATrNcQFH5VNKy-duG0QLb-0-ajj87yuAJOJq789P94-Sm1P5HLHz4XJwzUIMQsFjyP2qU4qN1PSxVd2fb5PzNGzph73FL-UdQYJ_401IiVb7C7XxOEt0xPGeck3cpWYeOu8GocOP1IpgOpSVeZK6BOo"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center text-white font-bold text-body-lg">
+                        Barcha rasmlar (12) →
+                    </div>
+</div>
+</div>
+</section>
+<!-- 3. Sticky Info Bar -->
+<section class="sticky top-[80px] z-40 bg-surface/90 backdrop-blur-sm py-6 mt-4 border-b border-outline-variant flex flex-wrap items-center justify-between gap-gutter">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4">
+<h1 class="font-h1 text-h1 text-on-surface">Vetlife Klinikasi</h1>
+<span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-body-sm font-semibold rounded-full flex items-center gap-1">
+<span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Hozir ochiq · 22:00 gacha
+                    </span>
+</div>
+<div class="flex items-center gap-2">
+<span class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-1 text-body-lg">4.8</span>
+</span>
+<span class="text-on-surface-variant text-body-md">(124 sharh)</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2 mr-4">
+<button class="p-3 border border-outline-variant rounded-xl hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-primary">share</span>
+</button>
+<button class="p-3 border border-outline-variant rounded-xl hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-primary">favorite</span>
+</button>
+<button class="p-3 border border-outline-variant rounded-xl hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-primary">flag</span>
+</button>
+</div>
+<button class="px-8 py-3 bg-secondary-container text-on-secondary-container font-bold rounded-xl shadow-md hover:opacity-90 transition-all">Qo'ng'iroq qilish</button>
+<button class="px-8 py-3 border-2 border-primary text-primary font-bold rounded-xl hover:bg-primary/5 transition-all">Yo'l ko'rsatish</button>
+<button class="px-8 py-3 border-2 border-primary text-primary font-bold rounded-xl hover:bg-primary/5 transition-all">Sharh yozish</button>
+</div>
+</section>
+<!-- 4. Two-Column Body -->
+<div class="flex flex-col md:flex-row gap-section-gap mt-10 mb-section-gap">
+<!-- LEFT COLUMN -->
+<div class="w-full md:w-[65%]">
+<nav class="flex border-b border-outline-variant mb-8 overflow-x-auto">
+<button class="px-6 py-4 active-tab whitespace-nowrap">Ma'lumot</button>
+<button class="px-6 py-4 text-on-surface-variant hover:text-primary transition-all whitespace-nowrap">Sharhlar (124)</button>
+<button class="px-6 py-4 text-on-surface-variant hover:text-primary transition-all whitespace-nowrap">Joylashuv</button>
+</nav>
+<div class="space-y-12">
+<!-- Ma'lumot Section -->
+<section class="space-y-6">
+<div class="space-y-4 text-on-surface-variant leading-relaxed">
+<p>Vetlife Klinikasi 2018-yildan buyon Toshkent shahrida uy hayvonlari uchun professional tibbiy xizmatlar ko'rsatib kelmoqda. Bizning jamoamiz xalqaro tajribaga ega bo'lgan malakali mutaxassislardan tashkil topgan bo'lib, eng so'nggi diagnostika texnologiyalaridan foydalanamiz.</p>
+<p>Bizning asosiy maqsadimiz — kichik do'stlarimizning salomatligini asrash va ularga g'amxo'rlik qilish orqali egalarining ko'nglini xotirjam qilishdir. Klinikada zamonaviy operatsiya xonasi, rentgen va UTT apparatlari mavjud.</p>
+<p>Bundan tashqari, bizda keng turdagi dori-darmonlar va premium toifadagi hayvonlar ozuqasi sotiladigan maxsus do'kon ham faoliyat yuritadi. Har bir bemorga individual yondashuv kafolatlanadi.</p>
+</div>
+<!-- Services Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+<div class="p-4 border border-outline-variant rounded-xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary mb-2">medical_services</span>
+<div class="font-bold text-body-md">Ko'rik</div>
+<div class="text-primary font-semibold">50,000 so'm</div>
+</div>
+<div class="p-4 border border-outline-variant rounded-xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary mb-2">vaccines</span>
+<div class="font-bold text-body-md">Vaksina</div>
+<div class="text-primary font-semibold">120,000 so'm</div>
+</div>
+<div class="p-4 border border-outline-variant rounded-xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary mb-2">surgical</span>
+<div class="font-bold text-body-md">Jarrohlik</div>
+<div class="text-primary font-semibold">300,000 so'mdan</div>
+</div>
+<div class="p-4 border border-outline-variant rounded-xl hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary mb-2">radiology</span>
+<div class="font-bold text-body-md">UTT/Rentgen</div>
+<div class="text-primary font-semibold">80,000 so'm</div>
+</div>
+</div>
+<!-- Doctors Section -->
+<div class="space-y-6 mt-12">
+<h3 class="font-h3 text-h3 text-on-surface">Bizning shifokorlar</h3>
+<div class="grid grid-cols-1 gap-4">
+<div class="flex items-center p-4 border border-outline-variant rounded-xl gap-4">
+<img class="w-20 h-20 rounded-full object-cover" data-alt="Professional portrait of a male veterinarian in a clean white coat and stethoscope, smiling warmly. The lighting is high-key and studio-quality, emphasizing a professional yet approachable look. He has a calm and confident demeanor, set against a minimalist clinical background with soft teal accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR7F6qzXcBQoSqlFFOQrnxEHtJt7UeQh5sVH86XpQf0xL2AcWGJEVKYTuyKGyeFS1vc66HWwMwsMRpxFMMgR91V3PkELq19CtTt4DhV4V9QAmLnjZxpwtJAb7HCokASaYSNC_CvjONInezCa4-llwAJNnrtaI9mR-osUHPberdoCPLRaoJl0JwTNziUcMPMqGtUZsPCAseBYz2BkBiR19lMFW4XwSlU5aHVH9eCeBxIwHe2VGlfP3IFKRuFuNS5ISvPdY7xoCBFqs"/>
+<div>
+<div class="font-bold text-body-lg">Dr. Alisher Ahmedov</div>
+<div class="text-on-surface-variant">Bosh jarroh</div>
+<div class="text-primary font-semibold text-body-sm">12 yil tajriba</div>
+</div>
+</div>
+<div class="flex items-center p-4 border border-outline-variant rounded-xl gap-4">
+<img class="w-20 h-20 rounded-full object-cover" data-alt="Professional portrait of a female veterinarian with short hair, wearing a teal clinical uniform and a friendly smile. The background is a brightly lit, modern medical facility. Her posture reflects competence and empathy, with a focus on trust and high-quality pet care within the design's teal color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQY9bdurGZDEmDa2AwKj_ap4sUO7BKHwtK0-yVg9P2ui2GXAGwPn8nPj2dDZM0U5cM6khS9BEgoqQ7kk1a38MGwf-oFlPIwyLvzEQO4exHHxy5BKmM27CB13AplQFNQxAkntg1DtEHRxY4YuZSZCfFAZqPIFfwmhxL7bskuZ5jhNAybreFNWoNIUfo8I3YCRZSpW1IFOCWQkbE3ylDZnNykbGHh8onzTuAeoUe_0-OXGho85n8QVaixZk8Xygz2nwIF6P0KmwJLCI"/>
+<div>
+<div class="font-bold text-body-lg">Dr. Malika Karimova</div>
+<div class="text-on-surface-variant">Terapevt-kardiolog</div>
+<div class="text-primary font-semibold text-body-sm">8 yil tajriba</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Imkoniyatlar -->
+<div class="mt-12">
+<h3 class="font-h3 text-h3 text-on-surface mb-6">Imkoniyatlar</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span> WiFi mavjud
+                                </div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span> Avtoturargoh
+                                </div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span> To'lov kartada
+                                </div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary">check_circle</span> Kutish zali
+                                </div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- RIGHT SIDEBAR -->
+<aside class="w-full md:w-[35%]">
+<div class="sticky top-[180px] space-y-6">
+<!-- Aloqa Card -->
+<div class="bg-white p-6 rounded-xl border border-outline-variant shadow-sm">
+<h3 class="font-h3 text-h3 mb-6">Aloqa</h3>
+<div class="space-y-4">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary">call</span>
+<div>
+<div class="text-body-sm text-on-surface-variant">Telefon</div>
+<div class="font-bold">+998 90 123 45 67</div>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary">mail</span>
+<div>
+<div class="text-body-sm text-on-surface-variant">Email</div>
+<div class="font-bold">info@vetlife.uz</div>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary">language</span>
+<div>
+<div class="text-body-sm text-on-surface-variant">Veb-sayt</div>
+<a class="font-bold text-primary underline" href="#">www.vetlife.uz</a>
+</div>
+</div>
+<button class="w-full py-3 bg-[#0088CC] text-white font-bold rounded-xl mt-4 flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">send</span> Telegram orqali yozish
+                            </button>
+</div>
+</div>
+<!-- Ish vaqti Card -->
+<div class="bg-white p-6 rounded-xl border border-outline-variant shadow-sm">
+<h3 class="font-h3 text-h3 mb-6">Ish vaqti</h3>
+<table class="w-full text-body-sm">
+<tbody><tr class="border-b border-outline-variant">
+<td class="py-2">Dushanba</td>
+<td class="py-2 text-right">09:00 - 22:00</td>
+</tr>
+<tr class="border-b border-outline-variant bg-primary/5 text-primary font-bold">
+<td class="py-2 pl-2">Seshanba (Bugun)</td>
+<td class="py-2 pr-2 text-right">09:00 - 22:00</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<td class="py-2">Chorshanba</td>
+<td class="py-2 text-right">09:00 - 22:00</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<td class="py-2">Payshanba</td>
+<td class="py-2 text-right">09:00 - 22:00</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<td class="py-2">Juma</td>
+<td class="py-2 text-right">09:00 - 22:00</td>
+</tr>
+<tr class="border-b border-outline-variant">
+<td class="py-2">Shanba</td>
+<td class="py-2 text-right">10:00 - 20:00</td>
+</tr>
+<tr>
+<td class="py-2">Yakshanba</td>
+<td class="py-2 text-right">Yopiq</td>
+</tr>
+</tbody></table>
+</div>
+<!-- Mini Map Card -->
+<div class="rounded-xl overflow-hidden border border-outline-variant h-48 relative">
+<img class="w-full h-full object-cover" data-location="Tashkent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKVm3tC_vbpymZblt8-qutDQlxLpXTFxNynjlPgEce_4sf-juece7naAK0Pnl48Fd8KiixaUJw1U4k7YtccD-FEXKXUHjMT-Ee0tr1lonyQ65D1RrTwT7E-yP3PfztYW_KWAsyEY8CLTTRogdbebtdoGgk6rC_qUEJt2Yq57N5NaXBysfseMfWa55DVVjnCTff6o-_Jv4S4Gn3LXyn2qP02fOJvlDdTTAb1Os8SvlDjEXEIiSiXcxd3kBEM3UHcUTx9bCcfL2InKg"/>
+<div class="absolute inset-0 bg-black/10"></div>
+<div class="absolute bottom-4 left-4 right-4 bg-white p-3 rounded-lg shadow-lg flex items-center justify-between">
+<span class="text-body-sm font-bold truncate">Yunusobod tumani, 4-kvartal</span>
+<span class="material-symbols-outlined text-primary">directions</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- 5. O'xshash klinikalar Section -->
+<section class="mb-section-gap">
+<h2 class="font-h2 text-h2 mb-8">O'xshash klinikalar</h2>
+<div class="flex gap-gutter overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide">
+<!-- Clinic Card 1 -->
+<div class="min-w-[300px] bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all group">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" data-alt="A brightly lit veterinary consultation room featuring modern medical cabinets and a professional examination table. The space is clean and organized, with a focus on hygiene and tranquility. The design integrates teal and white tones, creating a welcoming and trustworthy healthcare atmosphere for pet owners." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHiU_TGXGOcehGa1euceIeL6SH-kZ4GuLh22JpurOlrhaK4eKL4rsMnl81zGT91H2DvfmacvBkYVUrtY0LjietqHAO-_7iZjg647_RYjB80NaaaZ8MLI6gbChN7rQ8OsVJPFCOrVzLkYPZuW5Qpm_bWmTPJFbBAwI8sdb7UOqnCBSOfdbb1rC6CYupOi5sexGdRTTKVwyduh4EBkPELF05XoiDpCs6nND8M16CJNmse0FIvpvB3ZqpK-gicS4byNw0yQUfyUY7ypM"/>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-body-lg">Dogo Vet Center</h4>
+<span class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-1 text-sm">4.7</span>
+</span>
+</div>
+<p class="text-on-surface-variant text-body-sm mb-4">Chilonzor tumani, 19-kvartal</p>
+<div class="flex items-center justify-between">
+<span class="text-emerald-600 text-body-sm font-bold">Ochiq</span>
+<button class="text-primary font-bold text-body-sm">Batafsil →</button>
+</div>
+</div>
+</div>
+<!-- Clinic Card 2 -->
+<div class="min-w-[300px] bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all group">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" data-alt="A modern veterinary clinic reception desk with minimalist wood finishes and a clean white background. A large glass vase with greenery sits on the counter, adding a touch of natural warmth. The overall look is professional and serene, employing a palette of soft teals and neutral grays to evoke trust and care." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHXLzuimyihwvJmS_pc-fNzbTQKpO62Y4QZ_t9GMQci-rNsK2UXK3XofMFufHIuQ9GJ5THZ5NmcoN5nOPaVg59jd6oZsWqpSThzzJmfgfq9P3OhZPCfIMg305ioZiOxehTNDp8NEAoliCnkZ2r3hsKoMyKOC0AwzcRXiSekgI9U2cmlJhsVMTo_LgJpXwp-neDX8lUO38LSuovPLYDhtZPBbhbIY-kMOTF6uZpG_pkgF2TTSGV2Yy1HKLZo_QnlYJ5OBK4aseW3QA"/>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-body-lg">PetCare Medical</h4>
+<span class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-1 text-sm">4.5</span>
+</span>
+</div>
+<p class="text-on-surface-variant text-body-sm mb-4">Mirobod tumani, Nukus ko'chasi</p>
+<div class="flex items-center justify-between">
+<span class="text-emerald-600 text-body-sm font-bold">Ochiq</span>
+<button class="text-primary font-bold text-body-sm">Batafsil →</button>
+</div>
+</div>
+</div>
+<!-- Clinic Card 3 -->
+<div class="min-w-[300px] bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all group">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" data-alt="Detail of a veterinary clinic's diagnostic room with a modern ultrasound machine and clean metal surfaces. The lighting is focused and professional, creating a sense of advanced medical technology and precision. The aesthetic remains consistent with the brand's teal and white theme, promoting a feeling of safety and professional care." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5y-NsVVfz_dj6w29H7H-lkPhwBHzI7jJWdq3MuH8SLWEl4MynlMPBlvHZFIMgLAJ7K0c2eYMdpqiop9htzYG-d2-srV7BpehCfbASKqDyr5DtBTVdEcNXbec0DTkLkvEAbCw2yaBMqoAn7inJKNOel3MM05o48NTu5iwZSM9grbKWRWdR2170H9tMbtdlWWXlmdJbG1iqye46U7tX3VdgaVZTB35t-3ZPcEUxWQ89efGGDud_YMvwhnb6SIIS1KgxtRMo8iljrqs"/>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-body-lg">Zoodo'st Klinikasi</h4>
+<span class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-1 text-sm">4.9</span>
+</span>
+</div>
+<p class="text-on-surface-variant text-body-sm mb-4">Shayxontohur tumani, Labzak</p>
+<div class="flex items-center justify-between">
+<span class="text-secondary text-body-sm font-bold">Yopiq</span>
+<button class="text-primary font-bold text-body-sm">Batafsil →</button>
+</div>
+</div>
+</div>
+<!-- Clinic Card 4 -->
+<div class="min-w-[300px] bg-white border border-outline-variant rounded-xl overflow-hidden hover:shadow-lg transition-all group">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" data-alt="A welcoming veterinary clinic entry area with a comfortable seating zone and pet-friendly design elements. The room is flooded with natural light from high windows, creating a bright and airy atmosphere. Soft textures and a clean teal-based color palette provide a soothing experience for both pets and their owners." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoZqx0OXWGHjvGE_PpIGhE49hrl1MMonNBVErClmev2yyq58qV2s7HszfD2v5cyjE_apydRoESwhsy6iBWBOAm4y3r0zmmr7rr999cfABy0LMvMXIq5ZmkArRLAC93AvhCqSenN7Il3t3e_oxVokG32fnLb71FS4kSkOT5Krjr0qond3RWyI9m0afdUFsKuobODv3Ts-gi4RtMuyL49CXjW91MSzrHQO6CVC0YH0ARDNEeKx65AMkZFm3IGWeFRT4itBqIXLlx3NE"/>
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-body-lg">Hayvonot Olam</h4>
+<span class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold ml-1 text-sm">4.6</span>
+</span>
+</div>
+<p class="text-on-surface-variant text-body-sm mb-4">Yakkasaroy tumani, Shota Rustaveli</p>
+<div class="flex items-center justify-between">
+<span class="text-emerald-600 text-body-sm font-bold">Ochiq</span>
+<button class="text-primary font-bold text-body-sm">Batafsil →</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- 6. Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-highest border-t border-outline-variant full-width">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-section-gap max-w-container-max-width mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-h3 text-h3 text-primary mb-6">VetClinic UZ</div>
+<p class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm leading-relaxed">Uy hayvonlaringiz salomatligi uchun ishonchli hamkor. O'zbekiston bo'ylab eng yaxshi veterinar klinikalar.</p>
+</div>
+<div>
+<h5 class="font-bold text-on-surface mb-6">Shaharlar</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-sm text-body-sm" href="#">Toshkent</a></li>
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-sm text-body-sm" href="#">Samarqand</a></li>
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-sm text-body-sm" href="#">Buxoro</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-on-surface mb-6">Ma'lumot</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-sm text-body-sm" href="#">Biz haqimizda</a></li>
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-sm text-body-sm" href="#">Maxfiylik siyosati</a></li>
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed transition-colors font-body-sm text-body-sm" href="#">Bog'lanish</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-on-surface mb-6">Ijtimoiy tarmoqlar</h5>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 py-8 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto text-center">
+<p class="text-on-surface-variant dark:text-surface-variant font-body-sm text-body-sm opacity-90">© 2024 VetClinic UZ. Barcha huquqlar himoyalangan.</p>
+</div>
+</footer>
+</body></html>

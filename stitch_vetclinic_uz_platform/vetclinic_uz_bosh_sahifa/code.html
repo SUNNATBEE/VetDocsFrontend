@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html lang="uz"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#773215",
+                    "inverse-primary": "#6bd8cb",
+                    "on-primary-fixed-variant": "#005049",
+                    "surface-container-low": "#f0f5f2",
+                    "outline": "#6d7a77",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#370e00",
+                    "surface-container": "#eaefed",
+                    "on-primary-fixed": "#00201d",
+                    "primary-fixed-dim": "#6bd8cb",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#e4e9e7",
+                    "on-background": "#171d1c",
+                    "primary-fixed": "#89f5e7",
+                    "secondary-container": "#fd7369",
+                    "background": "#f5faf8",
+                    "tertiary-container": "#b05e3d",
+                    "outline-variant": "#bcc9c6",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#2c3130",
+                    "secondary-fixed-dim": "#ffb4ac",
+                    "surface-variant": "#dee4e1",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "primary": "#00685f",
+                    "surface-tint": "#006a61",
+                    "surface-dim": "#d6dbd9",
+                    "inverse-on-surface": "#edf2f0",
+                    "secondary-fixed": "#ffdad6",
+                    "on-surface": "#171d1c",
+                    "tertiary": "#924628",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdbce",
+                    "on-secondary-container": "#6f080c",
+                    "on-tertiary-container": "#fffbff",
+                    "secondary": "#a93530",
+                    "on-primary-container": "#f4fffc",
+                    "surface": "#f5faf8",
+                    "on-secondary-fixed-variant": "#881d1c",
+                    "on-surface-variant": "#3d4947",
+                    "primary-container": "#008378",
+                    "surface-container-highest": "#dee4e1",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#410003",
+                    "surface-bright": "#f5faf8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "80px",
+                    "container-max-width": "1280px",
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "h2": ["Plus Jakarta Sans"],
+                    "h1": ["Plus Jakarta Sans"],
+                    "h3": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Inter"]
+            },
+            "fontSize": {
+                    "h2": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "h1": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "h3": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 backdrop-blur-md sticky top-0 z-50 border-b border-outline-variant shadow-sm">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max-width mx-auto">
+<a class="font-h3 text-h3 font-bold text-primary" href="#">VetClinic UZ</a>
+<div class="hidden md:flex items-center space-x-8 font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Klinikalar</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Xizmatlar</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Shaharlar</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Yordam</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="hidden md:block text-primary font-semibold hover:opacity-80 transition-all font-body-md text-body-md">Kirish</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-bold hover:scale-98 active:opacity-80 transition-all font-body-md text-body-md">Band qilish</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative overflow-hidden pt-12 pb-24 md:pt-24 md:pb-32">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5 -z-10"></div>
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center">
+<h1 class="font-h1 text-h1 md:text-[48px] md:leading-[1.1] mb-6 max-w-3xl mx-auto">
+                Uy hayvoningiz uchun <span class="text-primary">ishonchli shifokor</span>
+</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg mb-12 max-w-2xl mx-auto">
+                O'zbekiston bo'ylab eng yaxshi veterinariya klinikalarini toping va bir zumda qabulga yoziling.
+            </p>
+<div class="bg-white p-2 md:p-3 rounded-2xl shadow-xl flex flex-col md:flex-row gap-2 max-w-3xl mx-auto border border-outline-variant">
+<div class="flex-1 flex items-center px-4 gap-3 bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<input class="bg-transparent border-none focus:ring-0 w-full font-body-md py-4 text-on-surface" placeholder="Shahar yoki xizmat nomi..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold hover:scale-98 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+                    Qidirish
+                </button>
+</div>
+<div class="mt-8">
+<button class="flex items-center gap-2 mx-auto text-secondary font-semibold hover:gap-3 transition-all">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+                    Xaritada ko'rish
+                </button>
+</div>
+</div>
+</header>
+<!-- Stats Strip -->
+<section class="border-y border-outline-variant bg-surface">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-8">
+<div class="flex flex-wrap justify-around gap-8 text-center">
+<div class="flex flex-col">
+<span class="font-h2 text-h2 text-primary">200+</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">klinika</span>
+</div>
+<div class="h-12 w-px bg-outline-variant hidden md:block"></div>
+<div class="flex flex-col">
+<span class="font-h2 text-h2 text-primary">12</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">shahar</span>
+</div>
+<div class="h-12 w-px bg-outline-variant hidden md:block"></div>
+<div class="flex flex-col">
+<span class="font-h2 text-h2 text-primary">5,000+</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">sharh</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Mashhur Klinikalar Section -->
+<section class="py-section-gap overflow-hidden">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop mb-10 flex justify-between items-end">
+<div>
+<h2 class="font-h2 text-h2 mb-2 text-on-surface">Mashhur klinikalar</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Mijozlar tomonidan eng yuqori baholangan shifo maskanlari</p>
+</div>
+<a class="text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                Hammasi
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="flex gap-gutter overflow-x-auto hide-scrollbar px-margin-mobile md:px-margin-desktop pb-6">
+<!-- Clinic Card 1 -->
+<div class="min-w-[300px] md:min-w-[340px] bg-white rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="h-48 overflow-hidden rounded-t-xl relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean, modern veterinary clinic interior with teal accents and natural wood finishes. A professional veterinarian in a white coat is gently examining a golden retriever on a stainless steel table under bright, clinical yet warm lighting. The atmosphere is calm, trustworthy, and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy-OaZKRkyXb-MzI73xYWXw7_OpGwfYKrNKAKkuJ0V93ELWhqUCZP7sAXn7YWdhCzCBu6mjfPwpUKNwHJ7UD3Tfd0-GSPhDpGrwXvG_7EIyOb2UbjUJppoD-3fQBUk6q7CHchrd4lFkC0KEVm8l1i8P-PjS02gHirgtnejfpPSpgUUfqUieCv60Q1bbSun30gIUxVAKEYIXV3VpPTGHyA99IQdWTbDL84MJhIm4i4t5XMSH-Pqj5gxz2o40mGeyYNNkpcIJZpB6Uc"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[#facc15] text-[18px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-body-sm">4.9</span>
+</div>
+</div>
+<div class="p-6">
+<span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-[12px] font-bold uppercase tracking-wider mb-3 inline-block">Ochiq</span>
+<h3 class="font-h3 text-h3 mb-1 group-hover:text-primary transition-colors">PetCare Tashkent</h3>
+<p class="text-on-surface-variant font-body-sm text-body-sm flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                        Yunusobod tumani, 4-kvartal
+                    </p>
+<button class="w-full py-3 border border-primary text-primary font-bold rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-colors">Band qilish</button>
+</div>
+</div>
+<!-- Clinic Card 2 -->
+<div class="min-w-[300px] md:min-w-[340px] bg-white rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="h-48 overflow-hidden rounded-t-xl relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern veterinary surgery room with advanced medical equipment in a soft teal and white color scheme. A high-resolution image showcasing a sterile and high-tech environment with soft morning light filtering through a window, creating a serene and professional healthcare mood for pets." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDswK-tbZUKROKG3ZScX7Q-1kBFNi9GLc7zrciU7bYGxOlHkZJkRIpaid-ZuoNaS_l2F5yaadSoQMtoZFzoPTtOZUFOxYv876XcyN6rVyzQ7WJ3p48lxI_OYNpizO6_w7ob_kNFyWmtE7wA_pveUwHj-b4TRKSM16dapebJjQiaZVURU4d3atS9NtO4MuOKcguwRtLaCwzYKElDMJem7N_G2OKjj9vAhcBCUitNg4yl-sUNW37R987VeQ-zT1-FLcsCJSD8CRltsw8"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[#facc15] text-[18px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-body-sm">4.8</span>
+</div>
+</div>
+<div class="p-6">
+<span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-[12px] font-bold uppercase tracking-wider mb-3 inline-block">Ochiq</span>
+<h3 class="font-h3 text-h3 mb-1 group-hover:text-primary transition-colors">Ziyo Vet Samarqand</h3>
+<p class="text-on-surface-variant font-body-sm text-body-sm flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                        Amir Temur ko'chasi, 24
+                    </p>
+<button class="w-full py-3 border border-primary text-primary font-bold rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-colors">Band qilish</button>
+</div>
+</div>
+<!-- Clinic Card 3 -->
+<div class="min-w-[300px] md:min-w-[340px] bg-white rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group cursor-pointer">
+<div class="h-48 overflow-hidden rounded-t-xl relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a friendly female veterinarian smiling while holding a small cat in a bright, modern clinic. The background is softly blurred showing medical cabinets in teal and white. The lighting is soft and flattering, emphasizing a mood of compassionate care and professional medical expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeEF2IjSdhsS-GuAvL6o1BsMnq12aEYEc5mPETpVcKn8HTcU3WnPkLQleblEWCPMe8u0Ptge0YTEtliu9lbzJANb8R5sWi3ZSpQWF_I2NhTosRfIJaXOWeUbQJGs0Ko25XU99pTFSy5X__xHJY4L9g32lrwbrcMWHlnKrRPBEvT5da9Vsbhg41ds4ESuimx39bfhGNFAQJoGWPV67ctTI5OWy_iUXqgHFrt5729qAWfonwjAp-ar5sGSNOGiK8ABZ-RmEqOXDjuHc"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[#facc15] text-[18px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-body-sm">4.7</span>
+</div>
+</div>
+<div class="p-6">
+<span class="bg-rose-100 text-rose-800 px-3 py-1 rounded-full text-[12px] font-bold uppercase tracking-wider mb-3 inline-block">Yopiq</span>
+<h3 class="font-h3 text-h3 mb-1 group-hover:text-primary transition-colors">Happy Pets Buxoro</h3>
+<p class="text-on-surface-variant font-body-sm text-body-sm flex items-center gap-1 mb-4">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                        Eski shahar tumani
+                    </p>
+<button class="w-full py-3 border border-primary text-primary font-bold rounded-lg group-hover:bg-primary group-hover:text-on-primary transition-colors">Band qilish</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Shaharlar Section -->
+<section class="py-section-gap bg-surface-container">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-12">
+<h2 class="font-h2 text-h2 text-on-surface mb-4">Shaharlar bo'yicha</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Sizga eng yaqin hududdan mutaxassis toping</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- City Tile 1 -->
+<div class="bg-white p-6 rounded-2xl border border-outline-variant hover:border-primary transition-all group cursor-pointer">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="apartment">apartment</span>
+</div>
+<h4 class="font-h3 text-h3 mb-1">Toshkent</h4>
+<p class="text-on-surface-variant font-body-sm text-body-sm">84 ta klinika</p>
+</div>
+<!-- City Tile 2 -->
+<div class="bg-white p-6 rounded-2xl border border-outline-variant hover:border-primary transition-all group cursor-pointer">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="mosque">mosque</span>
+</div>
+<h4 class="font-h3 text-h3 mb-1">Samarqand</h4>
+<p class="text-on-surface-variant font-body-sm text-body-sm">32 ta klinika</p>
+</div>
+<!-- City Tile 3 -->
+<div class="bg-white p-6 rounded-2xl border border-outline-variant hover:border-primary transition-all group cursor-pointer">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="foundation">foundation</span>
+</div>
+<h4 class="font-h3 text-h3 mb-1">Buxoro</h4>
+<p class="text-on-surface-variant font-body-sm text-body-sm">18 ta klinika</p>
+</div>
+<!-- City Tile 4 -->
+<div class="bg-white p-6 rounded-2xl border border-outline-variant hover:border-primary transition-all group cursor-pointer">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="location_city">location_city</span>
+</div>
+<h4 class="font-h3 text-h3 mb-1">Farg'ona</h4>
+<p class="text-on-surface-variant font-body-sm text-body-sm">22 ta klinika</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Qanday ishlaydi Section -->
+<section class="py-section-gap">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center">
+<h2 class="font-h2 text-h2 text-on-surface mb-16">Qanday ishlaydi</h2>
+<div class="flex flex-col md:flex-row justify-between gap-12 md:gap-gutter relative">
+<!-- Decorative line -->
+<div class="hidden md:block absolute top-1/4 left-1/4 right-1/4 h-0.5 border-t-2 border-dashed border-outline-variant -z-10"></div>
+<div class="flex-1 flex flex-col items-center">
+<div class="w-20 h-20 bg-primary text-on-primary rounded-full flex items-center justify-center font-h2 mb-6 shadow-lg">
+<span class="material-symbols-outlined text-[32px]" data-icon="search">search</span>
+</div>
+<h4 class="font-h3 text-h3 mb-2">Qidir</h4>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-[200px]">Shahar yoki kerakli xizmat turini tanlang</p>
+</div>
+<div class="flex-1 flex flex-col items-center">
+<div class="w-20 h-20 bg-primary text-on-primary rounded-full flex items-center justify-center font-h2 mb-6 shadow-lg">
+<span class="material-symbols-outlined text-[32px]" data-icon="list_alt">list_alt</span>
+</div>
+<h4 class="font-h3 text-h3 mb-2">Tanla</h4>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-[200px]">Reyting va sharhlarga qarab eng yaxshisini tanlang</p>
+</div>
+<div class="flex-1 flex flex-col items-center">
+<div class="w-20 h-20 bg-primary text-on-primary rounded-full flex items-center justify-center font-h2 mb-6 shadow-lg">
+<span class="material-symbols-outlined text-[32px]" data-icon="event_available">event_available</span>
+</div>
+<h4 class="font-h3 text-h3 mb-2">Bog'lan</h4>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-[200px]">Onlayn band qiling va qabulga boring</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Section (Testimonials) -->
+<section class="py-section-gap bg-primary text-on-primary overflow-hidden">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-h2 text-h2 text-center mb-16">Pet egalari biz haqimizda</h2>
+<div class="flex gap-gutter overflow-x-auto hide-scrollbar pb-8">
+<!-- Testimonial 1 -->
+<div class="min-w-[300px] md:min-w-[400px] bg-white text-on-surface p-8 rounded-2xl shadow-xl">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a satisfied middle-aged Uzbek man in a smart-casual shirt, smiling warmly into the camera. He is in a brightly lit modern outdoor park setting during the golden hour, reflecting a mood of trust and satisfaction with the veterinary service. The colors are warm and inviting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmqrAjWVdYJ3Z70vISYksTAfwrPP0wzy8xCe-NWvXNqtmIGPDsJ44NUt3zldN50QX58c_6JlX55SoMkfPFdlEdAI-EH0PTUUFaYqmcTzVFX2wYP7zb9fy8SZcO-sY_PiDvBrKlhnwWLdcS3urcVste1QIfPvv7UhVKPf71sBhcufPxGisrghsqkudxGEWsFD5izpiPkzsPOCAqTBvH1uie99Yvpi5HxSkd1XUK5giSr7BEeh38cYdrVHIqtaCsU0l8xmMcuJ3h5J4"/>
+</div>
+<div>
+<h5 class="font-bold">Anvar Karimov</h5>
+<div class="flex text-[#facc15]">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md italic text-on-surface-variant">"Klinika tanlashda sharhlar juda yordam berdi. Mushugimizni o'z vaqtida davolashga muvaffaq bo'ldik. Raxmat!"</p>
+</div>
+<!-- Testimonial 2 -->
+<div class="min-w-[300px] md:min-w-[400px] bg-white text-on-surface p-8 rounded-2xl shadow-xl">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A portrait of a happy Uzbek woman with long hair, smiling naturally in a minimalist white studio background. The lighting is high-key and professional, creating a clean, modern aesthetic. Her expression conveys deep relief and happiness, embodying the trust and quality of the veterinary service provider." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqrOuw5EgWgewBDfLv9mFg6EtgtMKzDSQBlUh8HKnPt9e_HJoDiJJZCoJosVJTeTNG8-JNXhZ-O3nHapRjWZwgTwwApcxa1OdgfgfaoGGNmxinlQAgWpNumjJmvc6ZVT3ZemjOBm9iU9kxPKXl6TJlQJsm3H0s-nbU2OvewEsIpWE-8IkhGSIQDQJEHKG37p9_7C0H3GV6pwgqP1ZLXpCdHqroKi21liihKFHSOc5lBWzhRZzpAHfBL1LjoRA9XcOoab0d_kWn9Zc"/>
+</div>
+<div>
+<h5 class="font-bold">Madina Aliyeva</h5>
+<div class="flex text-[#facc15]">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md italic text-on-surface-variant">"Samarqandda eng yaxshi vet-doktorni shu platforma orqali topdik. Juda qulay ekan!"</p>
+</div>
+<!-- Testimonial 3 -->
+<div class="min-w-[300px] md:min-w-[400px] bg-white text-on-surface p-8 rounded-2xl shadow-xl">
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a confident man in his 30s with a warm and friendly smile. He is in a clean, modern urban background with soft architectural lines. The image is captured in natural daylight, presenting a high-end light-mode UI feel that promotes trust and safety." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpKyvaq6-mlE9L7TigoWT6stlRQ8GuX82634ZpfhuCD75-hUPfTj3PEGsA8LXsEjTJaLF_jPW0s1VOwPiZrOS5J1IJHAVYHu6jSYzlUPezt3k96gH-RiJZ3dpOfi_t9-wkOoZJu7mOVx-0jKW8yMAZ9LBsUmRIyfNHPCn_9nEaI3ojWwjZgwkg6-gX4tsf1IEjEud0fXWN_V4VyZ3g_vQwgeP5mtwpoZTwZMYHlMPv_lWpstTcBm5gTcumXwsB5t8tLe0tJwEMrDg"/>
+</div>
+<div>
+<h5 class="font-bold">Dilshod Bekmirzayev</h5>
+<div class="flex text-[#facc15]">
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md italic text-on-surface-variant">"Onlayn band qilish funksiyasi vaqtni juda tejaydi. Navbat kutishga hojat qolmadi."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-section-gap max-w-container-max-width mx-auto font-body-sm text-body-sm">
+<div class="md:col-span-1">
+<a class="font-h3 text-h3 text-primary mb-6 block" href="#">VetClinic UZ</a>
+<p class="text-on-surface-variant mb-6">
+                    Sizning uy hayvoningiz uchun g'amxo'rlik - bizning asosiy maqsadimiz.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70 transition-opacity" data-icon="facebook">social_leaderboard</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70 transition-opacity" data-icon="share">share</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-70 transition-opacity" data-icon="alternate_email">alternate_email</span>
+</div>
+</div>
+<div>
+<h5 class="text-primary font-semibold mb-4 uppercase tracking-wider text-[12px]">Hududlar</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li><a class="hover:text-secondary transition-colors" href="#">Toshkent</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Samarqand</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Buxoro</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Namangan</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-primary font-semibold mb-4 uppercase tracking-wider text-[12px]">Ma'lumot</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li><a class="hover:text-secondary transition-colors" href="#">Biz haqimizda</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Maxfiylik siyosati</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Foydalanish shartlari</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Yordam markazi</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-primary font-semibold mb-4 uppercase tracking-wider text-[12px]">Bog'lanish</h5>
+<ul class="space-y-3 text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="mail">mail</span>
+                        info@vetclinic.uz
+                    </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="call">call</span>
+                        +998 71 123 45 67
+                    </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="map">map</span>
+                        Toshkent sh., Yunusobod
+                    </li>
+</ul>
+</div>
+</div>
+<div class="border-t border-outline-variant py-8 text-center text-on-surface-variant font-body-sm text-body-sm opacity-90">
+            © 2024 VetClinic UZ. Barcha huquqlar himoyalangan.
+        </div>
+</footer>
+</body></html>
