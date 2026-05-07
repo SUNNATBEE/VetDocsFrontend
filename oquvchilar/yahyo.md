@@ -1,93 +1,89 @@
-# Yahyo uchun to'liq topshiriq (UI/UX)
+# Yahyo — Layout (Header / Footer / Mobile / Theme)
 
-## Sening roling
+## Roling
 
-Sen saytni chiroyli, toza va qulay qilasan.
-Odam saytga kirganda birinchi bo'lib sening ishingni ko'radi.
+Sen saytning umumiy "ramka"sini yasaysan.
+Foydalanuvchi har sahifada birinchi bo'lib sening Header va Footer'ingni ko'radi.
+
+Diqqat: static sahifalar (Home / About / Contact / FAQ) Hayotda;
+reusable shared komponentlar (`EmptyState`, `LoadingSpinner`, `ConfirmDialog`, `ErrorMessage`, Toast) Numtonda.
+Sen faqat **layout** ga e'tibor berasan.
 
 ## Qayerda kod yozasan?
 
 ### Layout komponentlar
+
 - `src/components/layout/Header.tsx`
 - `src/components/layout/Footer.tsx`
 - `src/components/layout/MobileNav.tsx`
 - `src/components/layout/ThemeToggle.tsx`
 
-### Shared komponentlar
-- `src/components/shared/EmptyState.tsx`
-- `src/components/shared/LoadingSpinner.tsx`
-- `src/components/shared/ConfirmDialog.tsx`
+### Theme yordamchi (kerak bo'lsa)
 
-### Main pages
-- `src/app/(main)/page.tsx`
-- `src/app/(main)/about/page.tsx`
-- `src/app/(main)/contact/page.tsx`
+- `src/components/layout/ThemeProvider.tsx`
 
-## Nima qilasan? (oddiy tilda)
+## Nima qilasan?
 
 1. Header yasaysan:
    - logo
-   - menu
-   - login/profile tugmasi
+   - asosiy menyu (Clinics / Map / About / Contact)
+   - login holatiga qarab "Kirish" yoki "Profile" tugmasi
 2. Footer yasaysan:
+   - sayt navigatsiyasi
    - kontaktlar
-   - linklar
-3. Telefon uchun mobile menyu qilasan.
-4. `Loading`, `Empty`, `Confirm` componentlarni reusable qilasan.
-5. Home/About/Contact sahifalarni chiroyli qilasan.
+   - copyright
+3. Telefon uchun `MobileNav` (drawer / hamburger menyu) qilasan.
+4. `ThemeToggle` orqali light / dark rejimini almashtirasan.
+5. Layout 375px dan 1280px gacha responsive bo'lsin.
 
 ## Swaggerdan nima kerak?
 
-To'g'ridan-to'g'ri API ko'p emas, lekin quyilarni UI holati uchun bil:
-- `GET /health` (backend ishlayaptimi tekshirish uchun)
-- Clinics endpointlar chiqadigan joylarga loading/empty UI tayyorlash
+To'g'ridan-to'g'ri API qo'llamaysan, lekin auth holatini bil:
 
-## Qaysi faylga qanday "sodda komment" yozish kerak?
+- Suhrob'ning `useCurrentUser` hooki orqali userni ol.
+- User bor bo'lsa Header'da "Profile" tugmasi, yo'q bo'lsa "Kirish" tugmasi chiqadi.
 
-### `src/components/shared/LoadingSpinner.tsx`
-
-```ts
-// Bu aylana userga "kuting, ma'lumot kelmoqda" degan signal beradi.
-```
-
-### `src/components/shared/EmptyState.tsx`
-
-```ts
-// Data bo'lmasa xafa bo'lmasin deb, tushunarli xabar chiqaramiz.
-```
-
-### `src/components/shared/ConfirmDialog.tsx`
-
-```ts
-// Xavfli amal oldidan userdan yana bir marta tasdiq so'raymiz.
-```
+## Misol kommentlar
 
 ### `src/components/layout/Header.tsx`
 
 ```ts
-// Header - bu saytning bosh menyusi.
-// Har sahifada bir xil ko'rinadi.
+// Header - saytning bosh menyusi.
+// Har sahifada bir xil ko'rinadi va auth holatiga qarab tugmalar o'zgaradi.
+```
+
+### `src/components/layout/MobileNav.tsx`
+
+```ts
+// 768px dan kichik ekranlarda asosiy menyu shu drawer orqali ochiladi.
+```
+
+### `src/components/layout/ThemeToggle.tsx`
+
+```ts
+// Light / dark rejimni almashtiruvchi tugma.
+// Tanlov localStorage ga saqlanadi.
 ```
 
 ## Done checklist
 
-- [ ] Header va Footer tayyor
-- [ ] Mobil menyu ishlaydi
-- [ ] Loading/Error/Empty ko'rinishlar bor
-- [ ] 375px dan 1280px gacha responsive
+- [ ] Header tayyor (logo + menyu + auth tugmasi)
+- [ ] Footer tayyor (linklar + kontakt + copyright)
+- [ ] Mobile menyu drawer ishlaydi
+- [ ] Theme toggle light / dark almashadi va saqlanadi
+- [ ] 375px - 1280px gacha responsive
 - [ ] `npm run lint` yashil
 
-## 1-kun / 2-kun / 3-kun reja
+## 3 kunlik reja
 
 ### 1-kun
 - `Header.tsx` va `Footer.tsx` ni yasab chiq.
-- Desktop menyu va oddiy navigatsiya tugmalarini qo'sh.
+- Desktop menyu va asosiy navigatsiya tugmalarini qo'sh.
 
 ### 2-kun
-- `MobileNav.tsx` va `ThemeToggle.tsx` qil.
-- `LoadingSpinner.tsx` va `EmptyState.tsx` ni reusable qilib yoz.
+- `MobileNav.tsx` (drawer / overlay) ni qil.
+- `ThemeToggle.tsx` va `ThemeProvider.tsx` ni ulagin.
 
 ### 3-kun
-- `ConfirmDialog.tsx` tayyorla.
-- `src/app/(main)/page.tsx`, `about/page.tsx`, `contact/page.tsx` ni chiroyli qil.
-- Mobil va desktopda ko'rinishni tekshir.
+- Auth holatiga qarab Header'da tugmalar o'zgarsin (Suhrob hooki orqali).
+- Mobile va desktopda tekshir, animatsiya va focus ringlarni polish qil.

@@ -55,7 +55,7 @@ Main:
 | `src/features/favorites/store/favorites.store.ts` | Zustand persist (localStorage) |
 | `src/features/favorites/hooks/useFavorites.ts` | Hook (Phase 2 da API'ga) |
 | `src/features/favorites/components/FavoriteButton.tsx` | Heart toggle (ClinicCard'da) |
-| `src/components/shared/EmptyState.tsx` | Yahyo'ning komponenti, qayta ishlatiladi |
+| `src/components/shared/EmptyState.tsx` | Numton'ning komponenti, qayta ishlatiladi |
 
 ## 4. shadcn
 

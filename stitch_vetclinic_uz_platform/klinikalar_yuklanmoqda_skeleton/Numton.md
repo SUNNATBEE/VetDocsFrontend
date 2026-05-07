@@ -1,6 +1,6 @@
 # Klinikalar yuklanmoqda (Skeleton)
 
-> **Mas'ul:** Yahyo (UI/UX Engineer)
+> **Mas'ul:** Numton (Shared Components Engineer)
 > **Sprint:** 2-hafta
 > **Prioritet:** ⭐⭐ (UX — loading bo'sh ekran emas, skeleton ko'rsatadi)
 

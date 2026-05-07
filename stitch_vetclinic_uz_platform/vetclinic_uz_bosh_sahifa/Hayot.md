@@ -1,6 +1,6 @@
 # Bosh sahifa (Home Page)
 
-> **Mas'ul:** Yahyo (UI/UX Engineer)
+> **Mas'ul:** Hayot (Landing Engineer)
 > **Sprint:** 2-hafta
 > **Prioritet:** ⭐⭐⭐ (yuqori — bu sayt yuzi)
 
@@ -53,7 +53,7 @@ Server Component'da `fetch` bilan SSR qil. Cache: `revalidate: 3600` (1 soat).
 ## 6. States
 
 - ✅ **Default:** Hammasi to'liq yuklangan
-- ✅ **Loading:** Skeleton variantlar (Yahyo'ning `klinikalar_yuklanmoqda_skeleton` design'idan foydalan)
+- ✅ **Loading:** Skeleton variantlar (Numton'ning `klinikalar_yuklanmoqda_skeleton` design'idan foydalan)
 - ✅ **Error:** Network xato bo'lsa "Qayta urinish" tugmali fallback
 - ✅ **No-data:** Mashhur klinikalar yo'q bo'lsa, butun bo'lim ko'rinmasin
 

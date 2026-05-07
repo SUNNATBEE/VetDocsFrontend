@@ -1,33 +1,41 @@
-# O'quvchilar uchun yo'l xarita (juda sodda)
+# O'quvchilar uchun yo'l xarita
 
-Bu papka sizga "qayerda kod yozaman?" degan savolga tez javob beradi.
+Bu papka har bir o'quvchining vazifasini va umumiy ish tartibini ko'rsatadi.
+Maqsad: kichik, tushunarli kod yozish va bir-birining ishini buzmaslik.
 
 ## Avval nima o'qiladi?
 
-1. `swagger-qanday-ishlatiladi.md`
-2. `fayl-strukturasi.md`
-3. O'zingizga tegishli fayl (`suhrob.md`, `doniyor.md`, ...)
+1. `swagger-qanday-ishlatiladi.md` — backend menyusini tushunish.
+2. `fayl-strukturasi.md` — loyiha papkalari qanday tartiblangan.
+3. O'zingizga tegishli fayl (`sunnatbek.md`, `suhrob.md`, ...).
 
-## Ishlash qoidasi
+## Ish qoidalari
 
-1. Faqat o'zingizga berilgan fayllarda ishlang.
-2. Har ish tugagach tekshiring:
+1. Faqat o'zingizga biriktirilgan fayllarda ishlang.
+2. Boshqa o'quvchining faylini o'zgartirish kerak bo'lsa — avval u bilan kelishing.
+3. Har bosqichdan keyin tekshirish:
    - `npm run lint`
    - `npm run build`
-3. Branch nomi aniq bo'lsin:
-   - `feature/ism-vazifa` (masalan: `feature/suhrob-auth`)
+4. Branch nomi: `feature/<ism>-<vazifa>` (masalan: `feature/suhrob-auth`).
+5. Bitta pull request — bitta vazifa. Kichik va o'qiladigan PR yaxshi PR.
 
-## Kim nima qiladi?
+## Jamoa va vazifalar
 
-- `sunnatbek.md` -> Tech Lead + Admin API
-- `suhrob.md` -> Auth (register/login/logout)
-- `doniyor.md` -> Clinics (list/detail/map)
-- `akbar.md` -> Reviews + Profile
-- `yahyo.md` -> UI/UX + reusable komponentlar
-- `hayot.md` -> Content va static sahifalar
+| Fayl | Rol | Asosiy domen |
+| --- | --- | --- |
+| `sunnatbek.md` | Tech Lead | API core, auth helpers, Admin panel (to'liq) |
+| `suhrob.md` | Frontend | Auth (register / login / logout / refresh / forgot password) |
+| `doniyor.md` | Frontend | Clinics ro'yxati, detail, qidiruv, xarita |
+| `akbar.md` | Frontend | Reviews, Profile, Favorites |
+| `yahyo.md` | Frontend | Layout (Header / Footer / Mobile menyu / Theme toggle) |
+| `hayot.md` | Frontend | Home, About, Contact, FAQ — landing tajribasi |
+| `numton.md` | Frontend | Reusable shared komponentlar, Toast/Notification, content constants |
 
 ## Muhim eslatma
 
-- API base URL: `NEXT_PUBLIC_API_URL`
+- API base URL: `NEXT_PUBLIC_API_URL`.
 - Endpointlar: Swaggerdagi `/api/v1` dan keyingi qismni olamiz.
-- Kodni oddiy yozing: kichik funksiya, tushunarli nom, ko'p murakkabliksiz.
+- Bir xil fetch kodini qayta yozmang — `apiClient` orqali ishlang.
+- Endpointni har joyda string sifatida yozmang — `endpoints.ts` dan oling.
+- Kodni oddiy yozing: kichik funksiya, tushunarli nom, ortiqcha murakkabliksiz.
+- `.env.local` ni hech qachon git ga qo'shmang.

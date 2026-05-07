@@ -1,6 +1,6 @@
 # Natija topilmadi (Empty State)
 
-> **Mas'ul:** Yahyo (UI/UX Engineer)
+> **Mas'ul:** Numton (Shared Components Engineer)
 > **Sprint:** 3-hafta
 > **Prioritet:** ⭐⭐ (har bir bo'sh holat uchun ishlatiluvchi komponent)
 

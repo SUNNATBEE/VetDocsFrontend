@@ -1,6 +1,6 @@
 # Komponentlar kutubxonasi (Light Mode)
 
-> **Mas'ul:** Yahyo (UI/UX Engineer)
+> **Mas'ul:** Numton (Shared Components Engineer)
 > **Sprint:** 1-hafta (eng birinchi qilinadi!)
 > **Prioritet:** ⭐⭐⭐ (KRITIK — boshqa o'quvchilar shu kutubxonadan foydalanadi)
 
