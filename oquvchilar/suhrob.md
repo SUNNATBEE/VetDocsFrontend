@@ -2,6 +2,8 @@
 
 ## Sening roling
 
+yangi narsa qoshdim
+
 Sen "kirish-chiqish eshigi"ni qilasan.
 Foydalanuvchi account ochadi, login qiladi, logout qiladi.
 
@@ -75,6 +77,8 @@ export const authApi = {
 Bu faylda `authApi.login` ni chaqirib, kelgan tokenni saqlaysiz.
 
 Kod yoniga shunaqa komment yozing:
+
+
 
 ```ts
 // 1) User email/parol yuboradi
