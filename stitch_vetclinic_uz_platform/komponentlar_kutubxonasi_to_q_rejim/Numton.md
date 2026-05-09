@@ -1,6 +1,6 @@
 # Komponentlar kutubxonasi (Dark Mode)
 
-> **Mas'ul:** Yahyo (UI/UX Engineer)
+> **Mas'ul:** Numton (Shared Components Engineer)
 > **Sprint:** 1-hafta (light mode bilan birga)
 > **Prioritet:** ⭐⭐⭐ (admin panel default dark mode'da, shuning uchun bu shart)
 

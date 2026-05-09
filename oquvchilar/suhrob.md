@@ -1,43 +1,45 @@
-# Suhrob uchun to'liq topshiriq (Auth)
+# Suhrob — Auth (Register / Login / Logout)
 
 ## Sening roling
 
-yangi narsa qoshdim
-
-Sen "kirish-chiqish eshigi"ni qilasan.
-Foydalanuvchi account ochadi, login qiladi, logout qiladi.
+Sen saytning "kirish-chiqish eshigi"ni yasaysan.
+Foydalanuvchi shu yerda hisob ochadi, kiradi, chiqadi va parolni tiklaydi.
 
 ## Qayerda kod yozasan?
 
 ### Auth API va state
+
 - `src/features/auth/api/auth.api.ts`
 - `src/features/auth/store/auth.store.ts`
 - `src/features/auth/types.ts`
 
 ### Auth hooks
+
 - `src/features/auth/hooks/useLogin.ts`
 - `src/features/auth/hooks/useRegister.ts`
 - `src/features/auth/hooks/useLogout.ts`
 - `src/features/auth/hooks/useCurrentUser.ts`
 - `src/features/auth/hooks/useRequireAuth.ts`
 
-### Auth schema va UI
+### Validatsiya va UI
+
 - `src/features/auth/schemas/auth.schema.ts`
 - `src/features/auth/components/LoginForm.tsx`
 - `src/features/auth/components/RegisterForm.tsx`
 - `src/features/auth/components/ForgotPasswordForm.tsx`
 
-### Auth pages
+### Auth sahifalar
+
 - `src/app/(auth)/login/page.tsx`
 - `src/app/(auth)/register/page.tsx`
 
-## Nima qilasan? (oddiy tilda)
+## Nima qilasan?
 
 1. Register endpointni ulang.
-2. Login endpointni ulang.
-3. Tokenni storega yozing.
-4. Logout bo'lganda token va userni tozalang.
-5. Login bo'lmagan user protected sahifaga kira olmasin.
+2. Login endpointni ulang va kelgan tokenni saqlang.
+3. Logout bo'lganda token va `user` ni tozalang.
+4. Refresh oqimi ishlashini ta'minlang (`apiClient` Sunnatbek tomonidan tayyorlangan).
+5. Login bo'lmagan user protected sahifaga kira olmasligini tekshiring.
 
 ## Swaggerdan qaysi endpointlar kerak?
 
@@ -45,13 +47,11 @@ Foydalanuvchi account ochadi, login qiladi, logout qiladi.
 - `POST /auth/login`
 - `POST /auth/refresh`
 - `POST /auth/logout`
-- (`GET /auth/me` bo'lsa) userni olish uchun ishlating
+- `GET /auth/me` (mavjud bo'lsa) — joriy userni olish uchun
 
-## Qaysi faylga qanday kod yozasan? (copy-paste yo'l)
+## Asosiy fayllar
 
-### 1) `src/features/auth/api/auth.api.ts`
-
-Bu faylda backendga so'rov yuborasiz.
+### `src/features/auth/api/auth.api.ts`
 
 ```ts
 import { apiClient } from "@/src/lib/api/client";
@@ -68,64 +68,66 @@ export const authApi = {
     apiClient.post(endpoints.auth.refresh, { refreshToken }),
 
   logout: (refreshToken?: string) =>
-    apiClient.post(endpoints.auth.logout, refreshToken ? { refreshToken } : undefined),
+    apiClient.post(
+      endpoints.auth.logout,
+      refreshToken ? { refreshToken } : undefined,
+    ),
 };
 ```
 
-### 2) `src/features/auth/hooks/useLogin.ts`
+### 2 `src/features/auth/hooks/useLogin.ts`
 
 Bu faylda `authApi.login` ni chaqirib, kelgan tokenni saqlaysiz.
 
 Kod yoniga shunaqa komment yozing:
 
-
-
 ```ts
 // 1) User email/parol yuboradi
 // 2) Backend accessToken qaytaradi
-// 3) Tokenni store/localStoragega saqlaymiz
+// 3) Tokenni store/localStorage ga saqlaymiz
+// 4) Xato bo'lsa userga tushunarli xabar chiqaramiz
 ```
 
-### 3) `src/features/auth/store/auth.store.ts` (yo'q bo'lsa yarating)
+### `src/features/auth/store/auth.store.ts`
 
 Ichida kamida shular bo'lsin:
+
 - `accessToken`
 - `refreshToken`
 - `user`
-- `setSession`
-- `clearSession`
+- `setSession(...)`
+- `clearSession()`
 
-## Juda oddiy tekshiruv
+## Tezkor qo'lda test
 
-1. Register bo'ling.
-2. Login qiling.
-3. Sahifani refresh qiling.
-4. Agar user chiqib ketmasa -> yaxshi.
-5. Logout bosing.
-6. Protected sahifa ochilmasa -> yaxshi.
+1. Register bo'l.
+2. Login qil.
+3. Sahifani refresh qil — sessiya saqlanib tursin.
+4. Logout bos — protected sahifa ochilmasligi kerak.
 
 ## Done checklist
 
 - [ ] Register ishlaydi
 - [ ] Login ishlaydi
-- [ ] Refresh flow ishlaydi
+- [ ] Refresh oqimi ishlaydi
 - [ ] Logout ishlaydi
+- [ ] Forgot password formasi tayyor
 - [ ] Protected sahifa guard ishlaydi
 - [ ] `npm run lint` yashil
 
-## 1-kun / 2-kun / 3-kun reja
+## 3 kunlik reja
 
 ### 1-kun
-- `auth.api.ts` da `register` va `login` endpointlarini yoz.
-- `auth.schema.ts` da login/register validatsiya yoz.
-- `LoginForm.tsx` ni backendga ulab test qil.
+- `auth.api.ts` da `register` va `login` ni ulang.
+- `auth.schema.ts` da validatsiya yozing.
+- `LoginForm.tsx` ni backendga ulab test qiling.
 
 ### 2-kun
-- `RegisterForm.tsx` ni tugat.
-- `auth.store.ts` (yo'q bo'lsa yarat) ichida token+user saqlashni qil.
-- `useLogin.ts` va `useRegister.ts` (yo'q bo'lsa yarat) hooklarni yoz.
+- `RegisterForm.tsx` ni tugating.
+- `auth.store.ts` ichida token va user saqlashni qiling.
+- `useLogin.ts`, `useRegister.ts` ni yozing.
 
 ### 3-kun
-- `useLogout.ts`, `useCurrentUser.ts`, `useRequireAuth.ts` (yo'q bo'lsa yarat) ni qil.
-- `login/page.tsx` va `register/page.tsx` ni to'liq ishlaydigan qil.
-- Refresh va logout flowni tekshir.
+- `useLogout.ts`, `useCurrentUser.ts`, `useRequireAuth.ts` ni qiling.
+- `login/page.tsx` va `register/page.tsx` ni yakunlang.
+- `ForgotPasswordForm.tsx` ni tayyorlang va refresh / logout oqimini tekshiring.

@@ -1,6 +1,6 @@
 # Admin Dashboard — Yorug' rejim (Light Mode)
 
-> **Mas'ul:** Hayot (Admin Panel Engineer)
+> **Mas'ul:** Sunnatbek (Tech Lead — Admin Panel)
 > **Sprint:** 4-hafta
 > **Prioritet:** ⭐⭐ (foydalanuvchi tanlovi)
 

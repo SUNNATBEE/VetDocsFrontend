@@ -1,13 +1,14 @@
-# Doniyor uchun to'liq topshiriq (Clinics + Map)
+# Doniyor — Clinics + Search + Map
 
-## Sening roling
+## Roling
 
-Sen foydalanuvchi klinika topadigan eng katta qismni qilasan.
-Ya'ni ro'yxat, detail, qidiruv va xarita.
+Sen foydalanuvchi klinika topadigan asosiy qismni yasaysan:
+ro'yxat, detail sahifa, qidiruv va xarita.
 
 ## Qayerda kod yozasan?
 
 ### Clinics API va hooks
+
 - `src/features/clinics/api/clinics.api.ts`
 - `src/features/clinics/hooks/useClinics.ts`
 - `src/features/clinics/hooks/useClinic.ts`
@@ -15,6 +16,7 @@ Ya'ni ro'yxat, detail, qidiruv va xarita.
 - `src/features/clinics/types.ts`
 
 ### Clinics UI
+
 - `src/features/clinics/components/ClinicCard.tsx`
 - `src/features/clinics/components/ClinicList.tsx`
 - `src/features/clinics/components/ClinicFilters.tsx`
@@ -24,30 +26,29 @@ Ya'ni ro'yxat, detail, qidiruv va xarita.
 - `src/features/clinics/components/ImageGallery.tsx`
 
 ### Sahifalar
+
 - `src/app/(main)/clinics/page.tsx`
 - `src/app/(main)/clinics/[id]/page.tsx`
 - `src/app/(main)/map/page.tsx`
 - `src/app/(main)/search/page.tsx`
 
-## Nima qilasan? (oddiy tilda)
+## Nima qilasan?
 
 1. Backenddan klinikalarni olib chiqasan.
-2. Kartochkada klinika nomi, manzili, rating ko'rinadi.
-3. Klinikani bossak detail sahifa ochiladi.
+2. Kartochkada nom, manzil va rating ko'rinadi.
+3. Klinikani bossang detail sahifa ochiladi.
 4. Filter va qidiruv qo'shasan.
-5. Xaritada markerlar chiqadi.
+5. Xaritada markerlar chiqadi va marker bossa detailga o'tadi.
 
 ## Swaggerdan qaysi endpointlar kerak?
 
 - `GET /clinics/nearby`
 - `GET /clinics/:id`
-- (`GET /clinics` bo'lsa) umumiy list uchun ishlat
+- `GET /clinics` (mavjud bo'lsa) — umumiy ro'yxat va qidiruv uchun
 
-## Qaysi faylga qanday kod yozasan? (juda oson)
+## Asosiy fayllar
 
-### 1) `src/features/clinics/api/clinics.api.ts`
-
-Bu fayl klinikalarni olib keladi:
+### `src/features/clinics/api/clinics.api.ts`
 
 ```ts
 import { apiClient } from "@/src/lib/api/client";
@@ -55,44 +56,42 @@ import { endpoints } from "@/src/lib/api/endpoints";
 
 export const clinicsApi = {
   getNearby: (lat: number, lng: number, radiusKm = 10) =>
-    apiClient.get(`${endpoints.clinics.nearby}?lat=${lat}&lng=${lng}&radiusKm=${radiusKm}`),
+    apiClient.get(
+      `${endpoints.clinics.nearby}?lat=${lat}&lng=${lng}&radiusKm=${radiusKm}`,
+    ),
 
   getById: (id: string) => apiClient.get(endpoints.clinics.byId(id)),
 };
 ```
 
-### 2) `src/features/clinics/hooks/useClinics.ts`
-
-Shu hook API chaqiradi va listni UIga beradi.
-
-Komment yozing:
+### `src/features/clinics/hooks/useClinics.ts`
 
 ```ts
-// Bu hook "klinika ro'yxatini olib keladigan kran"ga o'xshaydi.
+// Bu hook "klinika ro'yxatini olib keladigan kran".
 // UI shu krandan suv olgandek data oladi.
 ```
 
-### 3) `src/app/(main)/clinics/page.tsx`
+### `src/app/(main)/clinics/page.tsx`
 
-- `useClinics` ni chaqiring.
-- `loading`, `error`, `empty` holatni alohida ko'rsating.
-- Keyin `ClinicList` render qiling.
+- `useClinics` ni chaqir.
+- `loading`, `error`, `empty` holatlarni alohida ko'rsat (Numton'ning `EmptyState`, `LoadingSpinner`, `ErrorMessage` komponentlarini ishlat).
+- So'ng `ClinicList` render qil.
 
 ## Done checklist
 
 - [ ] Klinika ro'yxati chiqadi
 - [ ] Klinik detail ochiladi
-- [ ] Qidiruv/filter ishlaydi
+- [ ] Qidiruv va filter ishlaydi
 - [ ] Xarita marker bilan ishlaydi
-- [ ] Loading/Error/Empty holatlar bor
+- [ ] Loading / Error / Empty holatlar bor
 - [ ] `npm run lint` yashil
 
-## 1-kun / 2-kun / 3-kun reja
+## 3 kunlik reja
 
 ### 1-kun
 - `clinics.api.ts` da `GET /clinics/nearby` va `GET /clinics/:id` ni yoz.
-- `useClinics.ts` va `useClinic.ts` (yo'q bo'lsa yarat) ni yoz.
-- `ClinicCard.tsx` va `ClinicList.tsx` (yo'q bo'lsa yarat) boshlang.
+- `useClinics.ts` va `useClinic.ts` ni yoz.
+- `ClinicCard.tsx`, `ClinicList.tsx` ni boshlang.
 
 ### 2-kun
 - `clinics/page.tsx` da listni chiqargin.
@@ -102,4 +101,4 @@ Komment yozing:
 ### 3-kun
 - `ClinicMap.tsx` va `map/page.tsx` da markerlarni chiqargin.
 - `useNearbyClinics.ts` bilan geolocation ulagin.
-- Loading/error/empty holatlarni tekshir.
+- Loading / error / empty holatlarni tekshir.

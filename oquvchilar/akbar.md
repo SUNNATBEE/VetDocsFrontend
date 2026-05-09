@@ -1,12 +1,14 @@
-# Akbar uchun to'liq topshiriq (Profile + Reviews)
+# Akbar — Reviews + Profile + Favorites
 
-## Sening roling
+## Roling
 
-Sen foydalanuvchining profil va sharh (review) qismini qilasan.
+Sen foydalanuvchining sharh (review) va profil qismini yasaysan.
+User klinika haqida fikrini qoldiradi, o'z profilini ko'radi va sevimlilarini saqlaydi.
 
 ## Qayerda kod yozasan?
 
 ### Reviews API va hooks
+
 - `src/features/reviews/api/reviews.api.ts`
 - `src/features/reviews/hooks/useReviews.ts`
 - `src/features/reviews/hooks/useCreateReview.ts`
@@ -15,87 +17,92 @@ Sen foydalanuvchining profil va sharh (review) qismini qilasan.
 - `src/features/reviews/types.ts`
 
 ### Reviews UI
+
 - `src/features/reviews/components/ReviewForm.tsx`
 - `src/features/reviews/components/ReviewCard.tsx`
 - `src/features/reviews/components/ReviewList.tsx`
 - `src/features/reviews/components/RatingStars.tsx`
 
-### Profile pages
+### Profile sahifalar
+
 - `src/app/(main)/profile/page.tsx`
 - `src/app/(main)/profile/favorites/page.tsx`
 
-## Nima qilasan? (oddiy tilda)
+## Nima qilasan?
 
 1. User klinikaga yulduz va komment yozadi.
 2. Sharhlar ro'yxat bo'lib chiqadi.
-3. O'z sharhini edit/delete qila oladi.
-4. Profil sahifasini chiqaradi.
-5. Favorites bo'limini ishlatadi.
+3. User o'z sharhini edit / delete qila oladi (boshqaning sharhini emas).
+4. Profil sahifasida user ma'lumotlari ko'rinadi.
+5. Favorites bo'limi (lokal yoki backend) ishlaydi.
 
 ## Swaggerdan qaysi endpointlar kerak?
 
 - `POST /clinics/:id/reviews`
-- (`GET /clinics/:id/reviews` bo'lsa) list uchun
-- (`PATCH /reviews/:id` bo'lsa) edit uchun
-- (`DELETE /reviews/:id` bo'lsa) delete uchun
+- `GET /clinics/:id/reviews` (mavjud bo'lsa) — list uchun
+- `PATCH /reviews/:id` (mavjud bo'lsa) — edit uchun
+- `DELETE /reviews/:id` (mavjud bo'lsa) — delete uchun
 
-## Qaysi faylga qanday kod yozasan?
+## Asosiy fayllar
 
-### 1) `src/features/reviews/api/reviews.api.ts`
-
-Eng kerakli endpoint:
+### `src/features/reviews/api/reviews.api.ts`
 
 ```ts
 import { apiClient } from "@/src/lib/api/client";
 import { endpoints } from "@/src/lib/api/endpoints";
 
 export const reviewsApi = {
-  create: (clinicId: string, rating: number, comment: string, token: string) =>
+  create: (
+    clinicId: string,
+    rating: number,
+    comment: string,
+    token: string,
+  ) =>
     apiClient.post(
       endpoints.clinics.reviews(clinicId),
       { rating, comment },
-      token
+      token,
     ),
 };
 ```
 
-### 2) `src/features/reviews/hooks/useReviews.ts`
+### `src/features/reviews/hooks/useReviews.ts`
 
-Bu hook review listni chiqaradi.  
-Agar backendda alohida list endpoint bo'lmasa, `GET /clinics/:id` ichidagi `reviews` ni oling.
+Klinikaga tegishli review ro'yxatini chiqaradi.
+Agar alohida list endpoint bo'lmasa, `GET /clinics/:id` javobidagi `reviews` maydonini oling.
 
-### 3) `src/features/reviews/components/ReviewForm.tsx`
-
-Komment yozing:
+### `src/features/reviews/components/ReviewForm.tsx`
 
 ```ts
 // User "Yuborish" tugmasini bosganda:
 // 1) rating + comment backendga ketadi
-// 2) muvaffaqiyat bo'lsa ro'yxatni qayta yangilaymiz
+// 2) muvaffaqiyat bo'lsa ro'yxat yangilanadi
+// 3) xato bo'lsa Numton'ning Toast komponenti orqali xabar chiqadi
 ```
 
 ## Done checklist
 
 - [ ] Review qo'shish ishlaydi
-- [ ] Review list chiqadi
-- [ ] O'z reviewini edit/delete qiladi
+- [ ] Review ro'yxati chiqadi
+- [ ] O'z reviewini edit / delete qiladi
 - [ ] Profil sahifasi ishlaydi
-- [ ] Loading/Error/Empty bor
+- [ ] Favorites bo'limi ishlaydi
+- [ ] Loading / Error / Empty holatlar bor
 - [ ] `npm run lint` yashil
 
-## 1-kun / 2-kun / 3-kun reja
+## 3 kunlik reja
 
 ### 1-kun
-- `reviews.api.ts` da `POST /clinics/:id/reviews` ni ulagin.
-- `useReviews.ts` ni klinika review list uchun tugat.
-- `ReviewForm.tsx` va `RatingStars.tsx` (yo'q bo'lsa yarat) ni yoz.
+- `reviews.api.ts` da `POST /clinics/:id/reviews` ni ulang.
+- `useReviews.ts` ni klinika review listi uchun tugating.
+- `ReviewForm.tsx` va `RatingStars.tsx` ni yozing.
 
 ### 2-kun
-- `ReviewList.tsx` va `ReviewCard.tsx` (yo'q bo'lsa yarat) ni qil.
-- `useCreateReview.ts`, `useUpdateReview.ts`, `useDeleteReview.ts` (yo'q bo'lsa yarat) ni yoz.
-- Review qo'shishdan keyin list yangilanishini sozla.
+- `ReviewList.tsx` va `ReviewCard.tsx` ni qiling.
+- `useCreateReview.ts`, `useUpdateReview.ts`, `useDeleteReview.ts` ni yozing.
+- Review qo'shgandan keyin list yangilanishini sozlang.
 
 ### 3-kun
-- `profile/page.tsx` ni yakunla.
-- `profile/favorites/page.tsx` ni local holatda ishlat.
-- O'z reviewini edit/delete va boshqa user reviewini edit qila olmaslikni tekshir.
+- `profile/page.tsx` ni yakunlang.
+- `profile/favorites/page.tsx` ni ishlatib chiqing.
+- O'z reviewini edit / delete va boshqa user sharhini o'zgartira olmaslikni tekshiring.

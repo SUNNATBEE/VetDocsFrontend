@@ -98,7 +98,7 @@ function HighlightMatch({ text, query }: { text: string, query: string }) {
 
 - ✅ **Default:** natijalar yuklangan
 - ✅ **Loading:** Skeleton (`qidiruv_yuklanmoqda` design)
-- ✅ **Empty:** EmptyState (`natija_topilmadi_desktop` design — Yahyo'ning komponenti)
+- ✅ **Empty:** EmptyState (`natija_topilmadi_desktop` design — Numton'ning komponenti)
 - ✅ **Error:** "Qidiruvda xato. Qayta urining"
 
 ## 8. URL sync

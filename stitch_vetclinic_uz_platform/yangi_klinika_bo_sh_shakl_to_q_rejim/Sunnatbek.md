@@ -1,6 +1,6 @@
 # Admin — Yangi klinika qo'shish (Bo'sh shakl)
 
-> **Mas'ul:** Hayot (Admin Panel Engineer)
+> **Mas'ul:** Sunnatbek (Tech Lead — Admin Panel)
 > **Sprint:** 4-hafta
 > **Prioritet:** ⭐⭐⭐ (admin asosiy CRUD)
 

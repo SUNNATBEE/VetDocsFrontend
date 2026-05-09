@@ -1,6 +1,6 @@
 # Admin Dashboard — To'q rejim (Dark Mode)
 
-> **Mas'ul:** Hayot (Admin Panel Engineer)
+> **Mas'ul:** Sunnatbek (Tech Lead — Admin Panel)
 > **Sprint:** 4-hafta
 > **Prioritet:** ⭐⭐⭐ (admin panel uy sahifasi)
 

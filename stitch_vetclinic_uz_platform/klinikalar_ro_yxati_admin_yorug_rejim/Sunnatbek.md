@@ -1,6 +1,6 @@
 # Admin — Klinikalar ro'yxati (Light Mode + Delete Confirmation)
 
-> **Mas'ul:** Hayot (Admin Panel Engineer)
+> **Mas'ul:** Sunnatbek (Tech Lead — Admin Panel)
 > **Sprint:** 4-hafta
 > **Prioritet:** ⭐⭐⭐
 
@@ -30,7 +30,7 @@ Modal (centered):
 
 | Fayl | Tarkib |
 |---|---|
-| `src/components/shared/ConfirmDialog.tsx` | Reusable dialog (Yahyo bilan birga) |
+| `src/components/shared/ConfirmDialog.tsx` | Reusable dialog (Numton bilan birga) |
 | `src/features/admin/hooks/useDeleteClinic.ts` | Mutation + onSuccess invalidate cache |
 
 ## 4. shadcn

@@ -1,6 +1,6 @@
 # Admin — Klinika shakli (Xatolik holati)
 
-> **Mas'ul:** Hayot (Admin Panel Engineer)
+> **Mas'ul:** Sunnatbek (Tech Lead — Admin Panel)
 > **Sprint:** 4-hafta
 > **Prioritet:** ⭐⭐ (validation UX muhim)
 

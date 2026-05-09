@@ -1,6 +1,6 @@
 # Admin — Klinikalar bo'sh va yuklanish holatlari
 
-> **Mas'ul:** Hayot (Admin Panel Engineer)
+> **Mas'ul:** Sunnatbek (Tech Lead — Admin Panel)
 > **Sprint:** 4-hafta
 > **Prioritet:** ⭐ (UX polish)
 
@@ -46,7 +46,7 @@ Center card (dashed border):
 |---|---|
 | `src/app/admin/clinics/loading.tsx` | Next.js loading.tsx |
 | `src/features/admin/components/AdminClinicsTableSkeleton.tsx` | Loading skeleton |
-| `src/components/shared/EmptyState.tsx` | Yahyo'ning komponenti, qayta foydalanish |
+| `src/components/shared/EmptyState.tsx` | Numton'ning komponenti, qayta foydalanish |
 
 ## 4. Loading skeleton
 
