@@ -3,58 +3,53 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { clinicsApi } from "@/src/features/clinics/api/clinics.api";
 import type { Clinic } from "@/src/features/clinics/types";
+import { getApiErrorMessage } from "@/src/lib/api/error";
 
 export function useClinic(id: string) {
+  const requestIdRef = useRef(0);
   const [data, setData] = useState<Clinic | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [refetchTick, setRefetchTick] = useState(0);
 
-  const activeRequestRef = useRef(0);
+  const runRequest = useCallback(async () => {
+    const requestId = requestIdRef.current + 1;
+    requestIdRef.current = requestId;
 
-  const refetch = useCallback(() => {
-    setRefetchTick((tick) => tick + 1);
-  }, []);
-
-  useEffect(() => {
-    if (!id) {
+    if (!id.trim()) {
+      setData(null);
+      setError("Klinika ID topilmadi. Klinikalar ro'yxatidan qayta tanlang.");
+      setIsLoading(false);
       return;
     }
 
-    const requestId = activeRequestRef.current + 1;
-    activeRequestRef.current = requestId;
+    setIsLoading(true);
+    setError(null);
 
-    const isStillActive = () => activeRequestRef.current === requestId;
+    try {
+      const clinic = await clinicsApi.getById(id);
+      if (requestId !== requestIdRef.current) {
+        return;
+      }
 
-    const promise = clinicsApi.getById(id);
+      setData(clinic);
+    } catch (unknownError) {
+      if (requestId !== requestIdRef.current) {
+        return;
+      }
 
-    Promise.resolve().then(() => {
-      if (!isStillActive()) return;
-      setIsLoading(true);
-      setError(null);
-      setData(null);
-    });
-
-    promise
-      .then((clinic) => {
-        if (!isStillActive()) return;
-        setData(clinic);
-      })
-      .catch((unknownError: unknown) => {
-        if (!isStillActive()) return;
-        const message =
-          unknownError instanceof Error ? unknownError.message : "Klinika ma'lumotlari topilmadi";
-        setError(message);
-      })
-      .finally(() => {
-        if (!isStillActive()) return;
+      setError(getApiErrorMessage(unknownError, "Klinika ma'lumotlari topilmadi"));
+    } finally {
+      if (requestId === requestIdRef.current) {
         setIsLoading(false);
-      });
+      }
+    }
+  }, [id]);
 
-    return () => {
-      activeRequestRef.current += 1;
-    };
-  }, [id, refetchTick]);
+  useEffect(() => {
+    queueMicrotask(() => {
+      void runRequest();
+    });
+  }, [runRequest]);
 
-  return { data, isLoading, error, refetch };
+  return { data, isLoading, error, refetch: runRequest };
 }

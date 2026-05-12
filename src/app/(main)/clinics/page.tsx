@@ -7,6 +7,11 @@ import { useClinics } from "@/src/features/clinics/hooks/useClinics";
 
 export default function ClinicsPage() {
   const { data, filteredData, filters, setFilters, isLoading, error, refetch } = useClinics();
+  const hasActiveFilters =
+    filters.query.trim() !== "" ||
+    filters.city !== "all" ||
+    filters.openNow ||
+    filters.minRating > 0;
 
   return (
     <main className="min-h-screen bg-slate-50">
@@ -38,6 +43,7 @@ export default function ClinicsPage() {
           <div className="mt-6 rounded-[8px] border border-red-200 bg-white p-8">
             <h2 className="text-xl font-semibold text-red-800">Xatolik</h2>
             <p className="mt-2 text-sm text-slate-600">{error}</p>
+            {/* TODO: Numton Button komponenti tayyor bo'lganda shu native button almashtiriladi. */}
             <button
               type="button"
               onClick={() => void refetch()}
@@ -48,7 +54,9 @@ export default function ClinicsPage() {
           </div>
         ) : filteredData.length === 0 ? (
           <div className="mt-6 rounded-[8px] border border-slate-200 bg-white p-8 text-slate-600">
-            Bu filter bo&apos;yicha klinika topilmadi.
+            {hasActiveFilters
+              ? "Bu filter bo'yicha klinika topilmadi."
+              : "Hozircha klinikalar yo'q."}
           </div>
         ) : (
           <div className="mt-6 grid gap-6 xl:grid-cols-[1fr_420px]">

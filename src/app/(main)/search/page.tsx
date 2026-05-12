@@ -5,7 +5,7 @@ import { ClinicList } from "@/src/features/clinics/components/ClinicList";
 import { useClinics } from "@/src/features/clinics/hooks/useClinics";
 
 export default function SearchPage() {
-  const { data, filteredData, filters, setFilters, isLoading, error } = useClinics();
+  const { data, filteredData, filters, setFilters, isLoading, error, refetch } = useClinics();
 
   return (
     <main className="min-h-screen bg-slate-50">
@@ -24,8 +24,16 @@ export default function SearchPage() {
             Qidiruv ma&apos;lumotlari yuklanmoqda...
           </div>
         ) : error ? (
-          <div className="mt-6 rounded-[8px] border border-red-200 bg-white p-8 text-red-800">
-            {error}
+          <div className="mt-6 rounded-[8px] border border-red-200 bg-white p-8">
+            <p className="text-red-800">{error}</p>
+            {/* TODO: Numton Button komponenti tayyor bo'lganda shu native button almashtiriladi. */}
+            <button
+              type="button"
+              onClick={() => void refetch()}
+              className="mt-4 rounded-[8px] bg-slate-950 px-4 py-2 text-sm font-semibold text-white"
+            >
+              Qayta yuklash
+            </button>
           </div>
         ) : filteredData.length ? (
           <div className="mt-6">

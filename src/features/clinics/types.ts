@@ -4,8 +4,8 @@ export type Clinic = {
   phone: string;
   address: string;
   city: string;
-  latitude: number;
-  longitude: number;
+  latitude: number | null;
+  longitude: number | null;
   distanceKm?: number;
   isOpenNow?: boolean;
   todayHours?: OpeningSlot | null;

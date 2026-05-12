@@ -2,68 +2,108 @@
 
 import { useEffect, useState } from "react";
 import { useClinics } from "@/src/features/clinics/hooks/useClinics";
+import type { NearbyClinicsParams } from "@/src/features/clinics/types";
 
-type Coords = { lat: number; lng: number };
-
-type UseNearbyOptions = {
-  radiusKm?: number;
-  // Geolocation taqiqlanganda yoki mavjud bo'lmaganda ishlatiladigan koordinatalar.
-  // Default — Toshkent markazi.
-  fallback?: Coords;
+const FALLBACK_LOCATION: NearbyClinicsParams = {
+  lat: 41.31,
+  lng: 69.25,
+  radiusKm: 200,
 };
 
-const TASHKENT: Coords = { lat: 41.31, lng: 69.25 };
-
-// Foydalanuvchining geolocation'ini olib, shu joydagi klinikalarni qaytaradi.
-// Brauzer ruxsat bermasa yoki SSR holatida fallback (Toshkent) ishlatiladi.
-export function useNearbyClinics(options: UseNearbyOptions = {}) {
-  const fallback = options.fallback ?? TASHKENT;
-  const radiusKm = options.radiusKm ?? 10;
-
-  const [coords, setCoords] = useState<Coords>(fallback);
-  const [isLocating, setIsLocating] = useState(true);
+export function useNearbyClinics(params: Partial<NearbyClinicsParams> = {}) {
+  const requestedLat = params.lat;
+  const requestedLng = params.lng;
+  const requestedRadiusKm = params.radiusKm ?? FALLBACK_LOCATION.radiusKm;
+  const hasRequestedLocation = typeof requestedLat === "number" && typeof requestedLng === "number";
+  const [location, setLocation] = useState<NearbyClinicsParams | null>(
+    hasRequestedLocation
+      ? {
+          lat: requestedLat,
+          lng: requestedLng,
+          radiusKm: requestedRadiusKm,
+        }
+      : null,
+  );
+  const [isLocating, setIsLocating] = useState(!hasRequestedLocation);
   const [geoError, setGeoError] = useState<string | null>(null);
+  const clinicsState = useClinics(location);
 
   useEffect(() => {
-    if (typeof window === "undefined" || !("geolocation" in navigator)) {
-      // setState'ni effect ichida sinxron chaqirmaslik uchun microtask
-      Promise.resolve().then(() => setIsLocating(false));
-      return;
+    let isActive = true;
+
+    if (hasRequestedLocation) {
+      queueMicrotask(() => {
+        if (!isActive) {
+          return;
+        }
+
+        setLocation({
+          lat: requestedLat,
+          lng: requestedLng,
+          radiusKm: requestedRadiusKm,
+        });
+        setGeoError(null);
+        setIsLocating(false);
+      });
+
+      return () => {
+        isActive = false;
+      };
     }
 
-    let cancelled = false;
+    if (typeof navigator === "undefined" || !navigator.geolocation) {
+      queueMicrotask(() => {
+        if (!isActive) {
+          return;
+        }
+
+        setGeoError("Brauzer geolokatsiyani qo'llab-quvvatlamaydi. Toshkent fallback ishlatildi.");
+        setIsLocating(false);
+      });
+
+      return () => {
+        isActive = false;
+      };
+    }
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        if (cancelled) return;
-        setCoords({
+        if (!isActive) {
+          return;
+        }
+
+        setLocation({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
+          radiusKm: requestedRadiusKm,
         });
+        setGeoError(null);
         setIsLocating(false);
       },
-      (error) => {
-        if (cancelled) return;
-        setGeoError(error.message || "Joylashuvni aniqlab bo'lmadi");
+      () => {
+        if (!isActive) {
+          return;
+        }
+
+        setLocation({ ...FALLBACK_LOCATION, radiusKm: requestedRadiusKm });
+        setGeoError("Joylashuv olinmadi. Toshkent markazi fallback sifatida ishlatildi.");
         setIsLocating(false);
       },
-      { enableHighAccuracy: false, timeout: 8000, maximumAge: 60_000 },
+      {
+        enableHighAccuracy: true,
+        maximumAge: 60_000,
+        timeout: 8_000,
+      },
     );
 
     return () => {
-      cancelled = true;
+      isActive = false;
     };
-  }, []);
-
-  const clinics = useClinics({
-    lat: coords.lat,
-    lng: coords.lng,
-    radiusKm,
-  });
+  }, [hasRequestedLocation, requestedLat, requestedLng, requestedRadiusKm]);
 
   return {
-    ...clinics,
-    coords,
+    ...clinicsState,
+    location,
     isLocating,
     geoError,
   };
