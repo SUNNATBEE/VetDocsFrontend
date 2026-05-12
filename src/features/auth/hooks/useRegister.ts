@@ -5,31 +5,34 @@ import { authApi } from "@/src/features/auth/api/auth.api";
 import { setSession } from "@/src/features/auth/store/auth.store";
 import type { ApiError } from "@/src/lib/api/error";
 
-type LoginInput = { email: string; password: string };
+type RegisterInput = { email: string; password: string; name?: string };
 
-type UseLoginReturn = {
-  login: (input: LoginInput) => Promise<boolean>; // true = muvaffaqiyatli
+type UseRegisterReturn = {
+  register: (input: RegisterInput) => Promise<boolean>; // true = muvaffaqiyatli
   isLoading: boolean;
   error: string | null;
 };
 
-export function useLogin(): UseLoginReturn {
+export function useRegister(): UseRegisterReturn {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function login(input: LoginInput): Promise<boolean> {
+  async function register(input: RegisterInput): Promise<boolean> {
     setIsLoading(true);
     setError(null);
     try {
-      // 1) User email/parol yuboradi
-      // 2) Backend accessToken qaytaradi
-      // 3) Tokenni store/localStorage ga saqlaymiz
-      const result = await authApi.login(input);
+      // 1) User ma'lumotlarini yuboramiz
+      // 2) Backend token + user qaytaradi
+      // 3) Sessiyani saqlaymiz — user darhol login bo'ladi
+      const result = await authApi.register(input);
       setSession(result.accessToken, result.refreshToken, result.user);
       return true;
     } catch (err) {
+      // TypeError (Failed to fetch) yoki ApiError
       const msg =
-        (err as { message?: string })?.message ?? "Login amalga oshmadi";
+        (err as { message?: string })?.message ??
+        "Ro'yxatdan o'tish amalga oshmadi";
+      // "Failed to fetch" → foydalanuvchiga tushunarli xabar
       setError(
         msg === "Failed to fetch"
           ? "Server bilan bog'lanib bo'lmadi. Internet aloqasini tekshiring."
@@ -41,5 +44,5 @@ export function useLogin(): UseLoginReturn {
     }
   }
 
-  return { login, isLoading, error };
+  return { register, isLoading, error };
 }
