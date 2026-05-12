@@ -5,7 +5,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { MobileNav } from "./MobileNav";
-import { ThemeToggle } from "./ThemeToggle";
+import { NavAuthButton } from "@/src/features/auth/components/NavAuthButton";
 
 const NAV_LINKS = [
   { href: "/clinics",  label: "Klinikalar"   },
@@ -37,12 +37,10 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
-            <button className="hidden md:block text-[var(--primary)] font-semibold hover:opacity-80 transition-all text-sm">
-              Kirish
-            </button>
-            <Link 
-              href="/clinics" 
-              className="bg-[var(--primary)] text-[var(--on-primary)] px-5 py-2.5 rounded-lg font-bold hover:opacity-90 active:scale-95 transition-all text-sm shadow-sm"
+            <NavAuthButton />
+            <Link
+              href="/clinics"
+              className="hidden md:inline-flex bg-[var(--primary)] text-[var(--on-primary)] px-5 py-2.5 rounded-lg font-bold hover:opacity-90 active:scale-95 transition-all text-sm shadow-sm"
             >
               Band qilish
             </Link>
