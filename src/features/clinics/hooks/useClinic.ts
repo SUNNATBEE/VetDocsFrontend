@@ -1,61 +1,55 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { clinicsApi } from "@/src/features/clinics/api/clinics.api";
 import type { Clinic } from "@/src/features/clinics/types";
+import { getApiErrorMessage } from "@/src/lib/api/error";
 
 export function useClinic(id: string) {
+  const requestIdRef = useRef(0);
   const [data, setData] = useState<Clinic | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const loadClinic = useCallback(async () => {
+  const runRequest = useCallback(async () => {
+    const requestId = requestIdRef.current + 1;
+    requestIdRef.current = requestId;
+
+    if (!id.trim()) {
+      setData(null);
+      setError("Klinika ID topilmadi. Klinikalar ro'yxatidan qayta tanlang.");
+      setIsLoading(false);
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
 
     try {
-      setData(await clinicsApi.getById(id));
+      const clinic = await clinicsApi.getById(id);
+      if (requestId !== requestIdRef.current) {
+        return;
+      }
+
+      setData(clinic);
     } catch (unknownError) {
-      const message =
-        unknownError instanceof Error ? unknownError.message : "Klinika ma'lumotlari topilmadi";
-      setError(message);
+      if (requestId !== requestIdRef.current) {
+        return;
+      }
+
+      setError(getApiErrorMessage(unknownError, "Klinika ma'lumotlari topilmadi"));
     } finally {
-      setIsLoading(false);
+      if (requestId === requestIdRef.current) {
+        setIsLoading(false);
+      }
     }
   }, [id]);
 
   useEffect(() => {
-    let isActive = true;
+    queueMicrotask(() => {
+      void runRequest();
+    });
+  }, [runRequest]);
 
-    clinicsApi
-      .getById(id)
-      .then((clinic) => {
-        if (!isActive) {
-          return;
-        }
-
-        setData(clinic);
-        setError(null);
-      })
-      .catch((unknownError) => {
-        if (!isActive) {
-          return;
-        }
-
-        const message =
-          unknownError instanceof Error ? unknownError.message : "Klinika ma'lumotlari topilmadi";
-        setError(message);
-      })
-      .finally(() => {
-        if (isActive) {
-          setIsLoading(false);
-        }
-      });
-
-    return () => {
-      isActive = false;
-    };
-  }, [id]);
-
-  return { data, isLoading, error, refetch: loadClinic };
+  return { data, isLoading, error, refetch: runRequest };
 }

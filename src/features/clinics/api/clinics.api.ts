@@ -1,5 +1,6 @@
 import { apiClient } from "@/src/lib/api/client";
 import { endpoints } from "@/src/lib/api/endpoints";
+import type { ApiError } from "@/src/lib/api/error";
 import type { Clinic, NearbyClinicsParams } from "@/src/features/clinics/types";
 
 type NearbyClinicDto = {
@@ -42,8 +43,8 @@ function mapClinic(dto: NearbyClinicDto | ClinicDetailPayload): Clinic {
     phone: dto.phone ?? "",
     address: dto.address,
     city: dto.city ?? "",
-    latitude: dto.latitude ?? 0,
-    longitude: dto.longitude ?? 0,
+    latitude: typeof dto.latitude === "number" ? dto.latitude : null,
+    longitude: typeof dto.longitude === "number" ? dto.longitude : null,
     distanceKm: dto.distanceKm,
     isOpenNow: dto.isOpenNow,
     todayHours: dto.todayHours,
@@ -54,6 +55,20 @@ function mapClinic(dto: NearbyClinicDto | ClinicDetailPayload): Clinic {
   };
 }
 
+function assertNearbyPayload(data: unknown): asserts data is NearbyPayload {
+  if (
+    !data ||
+    typeof data !== "object" ||
+    !("clinics" in data) ||
+    !Array.isArray((data as NearbyPayload).clinics)
+  ) {
+    throw {
+      code: "INVALID_RESPONSE",
+      message: "Serverdan klinikalar ro'yxati noto'g'ri keldi",
+    } satisfies ApiError;
+  }
+}
+
 export const clinicsApi = {
   getNearby: async ({ lat, lng, radiusKm = 10 }: NearbyClinicsParams): Promise<Clinic[]> => {
     const query = new URLSearchParams({
@@ -61,7 +76,8 @@ export const clinicsApi = {
       lng: String(lng),
       radiusKm: String(radiusKm),
     });
-    const data = await apiClient.get<NearbyPayload>(`${endpoints.clinics.nearby}?${query.toString()}`);
+    const data = await apiClient.get<unknown>(`${endpoints.clinics.nearby}?${query.toString()}`);
+    assertNearbyPayload(data);
     return data.clinics.map(mapClinic);
   },
   getById: async (id: string): Promise<Clinic> => {

@@ -17,19 +17,47 @@ export function ClinicDetail({ id }: ClinicDetailProps) {
     return <main className="min-h-screen bg-slate-50 p-6">Klinika yuklanmoqda...</main>;
   }
 
-  if (error || !clinic) {
+  if (error) {
     return (
       <main className="min-h-screen bg-slate-50 p-6">
         <div className="mx-auto max-w-3xl rounded-[8px] border border-red-200 bg-white p-6">
           <h1 className="text-xl font-semibold text-red-800">Klinika ochilmadi</h1>
           <p className="mt-2 text-sm text-slate-600">{error}</p>
-          <button
-            type="button"
-            onClick={() => void refetch()}
-            className="mt-4 rounded-[8px] bg-slate-950 px-4 py-2 text-sm font-semibold text-white"
+          <div className="mt-4 flex flex-wrap gap-3">
+            {/* TODO: Numton Button komponenti tayyor bo'lganda shu native button almashtiriladi. */}
+            <button
+              type="button"
+              onClick={() => void refetch()}
+              className="rounded-[8px] bg-slate-950 px-4 py-2 text-sm font-semibold text-white"
+            >
+              Qayta yuklash
+            </button>
+            <Link
+              href="/clinics"
+              className="rounded-[8px] border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800"
+            >
+              Ro&apos;yxatga qaytish
+            </Link>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (!clinic) {
+    return (
+      <main className="min-h-screen bg-slate-50 p-6">
+        <div className="mx-auto max-w-3xl rounded-[8px] border border-slate-200 bg-white p-6">
+          <h1 className="text-xl font-semibold text-slate-950">Klinika ma&apos;lumoti yo&apos;q</h1>
+          <p className="mt-2 text-sm text-slate-600">
+            Server xato qaytarmadi, lekin tanlangan klinika uchun data ham kelmadi.
+          </p>
+          <Link
+            href="/clinics"
+            className="mt-4 inline-flex rounded-[8px] bg-slate-950 px-4 py-2 text-sm font-semibold text-white"
           >
-            Qayta yuklash
-          </button>
+            Klinikalar ro&apos;yxatiga qaytish
+          </Link>
         </div>
       </main>
     );

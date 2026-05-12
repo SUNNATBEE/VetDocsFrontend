@@ -6,6 +6,20 @@ type ApiSuccess<T> = {
   data: T;
 };
 
+type ApiEnvelope<T> =
+  | ApiSuccess<T>
+  | {
+      success: false;
+      error?: {
+        code?: string;
+        message?: string;
+        details?: unknown;
+      };
+      meta?: {
+        requestId?: string;
+      };
+    };
+
 type RequestOptions = {
   method?: "GET" | "POST" | "PATCH" | "DELETE";
   body?: unknown;
@@ -45,7 +59,11 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
     } satisfies ApiError;
   }
 
-  const envelope = payload as ApiSuccess<T>;
+  const envelope = payload as ApiEnvelope<T>;
+  if (envelope.success !== true) {
+    throw toApiError(payload, response.status);
+  }
+
   return envelope.data;
 }
 
