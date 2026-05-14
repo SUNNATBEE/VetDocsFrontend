@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ToastProvider } from "@/src/lib/toast/toast.store";
+import ToastContainer from "@/src/components/shared/ToastContainer";
 
 export const metadata: Metadata = {
   title: "Vet Clinic Frontend",
@@ -11,7 +13,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="uz">
-      <body>{children}</body>
+      <body>
+        <ToastProvider>
+          {children}
+          <ToastContainer />
+        </ToastProvider>
+      </body>
     </html>
   );
 }
