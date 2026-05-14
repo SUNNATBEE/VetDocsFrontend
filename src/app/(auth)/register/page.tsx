@@ -1,3 +1,5 @@
+import { RegisterForm } from "@/src/features/auth/components/RegisterForm";
+
 export default function RegisterPage() {
-  return <div>Royxatdan otish sahifasi (TODO: RegisterForm ulash)</div>;
+  return <RegisterForm />;
 }

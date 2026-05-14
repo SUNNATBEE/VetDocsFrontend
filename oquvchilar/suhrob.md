@@ -1,6 +1,6 @@
 # Suhrob — Auth (Register / Login / Logout)
 
-## Roling
+## Sening roling
 
 Sen saytning "kirish-chiqish eshigi"ni yasaysan.
 Foydalanuvchi shu yerda hisob ochadi, kiradi, chiqadi va parolni tiklaydi.
@@ -75,7 +75,11 @@ export const authApi = {
 };
 ```
 
-### `src/features/auth/hooks/useLogin.ts`
+### 2 `src/features/auth/hooks/useLogin.ts`
+
+Bu faylda `authApi.login` ni chaqirib, kelgan tokenni saqlaysiz.
+
+Kod yoniga shunaqa komment yozing:
 
 ```ts
 // 1) User email/parol yuboradi

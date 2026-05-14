@@ -1,3 +1,5 @@
+import { LoginForm } from "@/src/features/auth/components/LoginForm";
+
 export default function LoginPage() {
-  return <div>Login sahifasi (TODO: LoginForm ulash)</div>;
+  return <LoginForm />;
 }

@@ -1,12 +1,132 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   MUHIM: @import qoidalari @import "tailwindcss" DAN OLDIN kelishi shart
+   ═══════════════════════════════════════════════════════════════════════ */
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap");
+
 @import "tailwindcss";
 
+/* ── VetClinic UZ design tokens (light mode) ────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background:                #f5faf8;
+  --foreground:                #171d1c;
+
+  --surface:                   #f5faf8;
+  --surface-dim:               #d6dbd9;
+  --surface-bright:            #f5faf8;
+  --surface-variant:           #dee4e1;
+  --surface-container-lowest:  #ffffff;
+  --surface-container-low:     #f0f5f2;
+  --surface-container:         #eaefed;
+  --surface-container-high:    #e4e9e7;
+  --surface-container-highest: #dee4e1;
+
+  --on-surface:                #171d1c;
+  --on-surface-variant:        #3d4947;
+  --inverse-surface:           #2c3130;
+  --inverse-on-surface:        #edf2f0;
+
+  --outline:                   #6d7a77;
+  --outline-variant:           #bcc9c6;
+
+  --primary:                   #00685f;
+  --on-primary:                #ffffff;
+  --primary-container:         #008378;
+  --on-primary-container:      #f4fffc;
+  --primary-fixed:             #89f5e7;
+  --primary-fixed-dim:         #6bd8cb;
+  --inverse-primary:           #6bd8cb;
+
+  --secondary:                 #a93530;
+  --on-secondary:              #ffffff;
+  --secondary-container:       #fd7369;
+  --on-secondary-container:    #6f080c;
+
+  --tertiary:                  #924628;
+  --tertiary-container:        #b05e3d;
+  --tertiary-fixed:            #ffdbce;
+  --tertiary-fixed-dim:        #ffb59a;
+
+  --error:                     #ba1a1a;
+  --on-error:                  #ffffff;
+  --error-container:           #ffdad6;
+}
+
+.dark {
+  --background:                #0f1512;
+  --foreground:                #e0e8e5;
+  --surface:                   #171d1c;
+  --surface-container-lowest:  #0a100e;
+  --surface-container-low:     #1a2120;
+  --surface-container:         #1e2524;
+  --surface-container-high:    #282f2e;
+  --surface-container-highest: #323938;
+  --on-surface:                #e0e8e5;
+  --on-surface-variant:        #bcc9c6;
+  --outline:                   #869490;
+  --outline-variant:           #3d4947;
+  --primary:                   #6bd8cb;
+  --on-primary:                #003731;
+  --secondary-container:       #ff8a80;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--on-surface);
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* ── Material Symbols — KRITIK: bu bo'lmasa ikonlar text ko'rinadi ──── */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.fill-icon {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24 !important;
+}
+
+/* ── Auth left panel gradient ────────────────────────────────────────── */
+.vc-gradient {
+  background: linear-gradient(135deg, #00685f 0%, #b05e3d 100%);
+}
+
+/* ── Profile tabs ────────────────────────────────────────────────────── */
+.profile-tab-active {
+  border-bottom: 2px solid #00685f;
+  color: #00685f;
+  font-weight: 600;
+}
+
+/* Shimmer animatsiya — skeleton uchun */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--surface-container) 25%,
+    var(--surface-container-high) 50%,
+    var(--surface-container) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Scrollbar yashirish */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
