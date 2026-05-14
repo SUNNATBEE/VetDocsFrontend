@@ -36,10 +36,10 @@ export function MobileNav({ links, isOpen, onClose }: MobileNavProps) {
           ))}
         </ul>
         <div className="space-y-3 pt-6 border-t border-[var(--outline-variant)]">
-          <Link href="/auth/login" onClick={onClose} className="flex justify-center py-3 rounded-xl border border-[var(--primary)] text-[var(--primary)] font-bold text-sm">
+          <Link href="/login" onClick={onClose} className="flex justify-center py-3 rounded-xl border border-[var(--primary)] text-[var(--primary)] font-bold text-sm hover:bg-[var(--primary)]/5 transition-colors">
             Kirish
           </Link>
-          <Link href="/auth/register" onClick={onClose} className="flex justify-center py-3 rounded-xl bg-[var(--primary)] text-[var(--on-primary)] font-bold text-sm">
+          <Link href="/register" onClick={onClose} className="flex justify-center py-3 rounded-xl bg-[var(--primary)] text-[var(--on-primary)] font-bold text-sm hover:opacity-90 transition-opacity">
             Ro&apos;yxatdan o&apos;tish
           </Link>
         </div>
@@ -47,3 +47,4 @@ export function MobileNav({ links, isOpen, onClose }: MobileNavProps) {
     </div>
   );
 }
+

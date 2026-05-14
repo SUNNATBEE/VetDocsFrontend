@@ -4,9 +4,13 @@ import { ClinicFilters } from "@/src/features/clinics/components/ClinicFilters";
 import { ClinicList } from "@/src/features/clinics/components/ClinicList";
 import { ClinicMap } from "@/src/features/clinics/components/ClinicMap";
 import { useClinics } from "@/src/features/clinics/hooks/useClinics";
+import LoadingSpinner from "@/src/components/shared/LoadingSpinner";
+import EmptyState from "@/src/components/shared/EmptyState";
+import ErrorMessage from "@/src/components/shared/ErrorMessage";
 
 export default function ClinicsPage() {
   const { data, filteredData, filters, setFilters, isLoading, error, refetch } = useClinics();
+  
   const hasActiveFilters =
     filters.query.trim() !== "" ||
     filters.city !== "all" ||
@@ -14,55 +18,65 @@ export default function ClinicsPage() {
     filters.minRating > 0;
 
   return (
-    <main className="min-h-screen bg-slate-50">
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-700">
-              Clinics
-            </p>
-            <h1 className="mt-2 text-4xl font-bold text-slate-950">Klinikalar ro&apos;yxati</h1>
-            <p className="mt-3 max-w-2xl text-slate-600">
-              Backenddan kelgan klinikalarni qidiring, filtrlang va xaritada ko&apos;ring.
+    <main className="min-h-screen bg-[var(--background)]">
+      <section className="mx-auto max-w-[1280px] px-4 py-12 md:px-8">
+        <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--primary)]/10 text-[var(--primary)] text-xs font-bold uppercase tracking-widest mb-4">
+              <span className="relative flex h-2 w-2">
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--primary)]"></span>
+              </span>
+              Platforma kliniklari
+            </div>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[var(--on-surface)] tracking-tight leading-none mb-4 font-h1">
+              Eng yaxshi <span className="text-[var(--primary)]">klinikalarni</span> toping
+            </h1>
+            <p className="text-lg text-[var(--on-surface-variant)] leading-relaxed">
+              Bizning platformada sizga va sizning chorva do'stlaringizga g'amxo'rlik qiluvchi professional veterinariya markazlari jamlangan.
             </p>
           </div>
-          <div className="rounded-[8px] bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm">
-            {filteredData.length} / {data.length} klinika
+          
+          <div className="flex items-center gap-3 bg-[var(--surface-container-high)] border border-[var(--outline-variant)] px-5 py-3 rounded-2xl shadow-sm self-start">
+             <div className="w-10 h-10 rounded-full bg-[var(--primary)]/10 flex items-center justify-center text-[var(--primary)]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+             </div>
+             <div>
+               <p className="text-xs font-bold text-[var(--on-surface-variant)] uppercase tracking-tighter">Natijalar</p>
+               <p className="text-xl font-black text-[var(--on-surface)]">{filteredData.length}</p>
+             </div>
           </div>
-        </div>
+        </header>
 
-        <div className="mt-6">
+        <div className="mb-8 overflow-x-auto pb-2 scrollbar-hide">
           <ClinicFilters clinics={data} value={filters} onChange={setFilters} />
         </div>
 
         {isLoading ? (
-          <div className="mt-6 rounded-[8px] border border-slate-200 bg-white p-8 text-slate-600">
-            Klinikalar yuklanmoqda...
+          <div className="flex flex-col items-center justify-center py-32 bg-[var(--surface-container-lowest)] rounded-3xl border border-[var(--outline-variant)] border-dashed">
+            <LoadingSpinner size="lg" />
+            <p className="mt-6 text-[var(--on-surface-variant)] font-medium animate-pulse">Klinikalar ma'lumotlari yuklanmoqda...</p>
           </div>
         ) : error ? (
-          <div className="mt-6 rounded-[8px] border border-red-200 bg-white p-8">
-            <h2 className="text-xl font-semibold text-red-800">Xatolik</h2>
-            <p className="mt-2 text-sm text-slate-600">{error}</p>
-            {/* TODO: Numton Button komponenti tayyor bo'lganda shu native button almashtiriladi. */}
-            <button
-              type="button"
-              onClick={() => void refetch()}
-              className="mt-4 rounded-[8px] bg-slate-950 px-4 py-2 text-sm font-semibold text-white"
-            >
-              Qayta yuklash
-            </button>
-          </div>
+          <ErrorMessage 
+            message={error} 
+            onRetry={() => void refetch()} 
+          />
         ) : filteredData.length === 0 ? (
-          <div className="mt-6 rounded-[8px] border border-slate-200 bg-white p-8 text-slate-600">
-            {hasActiveFilters
-              ? "Bu filter bo'yicha klinika topilmadi."
-              : "Hozircha klinikalar yo'q."}
-          </div>
+          <EmptyState 
+            title={hasActiveFilters ? "Natija topilmadi" : "Hozircha klinikalar yo'q"}
+            description={hasActiveFilters ? "Tanlangan filtrlar bo'yicha hech qanday klinika topilmadi. Iltimos, filtrlarni o'zgartirib ko'ring." : "Tizimda hali klinikalar ro'yxatga olinmagan."}
+            action={hasActiveFilters ? { label: "Filtrlarni tozalash", onClick: () => setFilters({ query: "", city: "all", minRating: 0, openNow: false }) } : undefined}
+          />
         ) : (
-          <div className="mt-6 grid gap-6 xl:grid-cols-[1fr_420px]">
-            <ClinicList clinics={filteredData} />
-            <div className="xl:sticky xl:top-24 xl:self-start">
-              <ClinicMap clinics={filteredData} />
+          <div className="grid gap-8 lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_450px]">
+            <div className="space-y-6">
+              <ClinicList clinics={filteredData} />
+            </div>
+            
+            <div className="hidden lg:block lg:sticky lg:top-28 lg:self-start">
+               <div className="rounded-3xl overflow-hidden border border-[var(--outline-variant)] shadow-2xl h-[calc(100vh-140px)] min-h-[500px]">
+                 <ClinicMap clinics={filteredData} />
+               </div>
             </div>
           </div>
         )}
@@ -70,3 +84,4 @@ export default function ClinicsPage() {
     </main>
   );
 }
+
