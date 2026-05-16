@@ -10,12 +10,15 @@ type ClinicFiltersProps = {
 
 export function ClinicFilters({ clinics, value, onChange }: ClinicFiltersProps) {
   const cities = Array.from(new Set(clinics.map((clinic) => clinic.city).filter(Boolean))).sort() as string[];
+  const districts = Array.from(
+    new Set(clinics.map((clinic) => clinic.district).filter((d): d is string => Boolean(d))),
+  ).sort();
 
   const inputClasses = "h-12 w-full appearance-none rounded-xl border border-[var(--outline-variant)] bg-[var(--surface-container-low)] px-4 text-sm font-medium text-[var(--on-surface)] outline-none transition-all placeholder:text-[var(--on-surface-variant)]/50 focus:border-[var(--primary)] focus:bg-[var(--surface-container-highest)] focus:ring-4 focus:ring-[var(--primary)]/10";
 
   return (
     <div className="overflow-hidden rounded-2xl border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] p-1.5 shadow-sm">
-      <div className="grid gap-2 md:grid-cols-[1.5fr_1fr_1fr_auto]">
+      <div className="grid gap-2 md:grid-cols-[1.5fr_1fr_1fr_1fr_auto]">
         <div className="relative group">
           <input
             value={value.query}
@@ -36,6 +39,23 @@ export function ClinicFilters({ clinics, value, onChange }: ClinicFiltersProps) 
             {cities.map((city) => (
               <option key={city} value={city}>
                 {city}
+              </option>
+            ))}
+          </select>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none opacity-50"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+
+        <div className="relative">
+          <select
+            value={value.district}
+            onChange={(event) => onChange({ ...value, district: event.target.value })}
+            className={inputClasses}
+            disabled={districts.length === 0}
+          >
+            <option value="all">Barcha tumanlar</option>
+            {districts.map((district) => (
+              <option key={district} value={district}>
+                {district}
               </option>
             ))}
           </select>

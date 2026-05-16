@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useClinics } from "@/src/features/clinics/hooks/useClinics";
 import type { NearbyClinicsParams } from "@/src/features/clinics/types";
 
-const FALLBACK_LOCATION: NearbyClinicsParams = {
+const FALLBACK_LOCATION: Required<Pick<NearbyClinicsParams, "lat" | "lng" | "radiusKm">> = {
   lat: 41.31,
   lng: 69.25,
   radiusKm: 200,
@@ -14,6 +14,7 @@ export function useNearbyClinics(params: Partial<NearbyClinicsParams> = {}) {
   const requestedLat = params.lat;
   const requestedLng = params.lng;
   const requestedRadiusKm = params.radiusKm ?? FALLBACK_LOCATION.radiusKm;
+  const requestedDistrict = params.district;
   const hasRequestedLocation = typeof requestedLat === "number" && typeof requestedLng === "number";
   const [location, setLocation] = useState<NearbyClinicsParams | null>(
     hasRequestedLocation
@@ -21,10 +22,13 @@ export function useNearbyClinics(params: Partial<NearbyClinicsParams> = {}) {
           lat: requestedLat,
           lng: requestedLng,
           radiusKm: requestedRadiusKm,
+          district: requestedDistrict,
         }
-      : null,
+      : requestedDistrict
+        ? { radiusKm: requestedRadiusKm, district: requestedDistrict }
+        : null,
   );
-  const [isLocating, setIsLocating] = useState(!hasRequestedLocation);
+  const [isLocating, setIsLocating] = useState(!hasRequestedLocation && !requestedDistrict);
   const [geoError, setGeoError] = useState<string | null>(null);
   const clinicsState = useClinics(location);
 
@@ -41,7 +45,25 @@ export function useNearbyClinics(params: Partial<NearbyClinicsParams> = {}) {
           lat: requestedLat,
           lng: requestedLng,
           radiusKm: requestedRadiusKm,
+          district: requestedDistrict,
         });
+        setGeoError(null);
+        setIsLocating(false);
+      });
+
+      return () => {
+        isActive = false;
+      };
+    }
+
+    // District berilgan bo'lsa, backend tuman markazidan qidiradi — geolokatsiya kerak emas.
+    if (requestedDistrict) {
+      queueMicrotask(() => {
+        if (!isActive) {
+          return;
+        }
+
+        setLocation({ radiusKm: requestedRadiusKm, district: requestedDistrict });
         setGeoError(null);
         setIsLocating(false);
       });
@@ -58,6 +80,7 @@ export function useNearbyClinics(params: Partial<NearbyClinicsParams> = {}) {
         }
 
         setGeoError("Brauzer geolokatsiyani qo'llab-quvvatlamaydi. Toshkent fallback ishlatildi.");
+        setLocation({ ...FALLBACK_LOCATION, radiusKm: requestedRadiusKm });
         setIsLocating(false);
       });
 
@@ -99,7 +122,13 @@ export function useNearbyClinics(params: Partial<NearbyClinicsParams> = {}) {
     return () => {
       isActive = false;
     };
-  }, [hasRequestedLocation, requestedLat, requestedLng, requestedRadiusKm]);
+  }, [
+    hasRequestedLocation,
+    requestedLat,
+    requestedLng,
+    requestedRadiusKm,
+    requestedDistrict,
+  ]);
 
   return {
     ...clinicsState,

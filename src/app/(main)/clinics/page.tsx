@@ -14,6 +14,7 @@ export default function ClinicsPage() {
   const hasActiveFilters =
     filters.query.trim() !== "" ||
     filters.city !== "all" ||
+    filters.district !== "all" ||
     filters.openNow ||
     filters.minRating > 0;
 
@@ -65,7 +66,7 @@ export default function ClinicsPage() {
           <EmptyState 
             title={hasActiveFilters ? "Natija topilmadi" : "Hozircha klinikalar yo'q"}
             description={hasActiveFilters ? "Tanlangan filtrlar bo'yicha hech qanday klinika topilmadi. Iltimos, filtrlarni o'zgartirib ko'ring." : "Tizimda hali klinikalar ro'yxatga olinmagan."}
-            action={hasActiveFilters ? { label: "Filtrlarni tozalash", onClick: () => setFilters({ query: "", city: "all", minRating: 0, openNow: false }) } : undefined}
+            action={hasActiveFilters ? { label: "Filtrlarni tozalash", onClick: () => setFilters({ query: "", city: "all", district: "all", minRating: 0, openNow: false }) } : undefined}
           />
         ) : (
           <div className="grid gap-8 lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_450px]">

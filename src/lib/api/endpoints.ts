@@ -8,8 +8,12 @@ export const endpoints = {
   },
   clinics: {
     nearby: "/clinics/nearby",
+    districts: "/clinics/districts",
     byId: (id: string) => `/clinics/${id}`,
     reviews: (id: string) => `/clinics/${id}/reviews`,
+  },
+  config: {
+    public: "/config/public",
   },
   admin: {
     dashboard: "/admin/dashboard",

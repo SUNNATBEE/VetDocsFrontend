@@ -130,3 +130,54 @@ body {
 /* Scrollbar yashirish */
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Animatsiyalar (kartalar, filtrlar, badge'lar uchun) ────────────── */
+@keyframes vc-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes vc-slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes vc-scale-in {
+  from { opacity: 0; transform: scale(.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes vc-pulse-ring {
+  0%   { box-shadow: 0 0 0 0   rgba(0, 104, 95, .45); }
+  70%  { box-shadow: 0 0 0 12px rgba(0, 104, 95, 0);  }
+  100% { box-shadow: 0 0 0 0   rgba(0, 104, 95, 0);  }
+}
+@keyframes vc-spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in   { animation: vc-fade-in   .35s ease-out both; }
+.animate-slide-up  { animation: vc-slide-up  .45s cubic-bezier(.16,.84,.44,1) both; }
+.animate-scale-in  { animation: vc-scale-in  .35s cubic-bezier(.16,.84,.44,1) both; }
+.animate-pulse-ring { animation: vc-pulse-ring 1.8s ease-out infinite; }
+.animate-spin-slow  { animation: vc-spin-slow 1.4s linear infinite; }
+
+/* Staggered entry — kartalar ketma-ket chiqishi uchun */
+.stagger-children > * { opacity: 0; animation: vc-slide-up .5s cubic-bezier(.16,.84,.44,1) both; }
+.stagger-children > *:nth-child(1) { animation-delay: .05s; }
+.stagger-children > *:nth-child(2) { animation-delay: .12s; }
+.stagger-children > *:nth-child(3) { animation-delay: .19s; }
+.stagger-children > *:nth-child(4) { animation-delay: .26s; }
+.stagger-children > *:nth-child(5) { animation-delay: .33s; }
+.stagger-children > *:nth-child(6) { animation-delay: .40s; }
+.stagger-children > *:nth-child(n+7) { animation-delay: .45s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-scale-in,
+  .animate-pulse-ring,
+  .animate-spin-slow,
+  .stagger-children > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

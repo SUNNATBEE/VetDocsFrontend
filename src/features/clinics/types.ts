@@ -4,6 +4,7 @@ export type Clinic = {
   phone: string;
   address: string;
   city: string;
+  district: string | null;
   latitude: number | null;
   longitude: number | null;
   distanceKm?: number;
@@ -13,6 +14,14 @@ export type Clinic = {
   averageRating: number | null;
   reviewCount: number;
   reviews?: ClinicReview[];
+};
+
+export type DistrictCatalogItem = {
+  key: string;
+  name: string;
+  lat: number;
+  lng: number;
+  clinicCount: number;
 };
 
 export type OpeningSlot = {
@@ -45,12 +54,14 @@ export type ClinicReview = {
 export type ClinicFilters = {
   query: string;
   city: string;
+  district: string;
   openNow: boolean;
   minRating: number;
 };
 
 export type NearbyClinicsParams = {
-  lat: number;
-  lng: number;
+  lat?: number;
+  lng?: number;
   radiusKm?: number;
+  district?: string;
 };

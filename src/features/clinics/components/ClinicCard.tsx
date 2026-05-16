@@ -13,14 +13,25 @@ export function ClinicCard({ clinic }: ClinicCardProps) {
   return (
     <Link
       href={`/clinics/${clinic.id}`}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[var(--primary)]/30"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] p-5 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[var(--primary)]/30 hover:shadow-xl hover:shadow-[var(--primary)]/10"
     >
+      {/* nozik gradient halo — hoverda yoritiladi */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[var(--primary)]/[.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      />
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-1">
              <span className="inline-flex items-center rounded-full bg-[var(--primary)]/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--primary)]">
                {clinic.city || "O'zbekiston"}
              </span>
+             {clinic.district && (
+               <span className="inline-flex items-center gap-1 rounded-full border border-[var(--outline-variant)] bg-[var(--surface-container-lowest)] px-2 py-0.5 text-[10px] font-semibold text-[var(--on-surface-variant)] transition-colors group-hover:border-[var(--primary)]/30 group-hover:text-[var(--primary)]">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                 {clinic.district}
+               </span>
+             )}
              {clinic.isOpenNow && (
                <span className="relative flex h-2 w-2">
                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>

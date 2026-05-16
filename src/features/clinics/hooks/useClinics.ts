@@ -24,6 +24,7 @@ type ClinicsState = {
 const initialFilters: ClinicFilters = {
   query: "",
   city: "all",
+  district: "all",
   openNow: false,
   minRating: 0,
 };
@@ -34,6 +35,7 @@ export function useClinics(params: NearbyClinicsParams | null = DEFAULT_LOCATION
   const lat = params?.lat;
   const lng = params?.lng;
   const radiusKm = params?.radiusKm;
+  const district = params?.district;
   const requestIdRef = useRef(0);
   const [data, setData] = useState<Clinic[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -44,7 +46,10 @@ export function useClinics(params: NearbyClinicsParams | null = DEFAULT_LOCATION
     const requestId = requestIdRef.current + 1;
     requestIdRef.current = requestId;
 
-    if (typeof lat !== "number" || typeof lng !== "number") {
+    // Backend nearby endpointi lat/lng yoki district talab qiladi.
+    // District berilganda backend tuman markazidan qidiradi.
+    const hasCoords = typeof lat === "number" && typeof lng === "number";
+    if (!hasCoords && !district) {
       setData([]);
       setError(null);
       setIsLoading(false);
@@ -55,7 +60,7 @@ export function useClinics(params: NearbyClinicsParams | null = DEFAULT_LOCATION
     setError(null);
 
     try {
-      const clinics = await clinicsApi.getNearby({ lat, lng, radiusKm });
+      const clinics = await clinicsApi.getNearby({ lat, lng, radiusKm, district });
       if (requestId !== requestIdRef.current) {
         return;
       }
@@ -72,7 +77,7 @@ export function useClinics(params: NearbyClinicsParams | null = DEFAULT_LOCATION
         setIsLoading(false);
       }
     }
-  }, [lat, lng, radiusKm]);
+  }, [lat, lng, radiusKm, district]);
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -90,11 +95,13 @@ export function useClinics(params: NearbyClinicsParams | null = DEFAULT_LOCATION
         clinic.address.toLowerCase().includes(normalizedQuery) ||
         clinic.city.toLowerCase().includes(normalizedQuery);
       const matchesCity = filters.city === "all" || clinic.city === filters.city;
+      const matchesDistrict =
+        filters.district === "all" || clinic.district === filters.district;
       const matchesOpen = !filters.openNow || clinic.isOpenNow === true;
       const rating = clinic.averageRating ?? 0;
       const matchesRating = rating >= filters.minRating;
 
-      return matchesQuery && matchesCity && matchesOpen && matchesRating;
+      return matchesQuery && matchesCity && matchesDistrict && matchesOpen && matchesRating;
     });
   }, [data, filters]);
 
