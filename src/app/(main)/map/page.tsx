@@ -215,9 +215,7 @@ export default function MapPage() {
             className="mt-8 grid animate-slide-up gap-6 lg:grid-cols-[1.2fr_.8fr]"
             style={{ animationDelay: ".18s" }}
           >
-            <div className="overflow-hidden rounded-3xl border border-[var(--outline-variant)] shadow-xl">
-              <ClinicMap clinics={filteredData} />
-            </div>
+            <ClinicMap clinics={filteredData} />
             <aside className="flex flex-col gap-3">
               <div className="flex items-center justify-between px-1">
                 <h2 className="text-sm font-bold uppercase tracking-widest text-[var(--on-surface-variant)]">
